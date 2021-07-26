@@ -1,0 +1,111 @@
+{{ define "title" }}Add a new job post{{ end }}
+{{ define "content" }}
+<form method="POST" action="/jobs" enctype="multipart/form-data">
+  <input type="hidden" name="salary-unit" value="year" />
+  <div>
+    <label for="slug">Slug</label>
+    <input type="text" name="slug" value="{{ .Data.Slug }}" />
+    {{ with .Errors.Slug }}
+    <div style="background-color: red;">
+      {{ . }}
+    </div>
+    {{ end }}
+  </div>
+
+  <div>
+    <label for="title">Title</label>
+    <input type="text" name="title" value="{{ .Data.Title }}" />
+    {{ with .Errors.Title }}
+    <div style="background-color: red;">
+      {{ . }}
+    </div>
+    {{ end }}
+  </div>
+
+  <div>
+    <label for="location">Location</label>
+    <input type="text" name="location" value="{{ .Data.Location }}" />
+    {{ with .Errors.Location }}
+    <div style="background-color: red;">
+      {{ . }}
+    </div>
+    {{ end }}
+  </div>
+
+  <div>
+    <label for="salary-min">Minimum Salary</label>
+    <input type="text" name="salary-min" value="{{ .Data.SalaryMin }}" />
+    {{ with .Errors.SalaryMin }}
+    <div style="background-color: red;">
+      {{ . }}
+    </div>
+    {{ end }}
+  </div>
+
+  <div>
+    <label for="salary-max">Maximum Salary</label>
+    <input type="text" name="salary-max" value="{{ .Data.SalaryMax }}" />
+    {{ with .Errors.SalaryMax }}
+    <div style="background-color: red;">
+      {{ . }}
+    </div>
+    {{ end }}
+  </div>
+
+  <div>
+    <label for="salary-currency">Salary Currency</label>
+    <select name="salary-currency">
+      <option value="">Select Currency</option>
+      <option value="GBP" {{- if eq "GBP" .Data.SalaryCurrency }} selected{{ end }}>GBP (&pound;)</option>
+      <option value="USD" {{- if eq "USD" .Data.SalaryCurrency }} selected{{ end }}>USD ($)</option>
+      <option value="EUR" {{- if eq "EUR" .Data.SalaryCurrency }} selected{{ end }}>EUR (&euro;)</option>
+    </select>
+
+    {{ with .Errors.SalaryCurrency }}
+    <div style="background-color: red;">
+      {{ . }}
+    </div>
+    {{ end }}
+  </div>
+
+  <div>
+    <label for="company-name">Company name</label>
+    <input type="text" name="company-name" value="{{ .Data.CompanyName }}" />
+    {{ with .Errors.CompanyName }}
+    <div style="background-color: red;">
+      {{ . }}
+    </div>
+    {{ end }}
+  </div>
+
+  <div>
+    <label for="company-url">Company URL</label>
+    <input type="text" name="company-url" value="{{ .Data.CompanyURL }}" />
+    {{ with .Errors.CompanyURL }}
+    <div style="background-color: red;">
+      {{ . }}
+    </div>
+    {{ end }}
+  </div>
+
+  <div>
+    <label for="description">Description</label>
+    <textarea name="description">{{ .Data.Description }}</textarea>
+    {{ with .Errors.Description }}
+    <div style="background-color: red;">
+      {{ . }}
+    </div>
+    {{ end }}
+  </div>
+
+  <hr>
+  <div>
+    <label for="pinned30">Pinned to the Front Page for 30 days</label>
+    <input type="checkbox" name="pinned30" />
+  </div>
+
+  <div>
+    <button>Post job</button>
+  </div>
+</form>
+{{ end }}

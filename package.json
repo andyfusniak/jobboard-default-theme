@@ -1,0 +1,24 @@
+{
+  "name": "jobboard-default-theme",
+  "version": "0.1.0",
+  "description": "Jobboard Default Theme for customer-facing site.",
+  "scripts": {
+    "setup": "mkdir -p public/js && cp vendor/*.js public/js",
+    "clean": "rimraf public",
+    "tw:watch": "npm run setup && postcss ./src/css/tailwind.css -o ./public/css/tailwind.css --watch --verbose",
+    "tw:build": "npm run setup && postcss ./src/css/tailwind.css -o ./public/css/tailwind.css",
+    "tw:prod": "npm run setup && NODE_ENV=production postcss ./src/css/tailwind.css -o ./public/css/tailwind.css"
+  },
+  "author": "Namwa Sawasdiworn",
+  "dependencies": {
+    "cssnano": "^5.0.7"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "@tailwindcss/forms": "^0.3.3",
+    "autoprefixer": "^10.2.1",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.2.6"
+  }
+}

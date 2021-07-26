@@ -1,0 +1,18 @@
+{{ define "title" }}Email Sent{{ end }}
+{{ define "content" }}
+<p>Singe page job</p>
+
+{{ with .Data }}
+<ul>
+  <li>{{ .Slug }}</li>
+  <li>{{ .Title }}</li>
+  <li>{{ .Location }}</li>
+  <li>{{ .SalaryMin }}</li>
+  <li>{{ .SalaryMax }}</li>
+  <li>{{ .SalaryCurrency }}</li>
+  <li>{{ .CreatedAt.Format "2 Jan 06" }}</li>
+  <li>{{ if not .ApprovedAt }}Pending{{ end }}{{ if .ApprovedAt }}{{ .ApprovedAt.Format "2 Jan 06" }}{{ end }}</li>
+</ul>
+{{ end }}
+
+{{ end }}

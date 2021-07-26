@@ -1,0 +1,38 @@
+{{ define "title" }}Employer Account Home{{ end }}
+{{ define "content" }}
+<h1>Employer account home page</h1>
+
+<a href="/employer/{{ .UID }}/create-job">Post a job</a>
+
+{{ if not .Data }}
+You currently have no job posts
+{{ end }}
+
+{{ if .Data }}
+<table>
+<tr>
+  <th>Slug</th>
+  <th>Title</th>
+  <th>Location</th>
+  <th>Minimum Sal</th>
+  <th>Maximum Sal</th>
+  <th>Currency</th>
+  <th>Created</th>
+  <th>Approved</th>
+</tr>
+{{ range .Data }}
+<tr>
+  <td>{{ .Slug }}</td>
+  <td>{{ .Title }}</td>
+  <td>{{ .Location }}</td>
+  <td>{{ .SalaryMin }}</td>
+  <td>{{ .SalaryMax }}</td>
+  <td>{{ .SalaryCurrency }}</td>
+  <td>{{ .CreatedAt.Format "2 Jan 06" }}</td>
+  <td>{{ if not .ApprovedAt }}Pending{{ end }}{{ if .ApprovedAt }}{{ .ApprovedAt.Format "2 Jan 06" }}{{ end }}</td>
+</tr>
+{{ end }}
+</table>
+{{ end }}
+
+{{ end }}

@@ -1,0 +1,24 @@
+{{ define "title" }}Employer Sign up{{ end }}
+{{ define "content" }}
+
+{{ with .Errors.Form }}
+<div style="background-color: red;">
+  {{ . }}
+</div>
+{{ end }}
+<form action="/employer/signup" method="POST">
+  <div>
+    <label for="email">Email</label>
+    <input type="text" name="email" value="{{ .Data.Email }}" />
+    {{ with .Errors.Email }}
+    <div style="background-color: red;">
+      {{ . }}
+    </div>
+    {{ end }}
+  </div>
+
+  <div>
+    <button>Sign up</button>
+  </div>
+</form>
+{{ end }}

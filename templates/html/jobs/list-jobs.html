@@ -1,0 +1,44 @@
+{{ define "title" }}Job List{{ end }}
+{{ define "content" }}
+
+
+{{ range .Data }}
+<div>
+  <table>
+    <tr>
+      <td>Title</td>
+      <td><a href="/jobs/{{ .Slug }}">{{ .Title }}</a></td>
+    </tr>
+    <tr>
+      <td>Location</td>
+      <td>{{ .Location }}</td>
+    </tr>
+    <tr>
+      <td>Minimum Salary</td>
+      <td>{{ .SalaryMin }} {{ .SalaryCurrency }}</td>
+    </tr>
+    <tr>
+      <td>Maximum Salary</td>
+      <td>{{ .SalaryMax }} {{ .SalaryCurrency }}</td>
+    </tr>
+    <tr>
+      <td>Company name</td>
+      <td>{{ .CompanyName }}</td>
+    </tr>
+    <tr>
+      <td>Company URL</td>
+      <td>{{ .CompanyURL }}</td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td>{{ .Description }}</td>
+    </tr>
+{{ if $.IsSignedIn -}}
+SIGNED IN
+{{ end }}
+  </table>
+</div>
+<hr>
+{{ end }}
+
+{{ end }}
