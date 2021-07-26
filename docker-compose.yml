@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:13.1-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: jobboard
+
+  jobboard-web:
+    image: gcr.io/codepyjamas/jobboard-web:latest
+    command: /bin/sh -c "sleep 5 && /app/migrate -path /app/migrations -database 'postgres://postgres:password@postgres:5432/jobboard?sslmode=disable&connect_timeout=5' -verbose up && /app/jobboard-web-alpine"
+    ports:
+      - "9001:8080"
+    environment:
+      DATABASE_URL: postgres://postgres:password@postgres:5432/jobboard?sslmode=disable&connect_timeout=5
+      PORT: 8080
+      SITE_BASE_URL: http://localhost:9001
+      SMTP_HOST: <host>
+      SMTP_PORT: <port>
+      SMTP_USERNAME: <username>
+      SMTP_PASSWORD: <password>
+      SMTP_FROM: jobs@codepyjamas.com
+      SMTP_REPLY_TO: jobs@codepyjamas.com
+      STRIPE_SECRET_KEY: <secret-key>
+      STRIPE_SIGNING_SECRET: <signing-secret>
+      STRIPE_SUCCESS_URL: http://localhost:9001/payment-success
+      STRIPE_CANCEL_URL: http://localhost:9001/payment-cancel
+      DEVELOPMENT_MODE: "true"
+      THEME_PATH: ./themes/jobboard-default-theme
+    volumes:
+      - ${PWD}/templates:/app/templates
+      - ${PWD}/public:/app/public
+    depends_on:
+      - postgres
