@@ -1,24 +1,38 @@
 {{ define "title" }}Employer Sign up{{ end }}
 {{ define "content" }}
 
-{{ with .Errors.Form }}
-<div style="background-color: red;">
-  {{ . }}
-</div>
-{{ end }}
-<form action="/employer/signup" method="POST">
-  <div>
-    <label for="email">Email</label>
-    <input type="text" name="email" value="{{ .Data.Email }}" />
-    {{ with .Errors.Email }}
-    <div style="background-color: red;">
-      {{ . }}
-    </div>
-    {{ end }}
+<div class="max-w-xl mx-auto px-6 lg:px-0">
+  <div class="py-16 text-center md:text-left">
+    <h2 class="font-bold text-2xl sm:text-4xl text-blue-600">Start hiring tech talents</h2>
+    <h3 class="mt-2 font-semibold text-xl sm:text-2xl text-gray-600">Create your account</h3>
   </div>
 
-  <div>
-    <button>Sign up</button>
-  </div>
-</form>
+  {{ with .Errors.Form }}
+    <span class="text-error">{{ . }}</span>
+  {{ end }}
+
+  <form action="/employer/signup" method="POST" class="space-y-6">
+    <div>
+      <label for="email" class="block mb-2 text-base sm:text-lg font-semibold text-gray-800">
+        * Email address
+      </label>
+      <input id="email" name="email" type="email" value="{{ .Data.Email }}"
+        autocomplete="email" required
+        class="formInput" placeholder="JohnDoe@email.com">
+
+      {{ with .Errors.Email }}
+      <div class="text-red-600 font-semibold text-base">
+        {{ . }}
+      </div>
+      {{ end }}
+    </div>
+
+    <div class="flex justify-center">
+      <button type="submit" class="button">
+        Create an account
+      </button>
+    </div>
+  </form>
+</div>
+
 {{ end }}
