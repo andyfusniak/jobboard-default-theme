@@ -31,6 +31,6 @@ services:
       THEME_PATH: ./themes/jobboard-default-theme
     volumes:
       - ${PWD}/templates:/app/themes/jobboard-default-theme/templates
-      - ${PWD}/public:/app/public
+      - ${PWD}/public:/app/themes/jobboard-default-theme/public
     depends_on:
       - postgres
