@@ -8,29 +8,29 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: jobboard
 
-  jobboard-web:
-    image: gcr.io/codepyjamas/jobboard-web:latest
+  jobboard-web-dev:
+    image: gcr.io/codepyjamas/jobboard-web-dev:latest
     command: /bin/sh -c "sleep 5 && /app/migrate -path /app/migrations -database 'postgres://postgres:password@postgres:5432/jobboard?sslmode=disable&connect_timeout=5' -verbose up && /app/jobboard-web-alpine"
     ports:
       - "9001:8080"
     environment:
-      DATABASE_URL: postgres://postgres:password@postgres:5432/jobboard?sslmode=disable&connect_timeout=5
-      PORT: 8080
-      SITE_BASE_URL: http://localhost:9001
-      SMTP_HOST: <host>
-      SMTP_PORT: <port>
-      SMTP_USERNAME: <username>
-      SMTP_PASSWORD: <password>
-      SMTP_FROM: jobs@codepyjamas.com
-      SMTP_REPLY_TO: jobs@codepyjamas.com
-      STRIPE_SECRET_KEY: <secret-key>
-      STRIPE_SIGNING_SECRET: <signing-secret>
-      STRIPE_SUCCESS_URL: http://localhost:9001/payment-success
-      STRIPE_CANCEL_URL: http://localhost:9001/payment-cancel
+      DATABASE_URL: "postgres://postgres:password@postgres:5432/jobboard?sslmode=disable&connect_timeout=5"
+      PORT: "8080"
+      SITE_BASE_URL: "http://localhost:9001"
+      SMTP_HOST: "${SMTP_HOST}"
+      SMTP_PORT: "${SMTP_PORT}"
+      SMTP_USERNAME: "${SMTP_USERNAME}"
+      SMTP_PASSWORD: "${SMTP_PASSWORD}"
+      SMTP_FROM: "jobs@codepyjamas.com"
+      SMTP_REPLY_TO: "jobs@codepyjamas.com"
+      STRIPE_SECRET_KEY: "${STRIPE_SECRET_KEY}"
+      STRIPE_SIGNING_SECRET: "${STRIPE_SIGNING_SECRET}"
+      STRIPE_SUCCESS_URL: "http://localhost:9001/payment-success"
+      STRIPE_CANCEL_URL: "http://localhost:9001/payment-cancel"
       DEVELOPMENT_MODE: "true"
       THEME_PATH: ./themes/jobboard-default-theme
     volumes:
-      - ${PWD}/templates:/app/templates
+      - ${PWD}/templates:/app/themes/jobboard-default-theme/templates
       - ${PWD}/public:/app/public
     depends_on:
       - postgres
