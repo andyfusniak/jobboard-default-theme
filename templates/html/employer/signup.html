@@ -18,10 +18,10 @@
       </label>
       <input id="email" name="email" type="email" value="{{ .Data.Email }}"
         autocomplete="email" required
-        class="formInput" placeholder="JohnDoe@email.com">
+        class="formInput{{ if .Errors.Email }} input-error{{ end }}" placeholder="JohnDoe@email.com">
 
       {{ with .Errors.Email }}
-      <div class="text-red-600 font-semibold text-base">
+      <div class="text-error">
         {{ . }}
       </div>
       {{ end }}
