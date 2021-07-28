@@ -1,111 +1,270 @@
 {{ define "title" }}Add a new job post{{ end }}
 {{ define "content" }}
-<form method="POST" action="/jobs" enctype="multipart/form-data">
-  <input type="hidden" name="salary-unit" value="year" />
+<div class="max-w-3xl mx-auto w-full bg-gray-50 py-10 my-8 px-8 rounded-sm">
   <div>
-    <label for="slug">Slug</label>
-    <input type="text" name="slug" value="{{ .Data.Slug }}" />
-    {{ with .Errors.Slug }}
-    <div style="background-color: red;">
-      {{ . }}
+    <h2 class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500
+      to-blue-800 font-semibold text-4xl">
+      Hire Code Pyjamas.
+    </h2>
+    <h2 class="text-gray-700 font-medium text-2xl mt-3">Create a job post to hire the best.</h2>
+  </div>
+
+  <form method="POST" action="/jobs" enctype="multipart/form-data" class="mt-12 divide-y divide-gray-200">
+    <div>
+      <div class="py-6">
+        <h3 class="text-xl tracking-tighter font-semibold text-gray-700">Job Details</h3>
+      </div>
+      <!-- slug -->
+      <div class="py-2">
+        <label for="slug" class="font-medium text-base text-gray-700 block">Slug</label>
+        <input type="text" name="slug" value="{{ .Data.Slug }}"
+          class="formInput {{ if .Errors.Slug }} input-error{{ end }}" />
+        {{ with .Errors.Slug }}
+        <span class="text-error">
+          {{ . }}
+        </span>
+        {{ end }}
+      </div>
+
+      <!-- Job title -->
+      <div class="py-2">
+        <label for="title" class="font-medium text-base text-gray-700 block">* Job Title</label>
+        <input type="text" name="title" value="{{ .Data.Title }}"
+          class="formInput {{ if .Errors.Title }} input-error{{ end }}"
+          placeholder="Job Title" />
+        {{ with .Errors.Title }}
+        <span class="text-error">
+          {{ . }}
+        </span>
+        {{ end }}
+      </div>
+
+      <!-- Job location -->
+      <div class="py-2">
+        <label for="location" class="font-medium text-base text-gray-700 block">* Location</label>
+        <input type="text" name="location" value="{{ .Data.Location }}"
+        class="formInput {{ if .Errors.Location }} input-error{{ end }}" />
+        {{ with .Errors.Location }}
+        <span class="text-error">
+          {{ . }}
+        </span>
+        {{ end }}
+      </div>
+
+      <!-- Remote Working option -->
+      <fieldset class="py-6">
+        <div>
+          <legend class="font-medium text-base text-gray-700">Is this role 100% remote?</legend>
+          <p class="text-sm text-gray-400">
+            Choose Temporarily Remote if you expect the Talents to return to the office later
+          </p>
+        </div>
+        <div class="mt-4 space-y-4 sm:space-y-0 sm:flex sm:gap-4">
+          <div class="flex items-center">
+            <input name="remote" type="radio" class="focus:ring-blue-500 h-5 w-5
+              text-blue-600 border-gray-300">
+            <label for="remote" class="ml-3 block text-base font-normal text-gray-500">100% Remote</label>
+          </div>
+          <div class="flex items-center">
+            <input name="remote" type="radio" class="focus:ring-blue-500 h-5 w-5
+              text-blue-600 border-gray-300">
+            <label for="tempo-remote" class="ml-3 block text-base font-normal text-gray-500">Temporarily Remote</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Type of employment -->
+      <fieldset class="py-6">
+        <legend class="font-medium text-base text-gray-700">Type of Employment</legend>
+        <div class="space-y-4 sm:space-y-0 sm:flex sm:gap-4">
+          <div class="flex items-center">
+            <input name="full-time" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+              text-blue-600 border-gray-300 rounded">
+            <div class="ml-3">
+              <label for="full-time" class="font-normal text-gray-500">Full Time</label>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <input name="part-time" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+              text-blue-600 border-gray-300 rounded">
+            <div class="ml-3">
+              <label for="part-time" class="font-normal text-gray-500">Part Time</label>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <input name="contractor" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+              text-blue-600 border-gray-300 rounded">
+            <div class="ml-3">
+              <label for="contractor" class="font-normal text-gray-500">Contractor</label>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <input name="temporary" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+              text-blue-600 border-gray-300 rounded">
+            <div class="ml-3">
+              <label for="temporary" class="font-normal text-gray-500">Temporary</label>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <input name="permanent" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+              text-blue-600 border-gray-300 rounded">
+            <div class="ml-3">
+              <label for="permanent" class="font-normal text-gray-500">Permanent</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Min, Max Salary and Salary Unit -->
+      <div class="py-4 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-8">
+        <div class="sm:col-span-3">
+          <label for="salary-min" class="font-medium text-base text-gray-700 block">
+            Minimum Salary in GBP
+          </label>
+          <div class="mt-1">
+            <input type="text" name="salary-min" value="{{ .Data.SalaryMin }}"
+              class="formInput {{ if .Errors.SalaryMin }} input-error{{ end }}"
+              placeholder="45,000" />
+            {{ with .Errors.SalaryMin }}
+            <span class="text-error">
+            {{ . }}
+            </span>
+            {{ end }}
+          </div>
+        </div>
+
+        <div class="sm:col-span-3">
+          <label for="salary-max" class="font-medium text-base text-gray-700 block">
+            Maximum Salary in GBP
+          </label>
+          <div class="mt-1">
+            <input type="text" name="salary-max" value="{{ .Data.SalaryMax }}"
+              class="formInput {{ if .Errors.SalaryMax }} input-error{{ end }}"
+              placeholder="75,000" />
+            {{ with .Errors.SalaryMax }}
+            <span class="text-error">
+            {{ . }}
+            </span>
+            {{ end }}
+          </div>
+        </div>
+
+        <div class="sm:col-span-2">
+          <label for="salary-unit" class="font-medium text-base text-gray-700 block">
+            Per
+          </label>
+          <div class="mt-1">
+            <select name="salary-unit" class="shadow-sm focus:ring-blue-500 focus:border-blue-500
+              block w-full sm:text-sm border-gray-300 rounded-md">
+              <option>Year</option>
+              <option>Month</option>
+              <option>Day</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Salary Currency -->
+      <div>
+        <label for="salary-currency" class="sr-only">Salary Currency</label>
+        <input type="hidden" value="GBP">
+      </div>
+
+      <!-- Skill sets -->
+      <div class="py-2">
+        <label for="skills" class="font-medium text-base text-gray-700 block">Skills / Tech Stack</label>
+        <input type="text" name="location" class="formInput" placeholder="Nodejs, React, Go"/>
+        <p class="ml-3 text-sm text-gray-500 mt-1">
+          Separate each skills or tech stacks with a comma. This will be used as a filter tag for job search.
+        </p>
+      </div>
+
+      <!-- Job Description -->
+      <div class="py-2">
+        <label for="description" class="font-medium text-base text-gray-700 block">
+          * Job Description
+        </label>
+        <textarea id="jd" name="description" value="{{ .Data.Description }}"
+          class="formInput{{ if .Errors.JobDescription }} input-error{{ end }}">
+          {{ .Data.Description }}
+        </textarea>
+        {{ with .Errors.Description }}
+        <span class="text-error">
+          {{ . }}
+        </span>
+        {{ end }}
+      </div>
     </div>
-    {{ end }}
-  </div>
 
-  <div>
-    <label for="title">Title</label>
-    <input type="text" name="title" value="{{ .Data.Title }}" />
-    {{ with .Errors.Title }}
-    <div style="background-color: red;">
-      {{ . }}
+    <div class="pt-8 py-6">
+      <div class="py-4">
+        <h3 class="text-xl tracking-tighter font-semibold">Your company Details</h3>
+      </div>
+      <!-- Company logo -->
+
+
+      <!-- Company Name -->
+      <div class="py-2">
+        <label for="company-name" class="font-medium text-base text-gray-700 block">
+          * Company name
+        </label>
+        <input type="text" name="company-name" value="{{ .Data.CompanyName }}"
+          class="formInput {{ if .Errors.CompanyName }} input-error{{ end }}" />
+        {{ with .Errors.CompanyName }}
+        <span class="text-error">
+          {{ . }}
+        </span>
+        {{ end }}
+      </div>
+
+      <!-- Company URL -->
+      <div class="py-2">
+        <label for="company-url" class="font-medium text-base text-gray-700 block">
+          * How to apply
+        </label>
+        <input type="text" name="company-url" value="{{ .Data.CompanyURL }}"
+          placeholder="How to apply (Email or URL)"
+          class="formInput {{ if .Errors.CompanyURL }} input-error{{ end }}" />
+        {{ with .Errors.CompanyURL }}
+        <span class="text-error">
+          {{ . }}
+        </span>
+        {{ end }}
+      </div>
     </div>
-    {{ end }}
-  </div>
 
-  <div>
-    <label for="location">Location</label>
-    <input type="text" name="location" value="{{ .Data.Location }}" />
-    {{ with .Errors.Location }}
-    <div style="background-color: red;">
-      {{ . }}
+    <!-- Job Ad features Checkboxes -->
+    <fieldset class="py-6 pt-8">
+      <div class="space-y-4">
+        <div class="flex items-center">
+          <input name="pinned30" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+            text-blue-700 border-gray-300 rounded">
+          <div class="ml-3">
+            <label for="pinned30" class="font-medium text-blue-600">
+              Pinned to top for 30 days - £49
+            </label>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <input name="highlight-standard" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+            text-blue-700 border-gray-300 rounded">
+          <div class="ml-3">
+            <label for="highlight-standard" class="font-medium text-blue-600">
+              Highlight your post in Yellow -  £49
+            </label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="px-4 py-3 text-center">
+      <button type="submit" class="inline-flex justify-center py-4 px-6 border
+        border-transparent shadow-sm text-lg font-medium rounded-md text-white
+        bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2
+        focus:ring-offset-2 focus:ring-blue-500">
+        Post a job - £59
+      </button>
     </div>
-    {{ end }}
-  </div>
-
-  <div>
-    <label for="salary-min">Minimum Salary</label>
-    <input type="text" name="salary-min" value="{{ .Data.SalaryMin }}" />
-    {{ with .Errors.SalaryMin }}
-    <div style="background-color: red;">
-      {{ . }}
-    </div>
-    {{ end }}
-  </div>
-
-  <div>
-    <label for="salary-max">Maximum Salary</label>
-    <input type="text" name="salary-max" value="{{ .Data.SalaryMax }}" />
-    {{ with .Errors.SalaryMax }}
-    <div style="background-color: red;">
-      {{ . }}
-    </div>
-    {{ end }}
-  </div>
-
-  <div>
-    <label for="salary-currency">Salary Currency</label>
-    <select name="salary-currency">
-      <option value="">Select Currency</option>
-      <option value="GBP" {{- if eq "GBP" .Data.SalaryCurrency }} selected{{ end }}>GBP (&pound;)</option>
-      <option value="USD" {{- if eq "USD" .Data.SalaryCurrency }} selected{{ end }}>USD ($)</option>
-      <option value="EUR" {{- if eq "EUR" .Data.SalaryCurrency }} selected{{ end }}>EUR (&euro;)</option>
-    </select>
-
-    {{ with .Errors.SalaryCurrency }}
-    <div style="background-color: red;">
-      {{ . }}
-    </div>
-    {{ end }}
-  </div>
-
-  <div>
-    <label for="company-name">Company name</label>
-    <input type="text" name="company-name" value="{{ .Data.CompanyName }}" />
-    {{ with .Errors.CompanyName }}
-    <div style="background-color: red;">
-      {{ . }}
-    </div>
-    {{ end }}
-  </div>
-
-  <div>
-    <label for="company-url">Company URL</label>
-    <input type="text" name="company-url" value="{{ .Data.CompanyURL }}" />
-    {{ with .Errors.CompanyURL }}
-    <div style="background-color: red;">
-      {{ . }}
-    </div>
-    {{ end }}
-  </div>
-
-  <div>
-    <label for="description">Description</label>
-    <textarea name="description">{{ .Data.Description }}</textarea>
-    {{ with .Errors.Description }}
-    <div style="background-color: red;">
-      {{ . }}
-    </div>
-    {{ end }}
-  </div>
-
-  <hr>
-  <div>
-    <label for="pinned30">Pinned to the Front Page for 30 days</label>
-    <input type="checkbox" name="pinned30" />
-  </div>
-
-  <div>
-    <button>Post job</button>
-  </div>
-</form>
+  </form>
+</div>
 {{ end }}
