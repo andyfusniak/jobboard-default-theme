@@ -1,6 +1,22 @@
 {{ define "title" }}Payment Successful{{ end }}
 {{ define "content" }}
 
-<h1>Payment Successful</h1>
+<div class="max-w-7xl mx-auto">
+  <div class="text-center mt-16 px-8 mx-auto">
+    <div class="flex justify-center">
+      <div class="flex items-center justify-center h-14 w-14 rounded-md bg-white text-green-600">
+        <svg class="w-14 h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      </div>
+    </div>
+    <div class="mt-3">
+      <h1 class="text-2xl text-grey-600">Payment Successful</h1>
+
+      <div class="mt-14">
+        <a href="/employer/{{ .UID }}" class="px-4 py-2 border border-blue-800 shadow-sm text-base font-medium rounded-md text-blue-700 bg-white hover:bg-blue-50 md:text-lg">Manage your jobs</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 {{ end }}

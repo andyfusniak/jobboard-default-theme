@@ -1,6 +1,19 @@
 {{ define "title" }}Payment Cancelled{{ end }}
 {{ define "content" }}
 
-<h1>Payment Cancelled</h1>
+<div class="max-w-7xl mx-auto">
+  <div class="text-center mt-16 px-8 mx-auto">
+    <div class="flex justify-center">
+      <div class="flex items-center justify-center h-14 w-14 rounded-md bg-white text-red-600">
+        <svg class="w-14 h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </div>
+    </div>
+    <div class="mt-3">
+      <h1 class="text-2xl text-grey-600">Payment Cancelled</h1>
+    </div>
+  </div>
+</div>
 
 {{ end }}
