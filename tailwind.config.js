@@ -12,13 +12,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gray: colors.trueGray,
+        gray: colors.blueGray,
         blue: colors.blue,
+        cyan: colors.cyan
       }
     },
   },
   variants: {
-    extend: {},
+    extend: {
+     textDecoration: ['active'],
+    }
   },
   plugins: [
     require('@tailwindcss/forms')
