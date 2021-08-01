@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.4.0 (Sun, 1 Aug 2021)
++ List of job styling with hero section
++ 404 page needs its own html tags
++ Show signout button if logged in
+
 ## 0.3.0 (Thu, 29 July 2021)
 + Payment success and cancel styling
 + Employer account home styling

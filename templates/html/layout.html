@@ -20,7 +20,7 @@
 
           <div class="flex justify-start lg:w-0 lg:flex-1">
             <a href="/">
-              <img class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="">
+              <img class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-blue-600.svg" alt="">
             </a>
           </div>
 
@@ -37,18 +37,30 @@
           </div>
 
           <nav class="hidden md:flex space-x-10">
-            <a href="/jobs" class="text-lg font-medium text-gray-500 hover:text-gray-900">
+            <a href="/jobs" class="text-lg font-medium text-gray-700 hover:text-gray-900">
               Jobs
             </a>
           </nav>
-
           <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            <a href="/signin" class="whitespace-nowrap text-lg font-medium text-gray-500 hover:text-gray-900">
+            {{ if $.IsSignedIn -}}
+            <a href="/signout" class="whitespace-nowrap text-lg font-medium text-gray-700 hover:text-gray-900">
+              Sign out
+            </a>
+            {{ else }}
+            <a href="/signin" class="whitespace-nowrap text-lg font-medium text-gray-700 hover:text-gray-900">
               Sign in
             </a>
+            {{ end }}
+
+            {{ if $.IsSignedIn -}}
+            <a href="/employer/{{ .UID }}/create-job" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-xl font-medium text-white bg-blue-600 hover:bg-blue-800">
+              Post your job
+            </a>
+            {{ else }}
             <a href="/employer/signup" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-xl font-medium text-white bg-blue-600 hover:bg-blue-800">
               Post your job
             </a>
+            {{ end }}
           </div>
         </div>
       </div>
@@ -62,7 +74,7 @@
           <div class="pt-5 pb-6 px-5">
             <div class="flex items-center justify-between">
               <div>
-                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
+                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-blue-600.svg" alt="Workflow">
               </div>
               <div class="-mr-2">
                 <button @click="isOpen = false" type="button" class="inline-flex bg-white rounded-md
@@ -81,7 +93,7 @@
 
           <div class="py-6 px-5 space-y-6">
             <div class="grid grid-cols-1 gap-y-4 gap-x-8">
-              <a href="/jobs" class="text-base font-medium text-gray-900 hover:text-gray-700">
+              <a href="/jobs" class="text-base font-medium text-gray-700 hover:text-gray-700">
                 Jobs
               </a>
             </div>
@@ -91,12 +103,18 @@
                 rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-800">
                 Post your job
               </a>
+              {{ if $.IsSignedIn -}}
               <p class="mt-6 text-center text-base font-medium text-gray-500">
+                <a href="/signout" class="text-gray-700 hover:text-gray-900">Sign out</a>
+              </p>
+              {{ else }}
+              <p class="mt-6 text-center text-base font-medium text-gray-700">
                 Existing employer?
                 <a href="/signin" class="text-blue-600 hover:text-blue-500">
                   Sign in
                 </a>
               </p>
+              {{ end }}
             </div>
           </div>
         </div>
