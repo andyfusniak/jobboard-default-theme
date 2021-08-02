@@ -55,7 +55,7 @@
       <!-- Remote Working option -->
       <fieldset class="py-6">
         <div>
-          <legend class="font-medium text-base text-gray-700">Is this role 100% remote?</legend>
+          <legend class="font-medium text-base text-gray-700">Is this role remote?</legend>
           <p class="text-sm text-gray-400">
             Choose Temporarily Remote if you expect the Talents to return to the office later
           </p>
@@ -64,7 +64,7 @@
           <div class="flex items-center">
             <input name="remote" type="radio" class="focus:ring-blue-500 h-5 w-5
               text-blue-600 border-gray-300">
-            <label for="remote" class="ml-3 block text-base font-normal text-gray-500">100% Remote</label>
+            <label for="remote" class="ml-3 block text-base font-normal text-gray-500">Remote</label>
           </div>
           <div class="flex items-center">
             <input name="remote" type="radio" class="focus:ring-blue-500 h-5 w-5
@@ -77,40 +77,49 @@
       <!-- Type of employment -->
       <fieldset class="py-6">
         <legend class="font-medium text-base text-gray-700">Type of Employment</legend>
+        <div class="space-y-4 sm:space-y-0 sm:flex sm:gap-4 mb-6">
+          <div class="flex items-center">
+            <input name="emp-type" type="checkbox" value="temporary" class="focus:ring-blue-500 h-5 w-5
+              text-blue-600 border-gray-300 rounded">
+            <div class="ml-3">
+              <label class="font-normal text-gray-500">Temporary</label>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <input name="emp-type" type="checkbox" value="permanent" class="focus:ring-blue-500 h-5 w-5
+              text-blue-600 border-gray-300 rounded">
+            <div class="ml-3">
+              <label class="font-normal text-gray-500">Permanent</label>
+            </div>
+          </div>
+        </div>
         <div class="space-y-4 sm:space-y-0 sm:flex sm:gap-4">
           <div class="flex items-center">
-            <input name="full-time" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+            <input name="emp-type" type="checkbox" value="full_time" class="focus:ring-blue-500 h-5 w-5
               text-blue-600 border-gray-300 rounded">
             <div class="ml-3">
-              <label for="full-time" class="font-normal text-gray-500">Full Time</label>
+              <label class="font-normal text-gray-500">Full Time</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="part-time" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+            <input name="emp-type" type="checkbox" value="part_time" class="focus:ring-blue-500 h-5 w-5
               text-blue-600 border-gray-300 rounded">
             <div class="ml-3">
-              <label for="part-time" class="font-normal text-gray-500">Part Time</label>
+              <label class="font-normal text-gray-500">Part Time</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="contractor" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+            <input name="emp-type" type="checkbox" value="contract" class="focus:ring-blue-500 h-5 w-5
               text-blue-600 border-gray-300 rounded">
             <div class="ml-3">
-              <label for="contractor" class="font-normal text-gray-500">Contractor</label>
+              <label class="font-normal text-gray-500">Contract</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="temporary" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+            <input name="emp-type" type="checkbox" value="per_diem" class="focus:ring-blue-500 h-5 w-5
               text-blue-600 border-gray-300 rounded">
             <div class="ml-3">
-              <label for="temporary" class="font-normal text-gray-500">Temporary</label>
-            </div>
-          </div>
-          <div class="flex items-center">
-            <input name="permanent" type="checkbox" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300 rounded">
-            <div class="ml-3">
-              <label for="permanent" class="font-normal text-gray-500">Permanent</label>
+              <label class="font-normal text-gray-500">Per Day</label>
             </div>
           </div>
         </div>
@@ -123,9 +132,9 @@
             Minimum Salary in GBP
           </label>
           <div class="mt-1">
-            <input type="text" name="salary-min" value="{{ .Data.SalaryMin }}"
+            <input type="number" name="salary-min" value="{{ .Data.SalaryMin }}"
               class="formInput {{ if .Errors.SalaryMin }} input-error{{ end }}"
-              placeholder="45,000" />
+              placeholder="45000" />
             {{ with .Errors.SalaryMin }}
             <span class="text-error">
             {{ . }}
@@ -139,9 +148,9 @@
             Maximum Salary in GBP
           </label>
           <div class="mt-1">
-            <input type="text" name="salary-max" value="{{ .Data.SalaryMax }}"
+            <input type="number" name="salary-max" value="{{ .Data.SalaryMax }}"
               class="formInput {{ if .Errors.SalaryMax }} input-error{{ end }}"
-              placeholder="75,000" />
+              placeholder="75000" />
             {{ with .Errors.SalaryMax }}
             <span class="text-error">
             {{ . }}
@@ -168,7 +177,7 @@
       <!-- Skill sets -->
       <div class="py-2">
         <label for="skills" class="font-medium text-base text-gray-700 block">Skills / Tech Stack</label>
-        <input type="text" name="location" class="formInput" placeholder="Nodejs, React, Go"/>
+        <input type="text" name="skills" class="formInput" placeholder="Nodejs, React, Go"/>
         <p class="ml-3 text-sm text-gray-500 mt-1">
           Separate each skills or tech stacks with a comma. This will be used as a filter tag for job search.
         </p>
@@ -257,38 +266,47 @@
     <fieldset class="py-6 pt-8">
       <div class="space-y-4">
         <div class="flex items-center">
-          <input name="pinned30" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+          <input name="chk-logo" type="checkbox" class="focus:ring-blue-500 h-5 w-5
             text-blue-700 border-gray-300 rounded">
           <div class="ml-3">
-            <label for="pinned30" class="font-medium text-blue-600">
+            <label for="chk-logo" class="font-medium text-blue-600">
+              Add company's logo - £39
+            </label>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <input name="chk-pinned30" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+            text-blue-700 border-gray-300 rounded">
+          <div class="ml-3">
+            <label for="chk-pinned30" class="font-medium text-blue-600">
               Pinned to top for 30 days - £49
             </label>
           </div>
         </div>
         <div class="flex items-center">
-          <input name="hl-type" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+          <input name="chk-hl-standard" type="checkbox" class="focus:ring-blue-500 h-5 w-5
             text-blue-700 border-gray-300 rounded">
           <div class="ml-3">
-            <label for="hl-type" class="font-medium text-blue-600">
+            <label for="chk-hl-standard" class="font-medium text-blue-600">
               Highlight job post in Yellow -  £49
             </label>
           </div>
         </div>
         <div class="flex items-center">
-          <input name="hl-type" value="" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+          <input name="chk-hl-custom" type="checkbox" class="focus:ring-blue-500 h-5 w-5
             text-blue-700 border-gray-300 rounded">
           <div class="ml-3">
-            <label for="hl-col" class="font-medium text-blue-600">
+            <label for="chk-hl-custom" class="font-medium text-blue-600">
               Highlight job post in your company brand's color -  £49
             </label>
             <input type="color" name="hl-col" value="#e66465">
           </div>
         </div>
         <div class="flex items-center">
-          <input name="" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+          <input name="chk-autorenew" type="checkbox" class="focus:ring-blue-500 h-5 w-5
             text-blue-700 border-gray-300 rounded">
           <div class="ml-3">
-            <label for="" class="font-medium text-blue-600">
+            <label for="chk-autorenew" class="font-medium text-blue-600">
               Renew job ad every 30 days
             </label>
           </div>
