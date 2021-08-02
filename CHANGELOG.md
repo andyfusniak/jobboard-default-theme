@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.5.0 (Mon, 2 Aug 2021)
++ Single job page syling
++ Add Colour picker for custom highlight feature
+
 ## 0.4.0 (Sun, 1 Aug 2021)
 + List of job styling with hero section
 + 404 page needs its own html tags
