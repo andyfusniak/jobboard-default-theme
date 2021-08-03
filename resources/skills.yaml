@@ -1,0 +1,36 @@
+kind: TagSet
+tagSet:
+  name: skills
+  groups:
+    - group:
+        name: backend
+        title: Backend Skills
+        description: Backend development skills
+        tags:
+          - tag:
+              name: 'golang'
+              aliases: ['go']
+              title: 'Go'
+              description: Go programming language
+          - tag:
+              name: 'c-sharp'
+              aliases: ['c-sharp']
+              title: 'C'
+              description: C# langauge
+          - tag:
+              name: nodejs
+              aliases: ['node', 'node.js']
+              title: 'Node.js'
+              description: |
+                Node.js is a backend _tech_ for *wibble* wobble.
+                hello world
+    - group:
+        name: frontend
+        title: Frontend Skills
+        description: Developer frontend skills
+        tags:
+          - tag:
+              name: 'javascript'
+              title: JavaScript
+              description: ECMAScript (JavaScript/JS) and its various dialects/implementations
+              aliases: ['js']
