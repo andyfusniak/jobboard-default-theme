@@ -1,5 +1,23 @@
 {{ define "title" }}Add a new job post{{ end }}
 {{ define "content" }}
+
+{{ range .Page.ProductPriceGroup.Products }}
+  <ul>
+    <li>{{ .Code }}</li>
+    <li>{{ .Price }}</li>
+    <li>{{ .Title }}</li>
+    <li>{{ .Description }}</li>
+  </ul>
+{{ end }}
+
+{{ range .Page.SkillsTagSet.Groups }}
+  <h2>{{ .Name }} - {{ .Title }}</h2>
+  {{ range .Tags }}
+    <input type="checkbox" name="skills" value="{{ .Name }}">
+    <label>{{ .Title}} </label>
+  {{ end }}
+{{ end }}
+
 <div class="max-w-3xl mx-auto w-full bg-gray-50 py-10 my-8 px-8 rounded-sm">
   <div>
     <h2 class="text-blue-600 font-semibold text-4xl">
@@ -62,14 +80,13 @@
         </div>
         <div class="mt-4 space-y-4 sm:space-y-0 sm:flex sm:gap-4">
           <div class="flex items-center">
-            <input name="remote" type="checkbox" value="remote" class="focus:ring-blue-500 h-5 w-5
+            <input name="remote" type="checkbox" value="remote" {{ if eq .Data.Remote["remote"] "on" -}}class="focus:ring-blue-500 h-5 w-5
             text-blue-600 border-gray-300 rounded" />
-            <label for="remote" class="ml-3 block text-base font-normal text-gray-500">Remote</label>
+            <label class="ml-3 block text-base font-normal text-gray-500">Remote</label>
           </div>
           <div class="flex items-center">
-            <input name="remote" type="checkbox" value="temp_remote" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300 rounded" />
-            <label for="tempo-remote" class="ml-3 block text-base font-normal text-gray-500">Temporarily Remote</label>
+            <input name="remote" type="checkbox" value="temp_remote" {{ if eq .Data.Remote["temp_remote"] "on" -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
+            <label class="ml-3 block text-base font-normal text-gray-500">Temporarily Remote</label>
           </div>
         </div>
       </fieldset>
@@ -79,15 +96,13 @@
         <legend class="font-medium text-base text-blue-900">Type of Employment</legend>
         <div class="space-y-4 sm:space-y-0 sm:flex sm:gap-4 mb-6">
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="temporary" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" type="checkbox" value="temporary" {{ if eq .Data.EmpType["temporary"] "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
             <div class="ml-3">
               <label class="font-normal text-gray-500">Temporary</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="permanent" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" type="checkbox" value="permanent" {{ if eq .Data.EmpType["permanent"] "on" -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
             <div class="ml-3">
               <label class="font-normal text-gray-500">Permanent</label>
             </div>
@@ -95,29 +110,25 @@
         </div>
         <div class="space-y-4 sm:space-y-0 sm:flex sm:gap-4">
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="full_time" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" type="checkbox" value="full_time" {{ if eq .Data.EmpType["full_time"] "on" -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
             <div class="ml-3">
               <label class="font-normal text-gray-500">Full Time</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="part_time" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" type="checkbox" value="part_time" {{ if eq .Data.EmpType["part_time"] "on" -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
             <div class="ml-3">
               <label class="font-normal text-gray-500">Part Time</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="contract" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" type="checkbox" value="contract" {{ if eq .Data.EmpType["contract"] "on" -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
             <div class="ml-3">
               <label class="font-normal text-gray-500">Contract</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="per_diem" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" type="checkbox" value="per_diem" {{ if eq .Data.EmpType["per_diem"] "on" -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
             <div class="ml-3">
               <label class="font-normal text-gray-500">Per Day</label>
             </div>
@@ -149,8 +160,7 @@
           </label>
           <div class="mt-1">
             <input type="number" name="salary-max" value="{{ .Data.SalaryMax }}"
-              class="formInput {{ if .Errors.SalaryMax }} input-error{{ end }}"
-              placeholder="75000" />
+              class="formInput {{- if .Errors.SalaryMax }} input-error{{ end }}" placeholder="75000" />
             {{ with .Errors.SalaryMax }}
             <span class="text-error">
             {{ . }}
@@ -306,8 +316,7 @@
           </div>
         </div>
         <div class="flex items-center">
-          <input name="chk-hl-standard" type="checkbox"
-            class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" />
+          <input name="chk-hl-standard" type="checkbox" {{ if eq .Data.ChkHLStandard "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded">
           <div class="ml-3">
             <label for="chk-hl-standard" class="font-medium text-blue-600">
               Highlight job post in Yellow -  £49
@@ -326,7 +335,7 @@
               Highlight job post in your company brand's color -  £49
             </label>
             <input type="color" name="hl-col" value="{{ .Data.HLCol }}" />
-            {{ with .Errors.ChkHLCustom }}
+            {{ with .Errors.HLCol }}
             <span class="text-error">
               {{ . }}
             </span>
