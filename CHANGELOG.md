@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.6.0 (Wed, 4 Aug 2021)
++ Add Alpine.Js for site functionality
++ Logo upload
++ Skills form section with data from the backend
+
 ## 0.5.0 (Mon, 2 Aug 2021)
 + Single job page syling
 + Add Colour picker for custom highlight feature
