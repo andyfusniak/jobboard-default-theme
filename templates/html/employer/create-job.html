@@ -5,19 +5,19 @@
     <h2 class="text-blue-600 font-semibold text-4xl">
       Hire Code Pyjamas.
     </h2>
-    <h2 class="text-gray-700 font-medium text-2xl mt-3">Create a job post to hire the best.</h2>
+    <h2 class="text-blue-900 font-medium text-2xl mt-3">Create a job post to hire the best.</h2>
   </div>
 
   <form method="POST" action="/jobs" enctype="multipart/form-data" class="mt-12 divide-y divide-gray-200">
     <!-- Salary Currency -->
-    <input type="hidden" name="salary-currency" value="GBP">
+    <input type="hidden" name="salary-currency" value="GBP" />
     <div>
       <div class="py-6">
-        <h3 class="text-xl tracking-tighter font-semibold text-gray-700">Job Details</h3>
+        <h3 class="text-xl tracking-tighter font-semibold text-blue-900">Job Details</h3>
       </div>
       <!-- slug -->
       <div class="py-2">
-        <label for="slug" class="font-medium text-base text-gray-700 block">Slug</label>
+        <label for="slug" class="font-medium text-base text-blue-900 block">Slug</label>
         <input type="text" name="slug" value="{{ .Data.Slug }}"
           class="formInput {{ if .Errors.Slug }} input-error{{ end }}" />
         {{ with .Errors.Slug }}
@@ -29,7 +29,7 @@
 
       <!-- Job title -->
       <div class="py-2">
-        <label for="title" class="font-medium text-base text-gray-700 block">* Job Title</label>
+        <label for="title" class="font-medium text-base text-blue-900 block">* Job Title</label>
         <input type="text" name="title" value="{{ .Data.Title }}"
           class="formInput {{ if .Errors.Title }} input-error{{ end }}"
           placeholder="Job Title" />
@@ -42,7 +42,7 @@
 
       <!-- Job location -->
       <div class="py-2">
-        <label for="location" class="font-medium text-base text-gray-700 block">* Location</label>
+        <label for="location" class="font-medium text-base text-blue-900 block">* Location</label>
         <input type="text" name="location" value="{{ .Data.Location }}"
         class="formInput {{ if .Errors.Location }} input-error{{ end }}" />
         {{ with .Errors.Location }}
@@ -55,20 +55,20 @@
       <!-- Remote Working option -->
       <fieldset class="py-6">
         <div>
-          <legend class="font-medium text-base text-gray-700">Is this role remote?</legend>
+          <legend class="font-medium text-base text-blue-900">Is this role remote?</legend>
           <p class="text-sm text-gray-400">
             Choose Temporarily Remote if you expect the Talents to return to the office later
           </p>
         </div>
         <div class="mt-4 space-y-4 sm:space-y-0 sm:flex sm:gap-4">
           <div class="flex items-center">
-            <input name="remote" type="radio" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300">
+            <input name="remote" type="checkbox" value="remote" class="focus:ring-blue-500 h-5 w-5
+            text-blue-600 border-gray-300 rounded" />
             <label for="remote" class="ml-3 block text-base font-normal text-gray-500">Remote</label>
           </div>
           <div class="flex items-center">
-            <input name="remote" type="radio" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300">
+            <input name="remote" type="checkbox" value="temp_remote" class="focus:ring-blue-500 h-5 w-5
+              text-blue-600 border-gray-300 rounded" />
             <label for="tempo-remote" class="ml-3 block text-base font-normal text-gray-500">Temporarily Remote</label>
           </div>
         </div>
@@ -76,18 +76,18 @@
 
       <!-- Type of employment -->
       <fieldset class="py-6">
-        <legend class="font-medium text-base text-gray-700">Type of Employment</legend>
+        <legend class="font-medium text-base text-blue-900">Type of Employment</legend>
         <div class="space-y-4 sm:space-y-0 sm:flex sm:gap-4 mb-6">
           <div class="flex items-center">
             <input name="emp-type" type="checkbox" value="temporary" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300 rounded">
+              text-blue-600 border-gray-300 rounded" />
             <div class="ml-3">
               <label class="font-normal text-gray-500">Temporary</label>
             </div>
           </div>
           <div class="flex items-center">
             <input name="emp-type" type="checkbox" value="permanent" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300 rounded">
+              text-blue-600 border-gray-300 rounded" />
             <div class="ml-3">
               <label class="font-normal text-gray-500">Permanent</label>
             </div>
@@ -96,28 +96,28 @@
         <div class="space-y-4 sm:space-y-0 sm:flex sm:gap-4">
           <div class="flex items-center">
             <input name="emp-type" type="checkbox" value="full_time" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300 rounded">
+              text-blue-600 border-gray-300 rounded" />
             <div class="ml-3">
               <label class="font-normal text-gray-500">Full Time</label>
             </div>
           </div>
           <div class="flex items-center">
             <input name="emp-type" type="checkbox" value="part_time" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300 rounded">
+              text-blue-600 border-gray-300 rounded" />
             <div class="ml-3">
               <label class="font-normal text-gray-500">Part Time</label>
             </div>
           </div>
           <div class="flex items-center">
             <input name="emp-type" type="checkbox" value="contract" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300 rounded">
+              text-blue-600 border-gray-300 rounded" />
             <div class="ml-3">
               <label class="font-normal text-gray-500">Contract</label>
             </div>
           </div>
           <div class="flex items-center">
             <input name="emp-type" type="checkbox" value="per_diem" class="focus:ring-blue-500 h-5 w-5
-              text-blue-600 border-gray-300 rounded">
+              text-blue-600 border-gray-300 rounded" />
             <div class="ml-3">
               <label class="font-normal text-gray-500">Per Day</label>
             </div>
@@ -128,7 +128,7 @@
       <!-- Min, Max Salary and Salary Unit -->
       <div class="py-4 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-8">
         <div class="sm:col-span-3">
-          <label for="salary-min" class="font-medium text-base text-gray-700 block">
+          <label for="salary-min" class="font-medium text-base text-blue-900 block">
             Minimum Salary in GBP
           </label>
           <div class="mt-1">
@@ -144,7 +144,7 @@
         </div>
 
         <div class="sm:col-span-3">
-          <label for="salary-max" class="font-medium text-base text-gray-700 block">
+          <label for="salary-max" class="font-medium text-base text-blue-900 block">
             Maximum Salary in GBP
           </label>
           <div class="mt-1">
@@ -160,7 +160,7 @@
         </div>
 
         <div class="sm:col-span-2">
-          <label for="salary-unit" class="font-medium text-base text-gray-700 block">
+          <label for="salary-unit" class="font-medium text-base text-blue-900 block">
             Per
           </label>
           <div class="mt-1">
@@ -175,17 +175,32 @@
       </div>
 
       <!-- Skill sets -->
-      <div class="py-2">
-        <label for="skills" class="font-medium text-base text-gray-700 block">Skills / Tech Stack</label>
-        <input type="text" name="skills" class="formInput" placeholder="Nodejs, React, Go"/>
-        <p class="ml-3 text-sm text-gray-500 mt-1">
-          Separate each skills or tech stacks with a comma. This will be used as a filter tag for job search.
+      <div class="my-6 px-4 py-2 border border-blue-200 border-dotted">
+        <h4 class="text-lg font-semibold text-blue-900">Choose Skills / Tech Stack</h4>
+        <p class="mb-3 text-gray-500">
+          This will help tech talents to filter your job by skills or tech stack. Choose up to 4 tags.
         </p>
+
+        {{ range .Page.SkillsTagSet.Groups }}
+        <fieldset class="py-2">
+          <legend class="font-medium text-base text-blue-900">{{ .Title }}</legend>
+          <div class="space-y-4 sm:space-y-0 sm:flex sm:items-center sm:gap-4">
+            {{ range .Tags }}
+            <div class="flex items-center gap-4">
+              <input type="checkbox" name="skills" value="{{ .Name }}" class="focus:ring-blue-500 h-5 w-5
+            text-blue-600 border-gray-300 rounded">
+              <label class="font-normal text-gray-500">{{ .Title }} </label>
+            </div>
+            {{ end }}
+          </div>
+        </fieldset>
+        {{ end }}
+        <p class="mt-2 text-gray-500 text-base">Can't find your tech stack? <a href="#" class="text-blue-900 text-base">Contact us</a></p>
       </div>
 
       <!-- Job Description -->
       <div class="py-2">
-        <label for="description" class="font-medium text-base text-gray-700 block">
+        <label for="description" class="font-medium text-base text-blue-900 block">
           * Job Description
         </label>
         <textarea id="jd" name="description" value="{{ .Data.Description }}"
@@ -202,39 +217,46 @@
 
     <div class="pt-8 py-6">
       <div class="py-4">
-        <h3 class="text-xl tracking-tighter font-semibold">Your company Details</h3>
+        <h3 class="text-xl text-blue-900 tracking-tighter font-semibold">Your company Details</h3>
       </div>
       <!-- Company logo -->
-      <div class="my-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-        <div class="space-y-1 text-center">
-          <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48"
-            aria-hidden="true">
-            <path
-              d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-          <div class="flex text-sm text-gray-500">
-            <label for="image-upload"
-              class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
-              <span>Upload a company logo</span>
-
-              <input id="image-upload" name="image-upload" type="file" accept="image/*" value=""
-                class="sr-only">
-            </label>
+      <div x-data="imageViewer()">
+        <div class="my-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+          <div class="space-y-1 text-center">
+            <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48"
+              aria-hidden="true">
+              <path
+                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <div class="flex text-sm text-gray-500">
+              <label for="logo"
+                class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                <span>Upload a company logo</span>
+                <input @change="fileChosen" id="logo" name="logo" type="file" accept="image/*" class="sr-only" />
+              </label>
+            </div>
+            <p class="text-xs text-gray-500">
+              PNG, JPG
+            </p>
           </div>
-          <p class="text-xs text-gray-500">
-            PNG, JPG up to 10MB
-          </p>
         </div>
-      </div>
-      <img class="mx-auto object-scale-down mb-4" />
-      <div class="text-center py-1">
-        <p class="text-gray-600">No logo selected</p>
+        <template x-if="imageUrl">
+          <div class="flex justify-center">
+            <img :src="imageUrl" class="inline-block h-20 w-20 rounded-md" />
+          </div>
+        </template>
+
+        <template x-if="!imageUrl">
+          <div class="text-center py-1">
+            <p class="text-gray-600">No logo selected</p>
+          </div>
+        </template>
       </div>
 
       <!-- Company Name -->
       <div class="py-2">
-        <label for="company-name" class="font-medium text-base text-gray-700 block">
+        <label for="company-name" class="font-medium text-base text-blue-900 block">
           * Company name
         </label>
         <input type="text" name="company-name" value="{{ .Data.CompanyName }}"
@@ -248,7 +270,7 @@
 
       <!-- Company URL -->
       <div class="py-2">
-        <label for="company-url" class="font-medium text-base text-gray-700 block">
+        <label for="company-url" class="font-medium text-base text-blue-900 block">
           * How to apply
         </label>
         <input type="text" name="company-url" value="{{ .Data.CompanyURL }}"
@@ -266,8 +288,8 @@
     <fieldset class="py-6 pt-8">
       <div class="space-y-4">
         <div class="flex items-center">
-          <input name="chk-logo" type="checkbox" class="focus:ring-blue-500 h-5 w-5
-            text-blue-700 border-gray-300 rounded">
+          <input name="chk-logo" type="checkbox" class="focus:ring-blue-500 h-5 w-5 text-blue-700
+            border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-logo" class="font-medium text-blue-600">
               Add company's logo - £39
@@ -276,7 +298,7 @@
         </div>
         <div class="flex items-center">
           <input name="chk-pinned30" type="checkbox" class="focus:ring-blue-500 h-5 w-5
-            text-blue-700 border-gray-300 rounded">
+            text-blue-700 border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-pinned30" class="font-medium text-blue-600">
               Pinned to top for 30 days - £49
@@ -284,27 +306,36 @@
           </div>
         </div>
         <div class="flex items-center">
-          <input name="chk-hl-standard" type="checkbox" class="focus:ring-blue-500 h-5 w-5
-            text-blue-700 border-gray-300 rounded">
+          <input name="chk-hl-standard" type="checkbox"
+            class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-hl-standard" class="font-medium text-blue-600">
               Highlight job post in Yellow -  £49
             </label>
+            {{ with .Errors.ChkHLStandard }}
+            <span class="text-error">
+              {{ . }}
+            </span>
+            {{ end }}
           </div>
         </div>
         <div class="flex items-center">
-          <input name="chk-hl-custom" type="checkbox" class="focus:ring-blue-500 h-5 w-5
-            text-blue-700 border-gray-300 rounded">
+          <input name="chk-hl-custom" type="checkbox" class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-hl-custom" class="font-medium text-blue-600">
               Highlight job post in your company brand's color -  £49
             </label>
-            <input type="color" name="hl-col" value="#e66465">
+            <input type="color" name="hl-col" value="{{ .Data.HLCol }}" />
+            {{ with .Errors.ChkHLCustom }}
+            <span class="text-error">
+              {{ . }}
+            </span>
+            {{ end }}
           </div>
         </div>
         <div class="flex items-center">
           <input name="chk-autorenew" type="checkbox" class="focus:ring-blue-500 h-5 w-5
-            text-blue-700 border-gray-300 rounded">
+            text-blue-700 border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-autorenew" class="font-medium text-blue-600">
               Renew job ad every 30 days
