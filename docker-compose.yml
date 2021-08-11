@@ -28,6 +28,7 @@ services:
       STRIPE_SIGNING_SECRET: "${STRIPE_SIGNING_SECRET}"
       STRIPE_SUCCESS_URL: "http://localhost:9001/payment-success"
       STRIPE_CANCEL_URL: "http://localhost:9001/payment-cancel"
+      IMAGE_STORAGE_MODE: "database"
       DEVELOPMENT_MODE: "true"
       THEME_PATH: ./themes/jobboard-default-theme
     volumes:
