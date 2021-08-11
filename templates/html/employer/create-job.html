@@ -1,22 +1,17 @@
 {{ define "title" }}Add a new job post{{ end }}
 {{ define "content" }}
-
-{{ range .Page.ProductPriceGroup.Products }}
-  <ul>
-    <li>{{ .Code }}</li>
-    <li>{{ .Price }}</li>
-    <li>{{ .Title }}</li>
-    <li>{{ .Description }}</li>
-  </ul>
+{{ if and .Site.DevMode .Site.HasAppError }}
+APPLICATION ERRROR - Check the server logs
 {{ end }}
 
-{{ range .Page.SkillsTagSet.Groups }}
-  <h2>{{ .Name }} - {{ .Title }}</h2>
-  {{ range .Tags }}
-    <input type="checkbox" name="skills" value="{{ .Name }}">
-    <label>{{ .Title}} </label>
-  {{ end }}
+<hr>
+{{ with index .Page.Prices "basicJobListingRecurring" }}
+
+<p>{{ .Code }}</p>
+<p>{{ .UnitAmount }}</p>
+<p>{{ .RecurringInterval }}</p>
 {{ end }}
+<hr>
 
 <div class="max-w-3xl mx-auto w-full bg-gray-50 py-10 my-8 px-8 rounded-sm">
   <div>
@@ -32,17 +27,6 @@
     <div>
       <div class="py-6">
         <h3 class="text-xl tracking-tighter font-semibold text-blue-900">Job Details</h3>
-      </div>
-      <!-- slug -->
-      <div class="py-2">
-        <label for="slug" class="font-medium text-base text-blue-900 block">Slug</label>
-        <input type="text" name="slug" value="{{ .Data.Slug }}"
-          class="formInput {{ if .Errors.Slug }} input-error{{ end }}" />
-        {{ with .Errors.Slug }}
-        <span class="text-error">
-          {{ . }}
-        </span>
-        {{ end }}
       </div>
 
       <!-- Job title -->
@@ -80,12 +64,12 @@
         </div>
         <div class="mt-4 space-y-4 sm:space-y-0 sm:flex sm:gap-4">
           <div class="flex items-center">
-            <input name="remote" type="checkbox" value="remote" {{ if eq .Data.Remote["remote"] "on" -}}class="focus:ring-blue-500 h-5 w-5
+            <input name="remote" type="checkbox" value="remote" {{ if eq .Data.Remote.Remote "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5
             text-blue-600 border-gray-300 rounded" />
             <label class="ml-3 block text-base font-normal text-gray-500">Remote</label>
           </div>
           <div class="flex items-center">
-            <input name="remote" type="checkbox" value="temp_remote" {{ if eq .Data.Remote["temp_remote"] "on" -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
+            <input name="remote" type="checkbox" value="temp_remote" {{ if eq .Data.Remote.TempRemote "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
             <label class="ml-3 block text-base font-normal text-gray-500">Temporarily Remote</label>
           </div>
         </div>
@@ -96,39 +80,47 @@
         <legend class="font-medium text-base text-blue-900">Type of Employment</legend>
         <div class="space-y-4 sm:space-y-0 sm:flex sm:gap-4 mb-6">
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="temporary" {{ if eq .Data.EmpType["temporary"] "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
+            <input name="emp-type" type="checkbox" value="temporary" {{ if eq .Data.EmpType.Temporary "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
             <div class="ml-3">
               <label class="font-normal text-gray-500">Temporary</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="permanent" {{ if eq .Data.EmpType["permanent"] "on" -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
+            <input name="emp-type" type="checkbox" value="permanent" {{ if eq .Data.EmpType.Permanent "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
             <div class="ml-3">
               <label class="font-normal text-gray-500">Permanent</label>
             </div>
           </div>
         </div>
+         <div class="space-y-4 sm:space-y-0 sm:flex sm:gap-4 mb-6">
+          <div class="flex items-center">
+            <input name="emp-type" type="checkbox" value="apples" class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
+            <div class="ml-3">
+              <label class="font-normal text-gray-500">Apples</label>
+            </div>
+          </div>
+        </div>
         <div class="space-y-4 sm:space-y-0 sm:flex sm:gap-4">
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="full_time" {{ if eq .Data.EmpType["full_time"] "on" -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
+            <input name="emp-type" type="checkbox" value="full_time" {{ if eq .Data.EmpType.FullTime "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
             <div class="ml-3">
               <label class="font-normal text-gray-500">Full Time</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="part_time" {{ if eq .Data.EmpType["part_time"] "on" -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" type="checkbox" value="part_time" {{ if eq .Data.EmpType.PartTime "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
             <div class="ml-3">
               <label class="font-normal text-gray-500">Part Time</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="contract" {{ if eq .Data.EmpType["contract"] "on" -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" type="checkbox" value="contract" {{ if eq .Data.EmpType.Contract "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
             <div class="ml-3">
               <label class="font-normal text-gray-500">Contract</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="per_diem" {{ if eq .Data.EmpType["per_diem"] "on" -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" type="checkbox" value="per_diem" {{ if eq .Data.EmpType.PerDiem "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
             <div class="ml-3">
               <label class="font-normal text-gray-500">Per Day</label>
             </div>
@@ -197,7 +189,7 @@
           <div class="space-y-4 sm:space-y-0 sm:flex sm:items-center sm:gap-4">
             {{ range .Tags }}
             <div class="flex items-center gap-4">
-              <input type="checkbox" name="skills" value="{{ .Name }}" class="focus:ring-blue-500 h-5 w-5
+              <input type="checkbox" name="skills" value="{{ .Name }}" {{ if eq (index $.Data.Skills .Name ) "on" -}}checked {{ end -}} class="focus:ring-blue-500 h-5 w-5
             text-blue-600 border-gray-300 rounded">
               <label class="font-normal text-gray-500">{{ .Title }} </label>
             </div>
@@ -298,7 +290,7 @@
     <fieldset class="py-6 pt-8">
       <div class="space-y-4">
         <div class="flex items-center">
-          <input name="chk-logo" type="checkbox" class="focus:ring-blue-500 h-5 w-5 text-blue-700
+          <input name="chk-logo" type="checkbox" {{ if eq .Data.ChkLogo "on" -}}checked {{ end -}} class="focus:ring-blue-500 h-5 w-5 text-blue-700
             border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-logo" class="font-medium text-blue-600">
@@ -307,7 +299,7 @@
           </div>
         </div>
         <div class="flex items-center">
-          <input name="chk-pinned30" type="checkbox" class="focus:ring-blue-500 h-5 w-5
+          <input name="chk-pinned30" type="checkbox" {{ if eq .Data.ChkPinned30 "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5
             text-blue-700 border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-pinned30" class="font-medium text-blue-600">
@@ -329,7 +321,7 @@
           </div>
         </div>
         <div class="flex items-center">
-          <input name="chk-hl-custom" type="checkbox" class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" />
+          <input name="chk-hl-custom" type="checkbox" {{ if eq .Data.ChkHLCustom "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-hl-custom" class="font-medium text-blue-600">
               Highlight job post in your company brand's color -  £49
@@ -343,8 +335,7 @@
           </div>
         </div>
         <div class="flex items-center">
-          <input name="chk-autorenew" type="checkbox" class="focus:ring-blue-500 h-5 w-5
-            text-blue-700 border-gray-300 rounded" />
+          <input name="chk-autorenew" type="checkbox" {{ if eq .Data.ChkAutorenew "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-autorenew" class="font-medium text-blue-600">
               Renew job ad every 30 days
@@ -359,7 +350,7 @@
         border-transparent shadow-sm text-lg font-medium rounded-md text-white
         bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2
         focus:ring-offset-2 focus:ring-blue-500">
-        Post a job - £59
+        Post a job - {{ (index .Page.Prices "basicJobListingRecurring").UnitAmountDisplay }}
       </button>
     </div>
   </form>
