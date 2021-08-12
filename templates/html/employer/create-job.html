@@ -24,6 +24,11 @@ APPLICATION ERRROR - Check the server logs
   <form method="POST" action="/jobs" enctype="multipart/form-data" class="mt-12 divide-y divide-gray-200">
     <!-- Salary Currency -->
     <input type="hidden" name="salary-currency" value="GBP" />
+    {{- if eq .Errors.SalaryCurrency "inputEmpty" -}}
+    <span class="text-error">Specify the currency for the salary</span>
+    {{- else if eq .Errors.SalaryCurrency "inputInvalid" -}}
+    <span class="text-error">Invalid currency code</span>
+    {{ end -}}
     <div>
       <div class="py-6">
         <h3 class="text-xl tracking-tighter font-semibold text-blue-900">Job Details</h3>
@@ -32,26 +37,19 @@ APPLICATION ERRROR - Check the server logs
       <!-- Job title -->
       <div class="py-2">
         <label for="title" class="font-medium text-base text-blue-900 block">* Job Title</label>
-        <input type="text" name="title" value="{{ .Data.Title }}"
-          class="formInput {{ if .Errors.Title }} input-error{{ end }}"
-          placeholder="Job Title" />
-        {{ with .Errors.Title }}
-        <span class="text-error">
-          {{ . }}
-        </span>
-        {{ end }}
+        <input type="text" name="title" value="{{ .Data.Title }}" class="formInput {{- if .Errors.Title }} input-error{{ end }}" placeholder="Job Title" />
+        {{- if eq .Errors.Title "inputEmpty" }}
+        <span class="text-error">Enter your job title</span>
+        {{- end }}
       </div>
 
       <!-- Job location -->
       <div class="py-2">
         <label for="location" class="font-medium text-base text-blue-900 block">* Location</label>
-        <input type="text" name="location" value="{{ .Data.Location }}"
-        class="formInput {{ if .Errors.Location }} input-error{{ end }}" />
-        {{ with .Errors.Location }}
-        <span class="text-error">
-          {{ . }}
-        </span>
-        {{ end }}
+        <input type="text" name="location" value="{{ .Data.Location }}" class="formInput {{ if .Errors.Location }} input-error{{ end }}" />
+        {{- if eq .Errors.Location "inputEmpty" }}
+        <span class="text-error">Enter the location of the company</span>
+        {{- end }}
       </div>
 
       <!-- Remote Working option -->
@@ -135,14 +133,12 @@ APPLICATION ERRROR - Check the server logs
             Minimum Salary in GBP
           </label>
           <div class="mt-1">
-            <input type="number" name="salary-min" value="{{ .Data.SalaryMin }}"
-              class="formInput {{ if .Errors.SalaryMin }} input-error{{ end }}"
-              placeholder="45000" />
-            {{ with .Errors.SalaryMin }}
-            <span class="text-error">
-            {{ . }}
-            </span>
-            {{ end }}
+            <input type="number" name="salary-min" value="{{ .Data.SalaryMin }}" class="formInput {{ if .Errors.SalaryMin }} input-error{{ end }}" placeholder="45000" />
+            {{- if eq .Errors.SalaryMin "inputEmpty" }}
+            <span class="text-error">Enter the minimum salary</span>
+            {{- else if eq .Errors.SalaryMin "inputInvalid" }}
+            <span class="text-error">Invalid minimum salary</span>
+            {{- end }}
           </div>
         </div>
 
@@ -151,13 +147,14 @@ APPLICATION ERRROR - Check the server logs
             Maximum Salary in GBP
           </label>
           <div class="mt-1">
-            <input type="number" name="salary-max" value="{{ .Data.SalaryMax }}"
-              class="formInput {{- if .Errors.SalaryMax }} input-error{{ end }}" placeholder="75000" />
-            {{ with .Errors.SalaryMax }}
-            <span class="text-error">
-            {{ . }}
-            </span>
-            {{ end }}
+            <input type="number" name="salary-max" value="{{ .Data.SalaryMax }}" class="formInput {{- if .Errors.SalaryMax }} input-error{{ end }}" placeholder="75000" />
+            {{- if eq .Errors.SalaryMax "inputEmpty" }}
+            <span class="text-error">Enter the maximum salary</span>
+            {{- else if eq .Errors.SalaryMax "inputInvalid" }}
+            <span class="text-error">Invalid maximum salary</span>
+            {{- else if eq .Errors.SalaryMax "inputMinGtMax" }}
+            <span class="text-error">Maximum salary is less than the maximum</span>
+            {{- end }}
           </div>
         </div>
 
@@ -172,6 +169,11 @@ APPLICATION ERRROR - Check the server logs
               <option vaule="month">Monthly</option>
               <option value="day">Daily</option>
             </select>
+            {{- if eq .Errors.SalaryMax "inputEmpty" }}
+            <span class="text-error">Salary unit must be specified</span>
+            {{- else if eq .Errors.SalaryMax "inputInvalid" }}
+            <span class="text-error">Salary unit must 'hour', 'day', 'week', 'month' or 'year'</span>
+            {{- end }}
           </div>
         </div>
       </div>
@@ -205,15 +207,14 @@ APPLICATION ERRROR - Check the server logs
         <label for="description" class="font-medium text-base text-blue-900 block">
           * Job Description
         </label>
-        <textarea id="jd" name="description" value="{{ .Data.Description }}"
-          class="formInput{{ if .Errors.JobDescription }} input-error{{ end }}">
+        <textarea id="jd" name="description" value="{{ .Data.Description }}" class="formInput {{- if .Errors.JobDescription }} input-error{{ end }}">
           {{ .Data.Description }}
         </textarea>
-        {{ with .Errors.Description }}
-        <span class="text-error">
-          {{ . }}
-        </span>
-        {{ end }}
+        {{- if eq .Errors.Description "inputEmpty" }}
+        <span class="text-error">Enter the markdown describing the job role</span>
+        {{- else if eq .Errors.Description "inputInvalid" }}
+        <span class="text-error">Invalid markdown</span>
+        {{- end }}
       </div>
     </div>
 
@@ -255,19 +256,21 @@ APPLICATION ERRROR - Check the server logs
           </div>
         </template>
       </div>
+      {{- if eq .Errors.Logo "inputEmpty" }}
+      <span class="text-error">You have ticked &quot;Add company's logo&quot; so must upload an image or unselect that option</span>
+      {{- end }}
 
       <!-- Company Name -->
       <div class="py-2">
         <label for="company-name" class="font-medium text-base text-blue-900 block">
           * Company name
         </label>
-        <input type="text" name="company-name" value="{{ .Data.CompanyName }}"
-          class="formInput {{ if .Errors.CompanyName }} input-error{{ end }}" />
-        {{ with .Errors.CompanyName }}
-        <span class="text-error">
-          {{ . }}
-        </span>
-        {{ end }}
+        <input type="text" name="company-name" value="{{ .Data.CompanyName }}" class="formInput {{- if .Errors.CompanyName }} input-error{{ end }}" />
+        {{- if eq .Errors.CompanyName "inputEmpty" }}
+        <span class="text-error">Enter the company name</span>
+        {{- else if eq .Errors.CompanyName "inputInvalid" }}
+        <span class="text-error">Upper and lower case a to z including apostrophe only</span>
+        {{- end }}
       </div>
 
       <!-- Company URL -->
@@ -275,14 +278,12 @@ APPLICATION ERRROR - Check the server logs
         <label for="company-url" class="font-medium text-base text-blue-900 block">
           * How to apply
         </label>
-        <input type="text" name="company-url" value="{{ .Data.CompanyURL }}"
-          placeholder="How to apply (Email or URL)"
-          class="formInput {{ if .Errors.CompanyURL }} input-error{{ end }}" />
-        {{ with .Errors.CompanyURL }}
-        <span class="text-error">
-          {{ . }}
-        </span>
-        {{ end }}
+        <input type="text" name="company-url" value="{{ .Data.CompanyURL }}" placeholder="How to apply (Email or URL)" class="formInput {{- if .Errors.CompanyURL }} input-error{{ end }}" />
+        {{- if eq .Errors.CompanyURL "inputEmpty" }}
+        <span class="text-error">Enter the company website</span>
+        {{- else if eq .Errors.CompanyURL "inputInvalid" }}
+        <span class="text-error">Invalid url</span>
+        {{- end }}
       </div>
     </div>
 
@@ -294,7 +295,7 @@ APPLICATION ERRROR - Check the server logs
             border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-logo" class="font-medium text-blue-600">
-              Add company's logo - £39
+              Add company's logo - {{ (index .Page.Prices "logoRecurring").UnitAmountDisplay }}
             </label>
           </div>
         </div>
@@ -303,7 +304,7 @@ APPLICATION ERRROR - Check the server logs
             text-blue-700 border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-pinned30" class="font-medium text-blue-600">
-              Pinned to top for 30 days - £49
+              Pinned to top for 30 days - {{ (index .Page.Prices "pinned30Recurring").UnitAmountDisplay }}
             </label>
           </div>
         </div>
@@ -311,26 +312,22 @@ APPLICATION ERRROR - Check the server logs
           <input name="chk-hl-standard" type="checkbox" {{ if eq .Data.ChkHLStandard "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded">
           <div class="ml-3">
             <label for="chk-hl-standard" class="font-medium text-blue-600">
-              Highlight job post in Yellow -  £49
+              Highlight job post in Yellow -  {{ (index .Page.Prices "standardHighlightRecurring").UnitAmountDisplay }}
             </label>
-            {{ with .Errors.ChkHLStandard }}
-            <span class="text-error">
-              {{ . }}
-            </span>
-            {{ end }}
+            {{- if eq .Errors.ChkHLStandard "inputInvalid" }}
+            <span class="text-error">Unselect this option when using custom highlighting</span>
+            {{- end }}
           </div>
         </div>
         <div class="flex items-center">
           <input name="chk-hl-custom" type="checkbox" {{ if eq .Data.ChkHLCustom "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-hl-custom" class="font-medium text-blue-600">
-              Highlight job post in your company brand's color -  £49
+              Highlight job post in your company brand's color - {{ (index .Page.Prices "customHighlightRecurring").UnitAmountDisplay }}
             </label>
             <input type="color" name="hl-col" value="{{ .Data.HLCol }}" />
-            {{ with .Errors.HLCol }}
-            <span class="text-error">
-              {{ . }}
-            </span>
+            {{ if eq .Errors.HLCol "inputInvalid" }}
+            <span class="text-error">Select a highlight hex colour for custom highlighting</span>
             {{ end }}
           </div>
         </div>
