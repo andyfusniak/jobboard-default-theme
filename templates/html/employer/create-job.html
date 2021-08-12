@@ -5,12 +5,7 @@ APPLICATION ERRROR - Check the server logs
 {{ end }}
 
 <hr>
-{{ with index .Page.Prices "basicJobListingRecurring" }}
-
-<p>{{ .Code }}</p>
-<p>{{ .UnitAmount }}</p>
-<p>{{ .RecurringInterval }}</p>
-{{ end }}
+|{{ .Data.Description }}|
 <hr>
 
 <div class="max-w-3xl mx-auto w-full bg-gray-50 py-10 my-8 px-8 rounded-sm">
@@ -291,7 +286,7 @@ APPLICATION ERRROR - Check the server logs
     <fieldset class="py-6 pt-8">
       <div class="space-y-4">
         <div class="flex items-center">
-          <input name="chk-logo" type="checkbox" {{ if eq .Data.ChkLogo "on" -}}checked {{ end -}} class="focus:ring-blue-500 h-5 w-5 text-blue-700
+          <input id="chk-logo" name="chk-logo" type="checkbox" {{ if eq .Data.ChkLogo "on" -}}checked {{ end -}} class="focus:ring-blue-500 h-5 w-5 text-blue-700
             border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-logo" class="font-medium text-blue-600">
@@ -300,7 +295,7 @@ APPLICATION ERRROR - Check the server logs
           </div>
         </div>
         <div class="flex items-center">
-          <input name="chk-pinned30" type="checkbox" {{ if eq .Data.ChkPinned30 "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5
+          <input id="chk-pinned30" name="chk-pinned30" type="checkbox" {{ if eq .Data.ChkPinned30 "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5
             text-blue-700 border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-pinned30" class="font-medium text-blue-600">
@@ -309,7 +304,7 @@ APPLICATION ERRROR - Check the server logs
           </div>
         </div>
         <div class="flex items-center">
-          <input name="chk-hl-standard" type="checkbox" {{ if eq .Data.ChkHLStandard "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded">
+          <input id="chk-hl-standard" name="chk-hl-standard" type="checkbox" {{ if eq .Data.ChkHLStandard "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded">
           <div class="ml-3">
             <label for="chk-hl-standard" class="font-medium text-blue-600">
               Highlight job post in Yellow -  {{ (index .Page.Prices "standardHighlightRecurring").UnitAmountDisplay }}
@@ -320,7 +315,7 @@ APPLICATION ERRROR - Check the server logs
           </div>
         </div>
         <div class="flex items-center">
-          <input name="chk-hl-custom" type="checkbox" {{ if eq .Data.ChkHLCustom "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" />
+          <input id="chk-hl-custom" name="chk-hl-custom" type="checkbox" {{ if eq .Data.ChkHLCustom "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-hl-custom" class="font-medium text-blue-600">
               Highlight job post in your company brand's color - {{ (index .Page.Prices "customHighlightRecurring").UnitAmountDisplay }}
@@ -343,7 +338,7 @@ APPLICATION ERRROR - Check the server logs
     </fieldset>
 
     <div class="px-4 py-3 text-center">
-      <button type="submit" class="inline-flex justify-center py-4 px-6 border
+      <button id="create-btn" type="submit" class="inline-flex justify-center py-4 px-6 border
         border-transparent shadow-sm text-lg font-medium rounded-md text-white
         bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2
         focus:ring-offset-2 focus:ring-blue-500">

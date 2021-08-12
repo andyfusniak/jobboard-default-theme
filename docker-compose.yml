@@ -18,6 +18,7 @@ services:
       JBCTL_DATABASE_URL: "postgres://postgres:password@postgres:5432/jobboard?sslmode=disable&connect_timeout=5"
       PORT: "8080"
       SITE_BASE_URL: "http://localhost:9001"
+      SITE_CURRENCY: "GBP"
       SMTP_HOST: "${SMTP_HOST}"
       SMTP_PORT: "${SMTP_PORT}"
       SMTP_USERNAME: "${SMTP_USERNAME}"
