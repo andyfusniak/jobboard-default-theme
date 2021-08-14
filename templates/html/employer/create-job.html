@@ -6,8 +6,6 @@
   document.addEventListener('DOMContentLoaded', function(event) {
     const simplemde = new SimpleMDE({
       element: document.getElementById("description"),
-      indentWithTabs: false,
-      tabSize: 4
     });
 
     const currencySymbol = '{{ (index .Page.Prices "basicJobListingRecurring").UnitAmountDisplay }}'.substr(0, 1);
@@ -103,16 +101,7 @@ APPLICATION ERRROR - Check the server logs
               <label class="font-normal text-gray-500">Permanent</label>
             </div>
           </div>
-        </div>
-         <div class="space-y-4 sm:space-y-0 sm:flex sm:gap-4 mb-6">
-          <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="apples" class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
-            <div class="ml-3">
-              <label class="font-normal text-gray-500">Apples</label>
-            </div>
-          </div>
-        </div>
-        <div class="space-y-4 sm:space-y-0 sm:flex sm:gap-4">
+
           <div class="flex items-center">
             <input name="emp-type" type="checkbox" value="full_time" {{ if eq .Data.EmpType.FullTime "on" -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
             <div class="ml-3">
@@ -221,9 +210,7 @@ APPLICATION ERRROR - Check the server logs
         <label for="description" class="font-medium text-base text-blue-900 block">
           * Job Description
         </label>
-        <textarea id="description" name="description" value="{{ .Data.Description }}" class="formInput {{- if .Errors.JobDescription }} input-error{{ end }}">
-          {{ .Data.Description }}
-        </textarea>
+        <textarea id="description" name="description" class="formInput {{- if .Errors.JobDescription }} input-error{{ end }}">{{- .Data.Description -}}</textarea>
         {{- if eq .Errors.Description "inputEmpty" }}
         <span class="text-error">Enter the markdown describing the job role</span>
         {{- else if eq .Errors.Description "inputInvalid" }}

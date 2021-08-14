@@ -4,13 +4,9 @@
 
 {{ if .IsSignedIn -}}
   <ul>
-    <li><a href="/protected-resource">Protected resource page</a></li>
     {{ if eq .Role "employer" }}
       <li><a href="/employer/{{ .UID }}/create-job">Post a job</a></li>
       <li><a href="/employer/{{ .UID }}">Employer home</a></li>
-    {{ end }}
-    {{ if eq .Role "talent" }}
-      <li><a href="/create-profile">Create your profile page</a></li>
     {{ end }}
     <li><a href="/signout">Sign out</a></li>
   </ul>
