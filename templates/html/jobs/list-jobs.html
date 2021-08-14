@@ -32,11 +32,46 @@
     </div>
   </div>
 
+
+  <-- Pinned jobs -->
+  <h1>Pinned jobs</h1>
+  {{ range .Data.PinnedJobs }}
+
+  <p>
+  {{ if eq .HLType "" }}
+  NO STYLING
+  {{ else if eq .HLType "custom" }}
+  CUSTOM HlCol={{ .HLCol }}
+  {{ else if eq .HLType "standard" }}
+  STANDARD COLOR
+  {{ end }}
+  </p>
+  <hr>
+
+  <div {{- if .HLCol }} style="background-color: {{ .HLCol }};"{{ end -}}>
+  <p><a href="/jobs/{{ .Slug }}">{{ .Title }} - {{ .CompanyName }} {{ .SalaryMax}} to {{ .SalaryMax}}</a>
+
+  {{ .EmpType }}
+  <br>
+  {{ .Remote }}
+  <br>
+  {{ .Skills }}
+  </p>
+  </div>
+  {{ end }}
+
+  <hr>
+
   <!-- Job table -->
   <div class="py-16">
     <div class="bg-white shadow overflow-hidden sm:rounded-md">
       <ul class="divide-y divide-gray-200">
-        {{ range .Data }}
+        {{ range .Data.Jobs }}
+
+<hr>
+{{ . }}
+<hr>
+
         <li>
           <a href="/jobs/{{ .Slug }}" class="block hover:bg-gray-50">
             <div class="flex items-center px-4 py-4 sm:px-6">

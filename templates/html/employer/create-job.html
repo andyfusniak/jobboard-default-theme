@@ -1,12 +1,31 @@
+{{ define "plinks" -}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+  <script src="/static/js/app.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function(event) {
+    const simplemde = new SimpleMDE({
+      element: document.getElementById("description"),
+      indentWithTabs: false,
+      tabSize: 4
+    });
+
+    const currencySymbol = '{{ (index .Page.Prices "basicJobListingRecurring").UnitAmountDisplay }}'.substr(0, 1);
+    priceCalcHandler({
+      basicJobListing: {{ (index .Page.Prices "basicJobListingRecurring").UnitAmount -}},
+      logo: {{- (index .Page.Prices "logoRecurring").UnitAmount -}},
+      pinned30: {{- (index .Page.Prices "pinned30Recurring").UnitAmount -}},
+      standardHighlightRecurring: {{- (index .Page.Prices "standardHighlightRecurring").UnitAmount -}},
+      customHighlightRecurring: {{- (index .Page.Prices "customHighlightRecurring").UnitAmount -}},
+    }, currencySymbol);
+  });
+  </script>
+{{ end -}}
 {{ define "title" }}Add a new job post{{ end }}
 {{ define "content" }}
 {{ if and .Site.DevMode .Site.HasAppError }}
 APPLICATION ERRROR - Check the server logs
 {{ end }}
-
-<hr>
-|{{ .Data.Description }}|
-<hr>
 
 <div class="max-w-3xl mx-auto w-full bg-gray-50 py-10 my-8 px-8 rounded-sm">
   <div>
@@ -202,7 +221,7 @@ APPLICATION ERRROR - Check the server logs
         <label for="description" class="font-medium text-base text-blue-900 block">
           * Job Description
         </label>
-        <textarea id="jd" name="description" value="{{ .Data.Description }}" class="formInput {{- if .Errors.JobDescription }} input-error{{ end }}">
+        <textarea id="description" name="description" value="{{ .Data.Description }}" class="formInput {{- if .Errors.JobDescription }} input-error{{ end }}">
           {{ .Data.Description }}
         </textarea>
         {{- if eq .Errors.Description "inputEmpty" }}
