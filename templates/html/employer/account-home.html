@@ -41,6 +41,7 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
               {{ range .Data }}
+
               <tr>
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                   {{ .Title }}
@@ -53,6 +54,9 @@
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {{ if not .ApprovedAt }}Pending{{ end }}{{ if .ApprovedAt }}{{ .ApprovedAt.Format "2 Jan 06" }}{{ end }}
+                </td>
+                <td>
+                  <a href="/employer/{{ $.UID }}/edit-job/{{ .ID }}">EDIT</a>
                 </td>
               </tr>
               {{ end }}
