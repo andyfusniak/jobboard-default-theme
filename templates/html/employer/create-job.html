@@ -285,10 +285,10 @@ APPLICATION ERRROR - Check the server logs
         <label for="company-url" class="font-medium text-base text-blue-900 block">
           * How to apply
         </label>
-        <input type="text" name="company-url" value="{{ .Data.CompanyURL }}" placeholder="How to apply (Email or URL)" class="formInput {{- if .Errors.CompanyURL }} input-error{{ end }}" />
-        {{- if eq .Errors.CompanyURL "inputEmpty" }}
+        <input type="text" name="company-url" value="{{ .Data.ApplyURL }}" placeholder="How to apply (Email or URL)" class="formInput {{- if .Errors.ApplyURL }} input-error{{ end }}" />
+        {{- if eq .Errors.ApplyURL "inputEmpty" }}
         <span class="text-error">Enter the company website</span>
-        {{- else if eq .Errors.CompanyURL "inputInvalid" }}
+        {{- else if eq .Errors.ApplyURL "inputInvalid" }}
         <span class="text-error">Invalid url</span>
         {{- end }}
       </div>
