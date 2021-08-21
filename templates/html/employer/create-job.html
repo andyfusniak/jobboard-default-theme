@@ -26,6 +26,8 @@
 APPLICATION ERRROR - Check the server logs
 {{ end }}
 
+{{ printf "%#v" $.Page.SkillsTagSet.Groups }}
+
 <div class="max-w-3xl mx-auto w-full bg-gray-50 py-10 my-8 px-8 rounded-sm">
   <div>
     <h2 class="text-blue-600 font-semibold text-4xl">
@@ -282,10 +284,10 @@ APPLICATION ERRROR - Check the server logs
 
       <!-- Company URL -->
       <div class="py-2">
-        <label for="company-url" class="font-medium text-base text-blue-900 block">
+        <label for="apply-url" class="font-medium text-base text-blue-900 block">
           * How to apply
         </label>
-        <input type="text" name="company-url" value="{{ .Data.ApplyURL }}" placeholder="How to apply (Email or URL)" class="formInput {{- if .Errors.ApplyURL }} input-error{{ end }}" />
+        <input type="text" name="apply-url" value="{{ .Data.ApplyURL }}" placeholder="How to apply (Email or URL)" class="formInput {{- if .Errors.ApplyURL }} input-error{{ end }}" />
         {{- if eq .Errors.ApplyURL "inputEmpty" }}
         <span class="text-error">Enter the company website</span>
         {{- else if eq .Errors.ApplyURL "inputInvalid" }}
