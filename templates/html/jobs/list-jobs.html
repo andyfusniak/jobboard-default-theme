@@ -40,6 +40,10 @@
   <h1>Pinned jobs</h1>
   {{ range .Data.PinnedJobs }}
 
+  {{ template "job-summary" . }}
+
+  <img width="60" height="60" src="/{{ .LogoURL }}" />
+
   <p>
   {{ if eq .HLType "" }}
   NO STYLING
@@ -70,7 +74,8 @@
     <div class="bg-white shadow overflow-hidden sm:rounded-md">
       <ul class="divide-y divide-gray-200">
         {{ range .Data.Jobs }}
-
+{{ printf "%#v" . }}
+  <img width="60" height="60" src="/{{ .LogoURL }}" />
 <hr>
 {{ . }}
 <hr>
