@@ -20,6 +20,7 @@ services:
       SITE_BASE_URL: "http://localhost:9001"
       SITE_CURRENCY: "GBP"
       SITE_LOGO_THUMBNAIL_SIZE: "80"
+      FILESTORAGE_LOGOS_DOMAIN: "img"
       SMTP_HOST: "${SMTP_HOST}"
       SMTP_PORT: "${SMTP_PORT}"
       SMTP_USERNAME: "${SMTP_USERNAME}"
