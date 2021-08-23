@@ -26,8 +26,6 @@
 APPLICATION ERRROR - Check the server logs
 {{ end }}
 
-{{ printf "%#v" $.Page.SkillsTagSet.Groups }}
-
 <div class="max-w-3xl mx-auto w-full bg-gray-50 py-10 my-8 px-8 rounded-sm">
   <div>
     <h2 class="text-blue-600 font-semibold text-4xl">
@@ -192,7 +190,8 @@ APPLICATION ERRROR - Check the server logs
           This will help tech talents to filter your job by skills or tech stack. Choose up to 4 tags.
         </p>
 
-        {{ range .Data.Skills.Groups }}
+        {{ with .Data.SkillsContainer.TagSet }}
+        {{ range .Groups }}
         <fieldset class="py-2">
           <legend class="font-medium text-base text-blue-900">{{ .Title }}</legend>
           <div class="space-y-4 sm:space-y-0 sm:flex sm:items-center sm:gap-4">
@@ -205,6 +204,7 @@ APPLICATION ERRROR - Check the server logs
             {{ end }}
           </div>
         </fieldset>
+        {{ end }}
         {{ end }}
         <p class="mt-2 text-gray-500 text-base">Can't find your tech stack? <a href="#" class="text-blue-900 text-base">Contact us</a></p>
       </div>
