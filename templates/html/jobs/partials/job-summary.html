@@ -1,4 +1,82 @@
 {{ define "job-summary" }}
-COMMON TEMPLATE
 {{ printf "%#v" . }}
+
+<div class="bg-white shadow overflow-hidden sm:rounded-md">
+  <ul class="divide-y divide-gray-200">
+    <li {{ if eq .HLType "" }} class="hover:bg-gray-50" {{ else if eq .HLType "custom" }} style="background-color: {{ .HLCol }};" {{ else if eq .HLType "standard" }} class="bg-yellow-100" {{ end }}>
+      <a href="/jobs/{{ .Slug }}" class="block">
+        <div class="flex items-center px-4 py-4 sm:px-6">
+          <div class="min-w-0 flex-1 flex items-center">
+            <div class="flex-shrink-0">
+              <img class="h-12 w-12" src="/{{ .LogoURL }}" alt="logo">
+            </div>
+            <div class="min-w-0 flex-1 px-4 sm:grid sm:grid-cols-3 sm:items-center md:gap-4">
+              <div>
+                {{- if eq .HLType "" }}
+                <p class="text-lg font-medium text-gray-800">{{ .Title }}</p>
+                <div class="flex flex-col md:flex-row item-start md:items-center">
+                  <p class="text-sm md:text-md text-gray-600">{{ .CompanyName }}</p>
+                  <p class="ml-0 md:ml-3 text-sm md:text-md text-gray-600">&#163;{{ .SalaryMin }} - &#163;{{ .SalaryMax }}</p>
+                </div>
+                {{ else if eq .HLType "standard" }}
+                <p class="text-lg font-medium text-gray-800">{{ .Title }}</p>
+                <div class="flex flex-col md:flex-row item-start md:items-center">
+                  <p class="text-sm md:text-md text-gray-600">{{ .CompanyName }}</p>
+                  <p class="ml-0 md:ml-3 text-sm md:text-md text-gray-600">&#163;{{ .SalaryMin }} - &#163;{{ .SalaryMax }}</p>
+                </div>
+                {{- end -}}
+                {{- if eq .HLType "custom" }}
+                <p class="text-lg font-medium text-white">{{ .Title }}</p>
+                <div class="flex flex-col md:flex-row item-start md:items-center">
+                  <p class="text-sm md:text-md text-white">{{ .CompanyName }}</p>
+                  <p class="ml-0 md:ml-3 text-sm md:text-md text-white">&#163;{{ .SalaryMin }} - &#163;{{ .SalaryMax }}</p>
+                </div>
+                {{- end }}
+              </div>
+              <div class="hidden sm:block sm:col-span-2 md:col-span-1 justify-self-center md:items-center">
+                <div class="flex gap-1">
+                  <p class="border-gray-800 border px-1 py-1 md:border-2 md:px-2 rounded text-xs md:text-base text-gray-800">Frontend</p>
+                  <p class="border-gray-800 border px-1 py-1 md:border-2 md:px-2 rounded text-xs md:text-base text-gray-800">Vuejs</p>
+                  <p class="border-gray-800 border px-1 py-1 md:border-2 md:px-2 rounded text-xs md:text-base text-gray-800">Nodejs</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            {{- if eq .HLType "" }}
+            <p class="mt-2 flex items-center text-sm text-gray-600 sm:mt-0 sm:ml-6">
+              <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+              </svg>
+                {{ .Location }}
+            </p>
+            {{- else if eq .HLType "standard" }}
+            <p class="mt-2 flex items-center text-sm text-gray-600 sm:mt-0 sm:ml-6">
+              <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+              </svg>
+                {{ .Location }}
+            </p>
+            {{- else if eq .HLType "custom" }}
+            <p class="mt-2 flex items-center text-sm text-white sm:mt-0 sm:ml-6">
+              <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+              </svg>
+              {{ .Location }}
+            </p>
+            {{- end }}
+            <div class="mt-2 flex items-center justify-end">
+              {{- if .Pinned }}
+              <p class="text-xl mr-3">📌</p>
+              {{ end -}}
+              <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                Full-time
+              </p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
 {{ end }}

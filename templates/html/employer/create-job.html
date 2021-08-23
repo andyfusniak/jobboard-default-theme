@@ -253,7 +253,7 @@ APPLICATION ERRROR - Check the server logs
         </div>
         <template x-if="imageUrl">
           <div class="flex justify-center">
-            <img :src="imageUrl" class="inline-block h-20 w-20 rounded-md" />
+            <img :src="imageUrl" class="inline-block object-cover h-20 w-20 rounded-md" />
           </div>
         </template>
 
@@ -282,7 +282,7 @@ APPLICATION ERRROR - Check the server logs
         {{- end }}
       </div>
 
-      <!-- Company URL -->
+      <!-- Apply URL -->
       <div class="py-2">
         <label for="apply-url" class="font-medium text-base text-blue-900 block">
           * How to apply
