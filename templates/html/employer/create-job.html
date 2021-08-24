@@ -102,7 +102,6 @@ APPLICATION ERRROR - Check the server logs
               <label class="font-normal text-gray-500">Permanent</label>
             </div>
           </div>
-
           <div class="flex items-center">
             <input name="emp-type" type="checkbox" value="full_time" {{ if .Data.EmpType.FullTime -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
             <div class="ml-3">
@@ -223,45 +222,51 @@ APPLICATION ERRROR - Check the server logs
       </div>
     </div>
 
-    <div class="pt-8 py-6">
-      <div class="py-4">
+    <div class="pt-2 py-6 md:pt-8">
+      <div class="py-6">
         <h3 class="text-xl text-blue-900 tracking-tighter font-semibold">Your company Details</h3>
       </div>
 
       <!-- Company logo -->
       {{- if eq .Data.Mode "create" }}
       <div x-data="imageViewer()">
-        <div class="my-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-          <div class="space-y-1 text-center">
-            <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48"
-              aria-hidden="true">
-              <path
-                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <div class="flex text-sm text-gray-500">
+        <p class="font-medium text-base text-blue-900 block">Company Logo</p>
+        <div class="my-2 px-6 pt-5 pb-6 border border-blue-200 border-dotted">
+          <div class="flex flex-col sm:flex-row justify-center items-center gap-x-3">
+            <div class="felx flex-col">
+              <template x-if="imageUrl">
+                <div class="relative">
+                  <img :src="imageUrl" class="inline-block object-cover h-24 w-24 rounded-md" />
+                  <button type="button" class="absolute top-0 left-0 right-0 bg-gray-200 text-gray-800 py-1 px-2 opacity-90 hover:bg-gray-300">x</button>
+                </div>
+              </template>
+              <template x-if="!imageUrl">
+                <div>
+                  <span class="block h-24 w-24 overflow-hidden bg-gray-100">
+                    <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  </span>
+                  <p class="mt-2 text-xs text-gray-500 text-center">PNG, JPG</p>
+                </div>
+              </template>
+            </div>
+            <template x-if="imageUrl">
               <label for="logo"
-                class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
-                <span>Upload a company logo</span>
+                class="cursor-pointer mt-2 sm:mt-0 px-1 py-0 sm:px-2 sm:py-1 bg-white rounded-md font-medium ring-1 ring-blue-600 text-blue-600 hover:text-blue-700 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-700">
+                <span class="text-sm">Change logo</span>
                 <input @change="fileChosen" id="logo" name="logo" type="file" accept="image/*" class="sr-only" />
               </label>
-            </div>
-            <p class="text-xs text-gray-500">
-              PNG, JPG
-            </p>
+            </template>
+            <template x-if="!imageUrl">
+              <label for="logo"
+                class="cursor-pointer mt-2 sm:mt-0 px-1 py-0 sm:px-2 sm:py-1 bg-white rounded-md font-medium ring-1 ring-blue-600 text-blue-600 hover:text-blue-700 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-700">
+                <span class="text-sm">Choose logo</span>
+                <input @change="fileChosen" id="logo" name="logo" type="file" accept="image/*" class="sr-only" />
+              </label>
+            </template>
           </div>
         </div>
-        <template x-if="imageUrl">
-          <div class="flex justify-center">
-            <img :src="imageUrl" class="inline-block object-cover h-20 w-20 rounded-md" />
-          </div>
-        </template>
-
-        <template x-if="!imageUrl">
-          <div class="text-center py-1">
-            <p class="text-gray-600">No logo selected</p>
-          </div>
-        </template>
       </div>
       {{- if eq .Errors.Logo "inputEmpty" }}
       <span class="text-error">You have ticked &quot;Add company's logo&quot; so must upload an image or unselect that option</span>
@@ -325,7 +330,7 @@ APPLICATION ERRROR - Check the server logs
               Highlight job post in Yellow -  {{ (index .Page.Prices "standardHighlightRecurring").UnitAmountDisplay }}
             </label>
             {{- if eq .Errors.ChkHLStandard "inputInvalid" }}
-            <span class="text-error">Unselect this option when using custom highlighting</span>
+            <p class="text-error">Unselect this option when using custom highlighting</p>
             {{- end }}
           </div>
         </div>
@@ -337,7 +342,7 @@ APPLICATION ERRROR - Check the server logs
             </label>
             <input type="color" name="hl-col" value="{{ .Data.HLCol }}" />
             {{ if eq .Errors.HLCol "inputInvalid" }}
-            <span class="text-error">Select a highlight hex colour for custom highlighting</span>
+            <p class="text-error">Select a highlight hex colour for custom highlighting</p>
             {{ end }}
           </div>
         </div>

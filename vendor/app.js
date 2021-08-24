@@ -3,7 +3,6 @@ function imageViewer() {
     imageUrl: '',
     fileChosen(event) {
      this.fileToDataUrl(event, src => this.imageUrl = src);
-     console.log(this.imageUrl);
     },
     fileToDataUrl(event, callback) {
       if (!event.target.files.length) return;
@@ -13,6 +12,7 @@ function imageViewer() {
       reader.readAsDataURL(file);
       reader.onload = () => {
         const result= reader.result;
+        // console.log(result);
         callback(result);
       }
     },
