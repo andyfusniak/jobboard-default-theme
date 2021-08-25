@@ -22,7 +22,7 @@
 {{ end -}}
 {{ define "title" }}Add a new job post{{ end }}
 {{ define "content" }}
-{{ if and .Site.DevMode .Site.HasAppError }}
+{{- if and .Site.DevMode .Site.HasAppError }}
 APPLICATION ERRROR - Check the server logs
 {{ end }}
 
@@ -188,9 +188,8 @@ APPLICATION ERRROR - Check the server logs
         <p class="mb-3 text-gray-500">
           This will help tech talents to filter your job by skills or tech stack. Choose up to 4 tags.
         </p>
-
-        {{ with .Data.SkillsContainer.TagSet }}
-        {{ range .Groups }}
+        {{- with .Data.SkillsContainer.TagSet }}
+        {{- range .Groups }}
         <fieldset class="py-2">
           <legend class="font-medium text-base text-blue-900">{{ .Title }}</legend>
           <div class="space-y-4 sm:space-y-0 sm:flex sm:items-center sm:gap-4">
@@ -200,11 +199,11 @@ APPLICATION ERRROR - Check the server logs
             text-blue-600 border-gray-300 rounded">
               <label class="font-normal text-gray-500">{{ .Title }} </label>
             </div>
-            {{ end }}
+            {{ end -}}
           </div>
         </fieldset>
-        {{ end }}
-        {{ end }}
+        {{ end -}}
+        {{ end -}}
         <p class="mt-2 text-gray-500 text-base">Can't find your tech stack? <a href="#" class="text-blue-900 text-base">Contact us</a></p>
       </div>
 
@@ -229,18 +228,18 @@ APPLICATION ERRROR - Check the server logs
 
       <!-- Company logo -->
       {{- if eq .Data.Mode "create" }}
-      <div x-data="imageViewer()">
+      <div x-data="$store.imageViewer">
         <p class="font-medium text-base text-blue-900 block">Company Logo</p>
         <div class="my-2 px-6 pt-5 pb-6 border border-blue-200 border-dotted">
           <div class="flex flex-col sm:flex-row justify-center items-center gap-x-3">
             <div class="felx flex-col">
-              <template x-if="imageUrl">
+              <template x-if="$store.imageViewer.uploadedLogo">
                 <div class="relative">
-                  <img :src="imageUrl" class="inline-block object-cover h-24 w-24 rounded-md" />
-                  <button type="button" class="absolute top-0 left-0 right-0 bg-gray-200 text-gray-800 py-1 px-2 opacity-90 hover:bg-gray-300">x</button>
+                  <img :src="$store.imageViewer.imageUrl" class="inline-block object-cover h-24 w-24 rounded-md" />
+                  <button @click="$store.imageViewer.removeLogo()" type="button" class="absolute top-0 left-0 right-0 bg-gray-200 text-gray-800 py-1 px-2 opacity-90 hover:bg-gray-300">x</button>
                 </div>
               </template>
-              <template x-if="!imageUrl">
+              <template x-if="! $store.imageViewer.uploadedLogo">
                 <div>
                   <span class="block h-24 w-24 overflow-hidden bg-gray-100">
                     <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
@@ -251,18 +250,18 @@ APPLICATION ERRROR - Check the server logs
                 </div>
               </template>
             </div>
-            <template x-if="imageUrl">
+            <template x-if="$store.imageViewer.uploadedLogo">
               <label for="logo"
                 class="cursor-pointer mt-2 sm:mt-0 px-1 py-0 sm:px-2 sm:py-1 bg-white rounded-md font-medium ring-1 ring-blue-600 text-blue-600 hover:text-blue-700 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-700">
                 <span class="text-sm">Change logo</span>
-                <input @change="fileChosen" id="logo" name="logo" type="file" accept="image/*" class="sr-only" />
+                <input @change="$store.imageViewer.fileChosen(event)" id="logo" name="logo" type="file" accept="image/*" class="sr-only" />
               </label>
             </template>
-            <template x-if="!imageUrl">
+            <template x-if="! $store.imageViewer.uploadedLogo">
               <label for="logo"
                 class="cursor-pointer mt-2 sm:mt-0 px-1 py-0 sm:px-2 sm:py-1 bg-white rounded-md font-medium ring-1 ring-blue-600 text-blue-600 hover:text-blue-700 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-700">
                 <span class="text-sm">Choose logo</span>
-                <input @change="fileChosen" id="logo" name="logo" type="file" accept="image/*" class="sr-only" />
+                <input @change="$store.imageViewer.fileChosen(event)" id="logo" name="logo" type="file" accept="image/*" class="sr-only" />
               </label>
             </template>
           </div>
@@ -271,8 +270,7 @@ APPLICATION ERRROR - Check the server logs
       {{- if eq .Errors.Logo "inputEmpty" }}
       <span class="text-error">You have ticked &quot;Add company's logo&quot; so must upload an image or unselect that option</span>
       {{- end }}
-      {{- end }}
-
+      {{- end -}}
 
       <!-- Company Name -->
       <div class="py-2">
@@ -306,8 +304,16 @@ APPLICATION ERRROR - Check the server logs
     <fieldset class="py-6 pt-8">
       <div class="space-y-4">
         <div class="flex items-center">
-          <input id="chk-logo" name="chk-logo" type="checkbox" {{ if .Data.ChkLogo -}}checked {{ end -}} class="focus:ring-blue-500 h-5 w-5 text-blue-700
+          <input id="chk-basic" name="chk-basic" type="checkbox" checked disabled class="focus:ring-blue-500 h-5 w-5 text-blue-700
             border-gray-300 rounded" />
+          <div class="ml-3">
+            <label for="chk-basic" class="font-medium text-blue-600">
+              Basic listing - £39
+            </label>
+          </div>
+        </div>
+        <div class="flex items-center" x-data="{ abc: $store.imageViewer }">
+          <input id="chk-logo" name="chk-logo" type="checkbox" {{ if .Data.ChkLogo -}}checked {{ end -}} class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" x-model="$store.imageViewer.uploadedLogo"/>
           <div class="ml-3">
             <label for="chk-logo" class="font-medium text-blue-600">
               Add company's logo - {{ (index .Page.Prices "logoRecurring").UnitAmountDisplay }}

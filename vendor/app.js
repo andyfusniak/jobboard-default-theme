@@ -1,8 +1,9 @@
-function imageViewer() {
-  return {
+document.addEventListener('alpine:init', () => {
+  Alpine.store('imageViewer', {
     imageUrl: '',
+    uploadedLogo: false,
     fileChosen(event) {
-     this.fileToDataUrl(event, src => this.imageUrl = src);
+      this.fileToDataUrl(event, src => this.imageUrl = src);
     },
     fileToDataUrl(event, callback) {
       if (!event.target.files.length) return;
@@ -12,12 +13,15 @@ function imageViewer() {
       reader.readAsDataURL(file);
       reader.onload = () => {
         const result= reader.result;
-        // console.log(result);
         callback(result);
       }
+      this.uploadedLogo = true;
     },
-  }
-}
+    removeLogo() {
+      this.uploadedLogo = false;
+    }
+  })
+});
 
 function priceCalcHandler(prices, currencySymbol) {
   const chkLogoInput = document.getElementById('chk-logo')
