@@ -1,0 +1,137 @@
+{{- define "nav" }}
+<header>
+    <div x-data="{ open: false }" class="relative bg-white">
+      <div class="max-w-full mx-auto px-4 sm:px-6">
+        <div class="flex justify-between items-center border-b-2 border-gray-100 py-6
+          md:justify-start md:space-x-10">
+
+          <div class="flex justify-start lg:w-0 lg:flex-1">
+            <a href="/">
+              <img class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-blue-600.svg" alt="">
+            </a>
+          </div>
+
+          <div class="-mr-2 -my-2 md:hidden">
+            <button @click="open = ! open" type="button" class="inline-flex bg-white rounded-md p-2
+              items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100
+              focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+              <span class="sr-only">Open menu</span>
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+
+          <nav class="hidden md:flex space-x-10">
+            <a href="/jobs" class="text-lg font-medium text-gray-700 hover:text-gray-900">
+              Jobs
+            </a>
+          </nav>
+          <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+            {{- if $.IsSignedIn -}}
+            <!-- Profile dropdown -->
+            <div x-data="{ isProfileOpen: false }" class="ml-3 relative z-10">
+              <button x-on:click="isProfileOpen = !isProfileOpen" x-on:click.away="isProfileOpen = false"
+                type="button" class="max-w-xs bg-white text-gray-700 hover:text-gray-900 flex items-center rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <span class="sr-only">Open user menu</span>
+                <svg class="w-8 h-8 stroke-current stroke-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+              </button>
+              <div x-show="isProfileOpen"
+                x-transition:enter="transition ease-out duration-100"
+                x-transition:enter-start="transform opacity-0 scale-95"
+                x-transition:enter-end="transform opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="transform opacity-100 scale-100"
+                x-transition:leave-end="transform opacity-0 scale-95"
+                class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white
+                ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" tabindex="-1">
+                  <a href="/{{ .Role }}/{{ .UID }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">My Account</a>
+
+                  <a href="/signout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Sign out</a>
+              </div>
+            </div>
+            {{ else }}
+            <a href="/signin" class="whitespace-nowrap text-lg font-medium text-gray-700 hover:text-gray-900">
+              Sign in
+            </a>
+            {{- end }}
+
+            {{- if $.IsSignedIn -}}
+            {{- if eq $.Role "employer" }}
+            <a href="/employer/{{ .UID }}/create-job" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-xl font-medium text-white bg-blue-600 hover:bg-blue-800">
+              Post your job
+            </a>
+            {{- end }}
+            {{- else }}
+            <a href="/employer/signup" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-xl font-medium text-white bg-blue-600 hover:bg-blue-800">
+              Post your job
+            </a>
+            {{- end }}
+          </div>
+        </div>
+      </div>
+      <!-- Mobile menu -->
+      <div x-show="open" class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-10">
+        <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+          <div class="pt-5 pb-6 px-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-blue-600.svg" alt="Workflow">
+              </div>
+              <div class="-mr-2">
+                <button type="button" @click="open = ! open" class="inline-flex bg-white rounded-md
+                  p-2 items-center justify-center text-gray-400 hover:text-gray-500
+                hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset
+                  focus:ring-indigo-500">
+                  <span class="sr-only">Close menu</span>
+                  <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="py-6 px-5 space-y-6">
+            <div class="grid grid-cols-1 gap-y-4 gap-x-8">
+              <a href="/jobs" class="text-base font-medium text-gray-700 hover:text-gray-700">
+                Jobs
+              </a>
+              {{ if $.IsSignedIn -}}
+              <a href="/employer/{{ .UID }}" class="text-base font-medium text-gray-700 hover:text-gray-700">
+                My Account
+              </a>
+              {{- end -}}
+            </div>
+            <div>
+              {{ if $.IsSignedIn -}}
+              <a href="/employer/{{ .UID }}/create-job" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-800">
+                Post your job
+              </a>
+              {{- else }}
+              <a href="/employer/signup" class="w-full flex items-center justify-center px-4 py-2 border border-transparent
+                rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-800">
+                Post your job
+              </a>
+              {{- end }}
+              {{ if $.IsSignedIn -}}
+              <p class="mt-4 text-center text-base font-medium text-gray-500">
+                <a href="/signout" class="text-gray-700 hover:text-gray-900">Sign out</a>
+              </p>
+              {{- else }}
+              <p class="mt-4 text-center text-base font-medium text-gray-700">
+                Existing employer?
+                <a href="/signin" class="text-blue-600 hover:text-blue-500">
+                  Sign in
+                </a>
+              </p>
+              {{- end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  {{- end }}
