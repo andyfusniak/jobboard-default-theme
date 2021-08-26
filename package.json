@@ -6,6 +6,7 @@
     "setup": "mkdir -p public/js && cp vendor/*.js public/js && cp -r src/assets/* public/",
     "clean": "rimraf public",
     "tw:watch": "npm run setup && postcss ./src/css/tailwind.css -o ./public/css/tailwind.css --watch --verbose",
+    "tw:onchange": "onchange 'tailwind.config.js' 'src/**/*.css' 'templates/**/*.html' -- npm run tw:build",
     "tw:build": "npm run setup && postcss ./src/css/tailwind.css -o ./public/css/tailwind.css",
     "tw:prod": "npm run setup && NODE_ENV=production postcss ./src/css/tailwind.css -o ./public/css/tailwind.css"
   },
@@ -14,11 +15,12 @@
     "cssnano": "^5.0.7"
   },
   "devDependencies": {
-    "rimraf": "^3.0.2",
     "@tailwindcss/forms": "^0.3.3",
     "autoprefixer": "^10.2.1",
+    "onchange": "^7.1.0",
     "postcss": "^8.3.6",
     "postcss-cli": "^8.3.1",
+    "rimraf": "^3.0.2",
     "tailwindcss": "^2.2.6"
   }
 }
