@@ -1,6 +1,5 @@
 {{ define "title" }}Job List{{ end }}
 {{ define "content" }}
-
 <div class="max-w-7xl mx-auto relative">
   <!-- Hero Section -->
   <div class="py-20">
@@ -32,9 +31,9 @@
         </button>
       </form>
     </div>
-    {{ end }}
+    {{ end -}}
   </div>
-  <div class="py-16">
+  <div class="py-0 lg:py-16">
   {{- range .Data.PinnedJobs }}
     {{- template "job-summary" . }}
   {{- end }}
