@@ -1,5 +1,5 @@
-{{ define "title" }}Job List{{ end }}
-{{ define "content" }}
+{{- define "title"}}Job List{{ end }}
+{{- define "content"}}
 <div class="max-w-7xl mx-auto relative">
   <!-- Hero Section -->
   <div class="py-20">
@@ -14,7 +14,7 @@
         [BRITISH] - A description of someone who is the best person of one's kind.
       </p>
     </div>
-    {{- if not .IsSignedIn }}
+    {{- if not .IsSignedIn}}
     <div class="mt-10 max-w-lg mx-auto text-center px-6">
       <p class="text-base font-medium text-gray-900">Be the first to know most recent job updates</p>
       <form action="/talent/signup" method="POST" class="mt-3 sm:flex">
@@ -31,16 +31,16 @@
         </button>
       </form>
     </div>
-    {{ end -}}
+    {{- end }}
   </div>
   <div class="py-0 lg:py-16">
-  {{- range .Data.PinnedJobs }}
-    {{- template "job-summary" . }}
-  {{- end }}
+  {{- range .Data.PinnedJobs}}
+    {{- template "job-summary" .}}
+  {{- end}}
 
-  {{- range .Data.Jobs }}
-    {{- template "job-summary" . }}
-  {{- end }}
+  {{- range .Data.Jobs}}
+    {{- template "job-summary" .}}
+  {{- end}}
   </div>
 </div>
-{{ end }}
+{{- end -}}

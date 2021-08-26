@@ -1,53 +1,54 @@
-{{ define "job-summary" }}
-{{- $fgcol1 := "text-gray-600" }}
-{{- $fgcol2 := "text-gray-800" }}
-{{- if useWhiteText .HLCol }}
-{{- $fgcol1 = "text-white" }}
-{{- $fgcol2 = "text-white" }}
-{{- end }}
+{{define "job-summary"}}
+{{- $fgcol1 := "text-gray-600"}}
+{{- $fgcol2 := "text-gray-800"}}
+{{- if useWhiteText .HLCol}}
+{{- $fgcol1 = "text-white"}}
+{{- $fgcol2 = "text-white"}}
+{{- end}}
+{{timeago .CreatedAt}}
 <div class="shadow overflow-hidden px-2 my-5 sm:rounded-md sm:px-4 lg:px-0">
-  <ul {{ if isNotHighlighted .HLType }} class="hover:bg-gray-50" {{ else if isCustomHighlighted .HLType }} style="background-color: {{ .HLCol }};" {{ else if isStandardHighlighted .HLType }} class="bg-yellow-100" {{ end }}>
-    <a href="/jobs/{{ .Slug }}">
-    <li  class="block">
+  <ul {{if isNotHighlighted .HLType}} class="hover:bg-gray-50" {{else if isCustomHighlighted .HLType}} style="background-color: {{.HLCol}};" {{else if isStandardHighlighted .HLType}} class="bg-yellow-100" {{end}}>
+    <a href="/jobs/{{.Slug}}">
+    <li class="block">
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-5 items-center px-3 py-4">
           <div class="flex items-center gap-2 md:col-span-2">
-            <img class="h-12 w-12" src="/{{ .LogoURL }}" alt="logo">
+            <img class="h-12 w-12" src="/{{.LogoURL}}" alt="logo">
             <div>
-              <p class="text-lg font-medium {{ $fgcol2 -}}">{{ .Title }}</p>
+              <p class="text-lg font-medium {{$fgcol2 -}}">{{.Title}}</p>
               <div class="flex flex-col md:flex-row item-start md:items-center">
-                <p class="text-sm md:text-md {{ $fgcol1 -}}">{{ .CompanyName }}</p>
-                <p class="ml-0 md:ml-3 text-sm md:text-md {{ $fgcol1 -}}">&#163;{{ moneyK .SalaryMin }} - &#163;{{ moneyK .SalaryMax }}</p>
+                <p class="text-sm md:text-md {{$fgcol1 -}}">{{.CompanyName}}</p>
+                <p class="ml-0 md:ml-3 text-sm md:text-md {{$fgcol1 -}}">&#163;{{moneyK .SalaryMin}} - &#163;{{moneyK .SalaryMax}}</p>
               </div>
             </div>
           </div>
           <div class="hidden sm:block justify-self-start md:col-start-3 md:col-end-5 lg:col-span-1">
             <div class="flex flex-wrap gap-1">
-              {{- range .SkillsContainer.Raw }}
-                {{- with (index $.SkillsContainer.Map .) }}
-                <p class="{{ if useWhiteText $.HLCol -}}border-white {{- else -}} border-gray-800 {{- end }} border px-1 py-1 md:border-2 md:px-2 rounded text-xs md:text-base {{ $fgcol2 }}">{{ .Title }}</p>
+              {{- range .SkillsContainer.Raw}}
+                {{- with (index $.SkillsContainer.Map .)}}
+                <p class="{{if useWhiteText $.HLCol -}}border-white {{- else -}} border-gray-800 {{- end}} border px-1 py-1 md:border-2 md:px-2 rounded text-xs md:text-base {{$fgcol2}}">{{.Title}}</p>
                 {{- end -}}
-              {{ end }}
+              {{end}}
             </div>
           </div>
           <div class="md:col-span-2 lg:col-start-5 lg:col-end-6">
-            <p class="flex items-center justify-end text-sm {{ $fgcol1 }} sm:ml-6">
-              {{- if .Pinned }}
+            <p class="flex items-center justify-end text-sm {{$fgcol1}} sm:ml-6">
+              {{- if .Pinned}}
               <span class="text-xl mr-3">📌</span>
-              {{ end -}}
-              <svg class="flex-shrink-0 mr-1.5 h-5 w-5 {{ $fgcol1 }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              {{end -}}
+              <svg class="flex-shrink-0 mr-1.5 h-5 w-5 {{$fgcol1}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
               </svg>
-              {{ .Location }}
+              {{.Location}}
             </p>
             <div class="mt-2 flex flex-wrap gap-1 items-center justify-end">
-              {{ with .EmpType }}
-              {{- if .Permanent }}<p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Permanent</p>{{ end }}
-              {{- if .Temporary }}<p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Temporary</p>{{ end }}
-              {{- if .FullTime }}<p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Full-time</p>{{ end }}
-              {{- if .PartTime }}<p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Part-time</p>{{ end }}
-              {{- if .Contract }}<p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Contract</p>{{ end }}
-              {{- if .PerDiem }}<p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">PerDiem</p>{{ end }}
-              {{- end }}
+              {{with .EmpType}}
+              {{- if .Permanent}}<p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Permanent</p>{{end}}
+              {{- if .Temporary}}<p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Temporary</p>{{end}}
+              {{- if .FullTime}}<p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Full-time</p>{{end}}
+              {{- if .PartTime}}<p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Part-time</p>{{end}}
+              {{- if .Contract}}<p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Contract</p>{{end}}
+              {{- if .PerDiem}}<p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">PerDiem</p>{{end}}
+              {{- end}}
             </div>
           </div>
         </div>
@@ -55,4 +56,4 @@
     </li>
   </ul>
 </div>
-{{ end }}
+{{end}}
