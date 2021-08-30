@@ -252,7 +252,6 @@ APPLICATION ERRROR - Check the server logs
             </div>
             <label for="logo"
               class="cursor-pointer mt-2 sm:mt-0 px-1 py-0 sm:px-2 sm:py-1 bg-white rounded-md font-medium ring-1 ring-blue-600 text-blue-600 hover:text-blue-700 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-700">
-<<<<<<< Updated upstream
 
               <template x-if="$store.imageViewer.uploadSelected">
               <span class="text-sm">Change logo</span>
@@ -263,13 +262,6 @@ APPLICATION ERRROR - Check the server logs
               </template>
 
               <input @change="$store.imageViewer.fileChosen(event)" id="logo" name="logo" type="file" accept="image/*" class="sr-only" />
-=======
-            <span class="text-sm">Choose logo</span>
-
-            <template x-if="true">
-            <input @change="$store.imageViewer.fileChosen(event)" id="logo" name="logo" type="file" accept="image/*" />
-            </template>
->>>>>>> Stashed changes
             </label>
           </div>
         </div>
