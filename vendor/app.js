@@ -23,7 +23,7 @@ document.addEventListener('alpine:init', () => {
       this.uploadSelected = false;
       this.chkLogo = false;
     }
-  })
+  });
 });
 
 function priceCalcHandler(prices, currencySymbol) {
