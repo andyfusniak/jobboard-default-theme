@@ -1,7 +1,8 @@
 document.addEventListener('alpine:init', () => {
   Alpine.store('imageViewer', {
     imageUrl: '',
-    uploadedLogo: false,
+    uploadSelected: false,
+    chkLogo: document.getElementById('chk-logo').checked,
     fileChosen(event) {
       this.fileToDataUrl(event, src => this.imageUrl = src);
     },
@@ -15,10 +16,12 @@ document.addEventListener('alpine:init', () => {
         const result= reader.result;
         callback(result);
       }
-      this.uploadedLogo = true;
+      this.uploadSelected = true;
+      this.chkLogo = true;
     },
     removeLogo() {
-      this.uploadedLogo = false;
+      this.uploadSelected = false;
+      this.chkLogo = false;
     }
   })
 });

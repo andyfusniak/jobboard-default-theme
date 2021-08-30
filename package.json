@@ -6,7 +6,7 @@
     "clean": "rimraf public",
     "setup": "mkdir -p public/js && cp vendor/*.js public/js && cp -r src/assets/* public/",
     "tw:watch": "npm run setup && postcss ./src/css/tailwind.css -o ./public/css/tailwind.css --watch --verbose",
-    "tw:onchange": "npm run clean && npm run tw:build && onchange 'tailwind.config.js' 'src/**/*.css' 'templates/**/*.html' -- npm run tw:build",
+    "tw:onchange": "npm run clean && npm run tw:build && onchange 'vendor/**/*.js' 'tailwind.config.js' 'src/**/*.css' 'templates/**/*.html' -- npm run tw:build",
     "tw:build": "npm run setup && postcss ./src/css/tailwind.css -o ./public/css/tailwind.css",
     "tw:prod": "npm run setup && NODE_ENV=production postcss ./src/css/tailwind.css -o ./public/css/tailwind.css"
   },
