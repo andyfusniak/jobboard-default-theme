@@ -7,7 +7,7 @@
     <h3 class="mt-2 font-semibold text-xl sm:text-2xl text-gray-600">Create your account</h3>
   </div>
 
-  {{ with .Errors.Form }}
+  {{- with .Errors.Form }}
     <span class="text-error">{{ . }}</span>
   {{ end }}
 
@@ -19,12 +19,11 @@
       <input id="email" name="email" type="input" value="{{ .Data.Email }}"
         autocomplete="email" required
         class="formInput{{ if .Errors.Email }} input-error{{ end }}" placeholder="JohnDoe@email.com">
-
       {{ with .Errors.Email }}
       <div class="text-error">
         {{ . }}
       </div>
-      {{ end }}
+      {{ end -}}
     </div>
 
     <div class="flex justify-center">
@@ -34,5 +33,4 @@
     </div>
   </form>
 </div>
-
 {{ end }}

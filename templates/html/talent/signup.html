@@ -1,16 +1,12 @@
 {{ define "title" }}Talent : Sign up{{ end }}
 {{ define "content" }}
-
 <div class="max-w-xl mx-auto px-6 lg:px-0">
   <div class="py-16 text-center md:text-left">
-    <h2 class="font-bold text-2xl sm:text-4xl text-blue-600">Start hiring tech talents</h2>
     <h3 class="mt-2 font-semibold text-xl sm:text-2xl text-gray-600">Create your account</h3>
   </div>
-
   {{ with .Errors.Form }}
     <span class="text-error">{{ . }}</span>
   {{ end }}
-
   <form action="/talent/signup" method="POST" class="space-y-6">
     <div>
       <label for="email" class="block mb-2 text-base sm:text-lg font-semibold text-gray-800">

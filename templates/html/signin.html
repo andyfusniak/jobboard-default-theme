@@ -7,7 +7,7 @@
     <h3 class="mt-2 font-semibold text-xl sm:text-2xl text-gray-600">Get magic link by email</h3>
   </div>
 
-  {{ with .Errors.Form }}
+  {{- with .Errors.Form }}
     <span class="text-error">{{ . }}</span>
   {{ end }}
 
@@ -22,9 +22,9 @@
           autocomplete="email" required placeholder="JohnDoe@email.com">
       </div>
 
-      {{ with .Errors.Email }}
+      {{- with .Errors.Email }}
       <span class="text-error">{{ . }}</span>
-      {{ end }}
+      {{- end }}
     </div>
 
     <div class="flex justify-center">

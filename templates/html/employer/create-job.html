@@ -26,15 +26,16 @@
 APPLICATION ERRROR - Check the server logs
 {{- end }}
 
-<div class="max-w-3xl mx-auto w-full bg-gray-50 py-10 my-8 px-8 rounded-sm">
-  <div>
-    <h2 class="text-blue-600 font-semibold text-4xl">
-      Hire Code Pyjamas.
-    </h2>
-    <h2 class="text-blue-900 font-medium text-2xl mt-3">Create a job post to hire the best.</h2>
-  </div>
 
-  <form method="POST" action="{{ .Page.Action }}" enctype="multipart/form-data" class="mt-12 divide-y divide-gray-200">
+<div class="max-w-3xl mx-auto mt-10 lg:mt-20 px-4 md:px-0">
+  <h2 class="text-blue-600 font-semibold text-4xl">
+    Hire Code Pyjamas.
+  </h2>
+  <h2 class="text-blue-900 font-medium text-2xl mt-3">Create a job post to hire the best.</h2>
+</div>
+
+<div class="max-w-3xl mx-auto w-full bg-gray-50 py-10 my-8 px-8 rounded-sm">
+  <form method="POST" action="{{ .Page.Action }}" enctype="multipart/form-data">
     <!-- Salary Currency -->
     <input type="hidden" name="salary-currency" value="GBP" />
     {{- if eq .Errors.SalaryCurrency "inputEmpty" -}}
@@ -43,7 +44,7 @@ APPLICATION ERRROR - Check the server logs
     <span class="text-error">Invalid currency code</span>
     {{ end -}}
     <div>
-      <div class="py-6">
+      <div class="py-4">
         <h3 class="text-xl tracking-tighter font-semibold text-blue-900">Job Details</h3>
       </div>
 
@@ -77,11 +78,11 @@ APPLICATION ERRROR - Check the server logs
           <div class="flex items-center">
             <input name="remote" type="checkbox" value="remote" {{ if .Data.Remote.RemoteWork -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5
             text-blue-600 border-gray-300 rounded" />
-            <label class="ml-3 block text-base font-normal text-gray-500">Remote</label>
+            <label class="ml-1 block text-base font-normal text-gray-500">Remote</label>
           </div>
           <div class="flex items-center">
             <input name="remote" type="checkbox" value="temp_remote" {{ if .Data.Remote.TempRemote -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
-            <label class="ml-3 block text-base font-normal text-gray-500">Temporarily Remote</label>
+            <label class="ml-1 block text-base font-normal text-gray-500">Temporarily Remote</label>
           </div>
         </div>
       </fieldset>
@@ -92,37 +93,37 @@ APPLICATION ERRROR - Check the server logs
         <div class="space-y-4 sm:space-y-0 sm:flex sm:gap-4 mb-6">
           <div class="flex items-center">
             <input name="emp-type" type="checkbox" value="temporary" {{ if .Data.EmpType.Temporary -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
-            <div class="ml-3">
+            <div class="ml-1">
               <label class="font-normal text-gray-500">Temporary</label>
             </div>
           </div>
           <div class="flex items-center">
             <input name="emp-type" type="checkbox" value="permanent" {{ if .Data.EmpType.Permanent -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
-            <div class="ml-3">
+            <div class="ml-1">
               <label class="font-normal text-gray-500">Permanent</label>
             </div>
           </div>
           <div class="flex items-center">
             <input name="emp-type" type="checkbox" value="full_time" {{ if .Data.EmpType.FullTime -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
-            <div class="ml-3">
+            <div class="ml-1">
               <label class="font-normal text-gray-500">Full Time</label>
             </div>
           </div>
           <div class="flex items-center">
             <input name="emp-type" type="checkbox" value="part_time" {{ if .Data.EmpType.PartTime -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
-            <div class="ml-3">
+            <div class="ml-1">
               <label class="font-normal text-gray-500">Part Time</label>
             </div>
           </div>
           <div class="flex items-center">
             <input name="emp-type" type="checkbox" value="contract" {{ if .Data.EmpType.Contract -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
-            <div class="ml-3">
+            <div class="ml-1">
               <label class="font-normal text-gray-500">Contract</label>
             </div>
           </div>
           <div class="flex items-center">
             <input name="emp-type" type="checkbox" value="per_diem" {{ if .Data.EmpType.PerDiem -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
-            <div class="ml-3">
+            <div class="ml-1">
               <label class="font-normal text-gray-500">Per Day</label>
             </div>
           </div>
@@ -186,7 +187,7 @@ APPLICATION ERRROR - Check the server logs
       <div class="my-6 px-4 py-2 border border-blue-200 border-dotted">
         <h4 class="text-lg font-semibold text-blue-900">Choose Skills / Tech Stack</h4>
         <p class="mb-3 text-gray-500">
-          This will help tech talents to filter your job by skills or tech stack. Choose up to 4 tags.
+          This will help tech talents to filter your job by skills or tech stack. Choose up to 5 tags.
         </p>
         {{- with .Data.SkillsContainer.TagSet }}
         {{- range .Groups }}
@@ -194,7 +195,7 @@ APPLICATION ERRROR - Check the server logs
           <legend class="font-medium text-base text-blue-900">{{ .Title }}</legend>
           <div class="space-y-4 sm:space-y-0 sm:flex sm:items-center sm:gap-4">
             {{ range .Tags }}
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-1">
               <input type="checkbox" name="skills" value="{{ .Name }}" {{ if .Checked  -}}checked {{ end -}} class="focus:ring-blue-500 h-5 w-5
             text-blue-600 border-gray-300 rounded">
               <label class="font-normal text-gray-500">{{ .Title }} </label>
@@ -220,7 +221,7 @@ APPLICATION ERRROR - Check the server logs
         {{- end }}
       </div>
     </div>
-
+    <hr>
     <div class="pt-2 py-6 md:pt-8">
       <div class="py-6">
         <h3 class="text-xl text-blue-900 tracking-tighter font-semibold">Your company Details</h3>
@@ -297,7 +298,7 @@ APPLICATION ERRROR - Check the server logs
         {{- end }}
       </div>
     </div>
-
+    <hr>
     <!-- Job Ad features Checkboxes -->
     {{- if eq .Data.Mode "create" }}
     <fieldset class="py-6 pt-8">
@@ -332,7 +333,6 @@ APPLICATION ERRROR - Check the server logs
         <div class="flex items-center">
           <input id="chk-hl-standard" name="chk-hl-standard" type="checkbox" {{ if .Data.ChkHLStandard  -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded">
           <div class="ml-3">
-            DATA = {{ .Data.ChkHLStandard }}
             <label for="chk-hl-standard" class="font-medium text-blue-600">
               Highlight job post in Yellow -  {{ (index .Page.Prices "standardHighlightRecurring").UnitAmountDisplay }}
             </label>
@@ -365,7 +365,7 @@ APPLICATION ERRROR - Check the server logs
     </fieldset>
     {{- end }}
 
-    <div class="px-4 py-3 text-center">
+    <div class="mt-4 px-4 py-3 text-center">
       {{- if eq .Data.Mode "create" }}
       <button id="create-btn" type="submit" class="inline-flex justify-center py-4 px-6 border
         border-transparent shadow-sm text-lg font-medium rounded-md text-white
