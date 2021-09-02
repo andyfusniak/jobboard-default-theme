@@ -2,7 +2,42 @@
 {{ define "content" }}
 <div class="max-w-7xl mx-auto">
   <div class="text-center mt-16 px-8">
-    <h1 class="text-2xl font-semibold text-blue-700 tracking-tighter">Welcome to Code Pyjamas! &#x1F44B;</h1>
+    <h1 class="text-xl md:text-3xl font-semibold text-blue-700 tracking-tighter">Welcome! &#x1F44B;</h1>
+  </div>
+</div>
+
+<div class="max-w-3xl mx-auto">
+  <div class="mt-12 bg-gray-50 px-6 py-6">
+    <form action="#">
+      <fieldset class="py-4">
+        <legend class="font-medium text-lg md:text-xl text-blue-900">What are your tech skills?</legend>
+        <p class="text-gray-600 text-base md:text-lg">This will help us matching the right jobs to your skills straight to your inbox.</p>
+
+        <div class="mt-7 space-y-3 sm:space-y-0 sm:flex sm:gap-4 mb-6">
+          <div class="flex items-center">
+            <input name="vue" type="checkbox" value="vue" class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
+            <div class="ml-1">
+              <label class="font-normal text-gray-500">Vue</label>
+            </div>
+          </div>
+
+          <div class="flex items-center">
+            <input name="react" type="checkbox" value="react" class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
+            <div class="ml-1">
+              <label class="font-normal text-gray-500">React</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <div class="mt-4 px-4 py-3 text-center">
+        <button type="submit" class="inline-flex justify-center py-1 px-3 sm:py-2 sm:px-4 border
+          border-transparent shadow-sm text-base sm:text-lg font-medium rounded-md text-white
+          bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2
+          focus:ring-offset-2 focus:ring-blue-500">
+          Save
+        </button>
+      </div>
+    </form>
   </div>
 </div>
 {{ end }}
