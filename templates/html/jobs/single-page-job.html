@@ -1,4 +1,4 @@
-{{ define "title" }}Email Sent{{ end }}
+{{ define "title" }}Code Pyjamas | Job{{ end }}
 {{ define "content" }}
 
 {{ with .Data }}
@@ -27,7 +27,7 @@
     <div class="space-y-6 lg:col-start-1 lg:col-span-2">
       <p>{{ .CreatedAt.Format "2 Jan 06" }}</p>
       Job Description
-      <div>{{markdown .Description}}</div>
+      <div class="jd">{{markdown .Description}}</div>
       <div class="flex justify-center">
         <a href="#" class="inline-flex items-center justify-center px-8 py-4 border border-transparent
           text-lg font-medium rounded-md shadow-sm text-white uppercase bg-blue-600 hover:bg-blue-700
@@ -66,6 +66,5 @@
     </div>
   </div>
 </div>
-
 {{ end }}
 {{ end }}
