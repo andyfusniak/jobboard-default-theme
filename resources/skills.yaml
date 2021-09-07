@@ -3,34 +3,154 @@ tagSet:
   name: skills
   groups:
     - group:
-        name: backend
-        title: Backend Skills
-        description: Backend development skills
+        name: platforms
+        title: Platforms
+        description: Platforms
         tags:
           - tag:
-              name: 'golang'
-              aliases: ['go']
-              title: 'Go'
-              description: Go programming language
-          - tag:
-              name: 'c-sharp'
-              aliases: ['c-sharp']
-              title: 'C'
-              description: C# langauge
-          - tag:
               name: nodejs
-              aliases: ['node', 'node.js']
-              title: 'Node.js'
-              description: |
-                Node.js is a backend _tech_ for *wibble* wobble.
-                hello world
+              title: Node.js
+              description: Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+          - tag:
+              name: deno
+              title: Deno
+              description: A secure runtime for JavaScript and TypeScript.
     - group:
-        name: frontend
-        title: Frontend Skills
-        description: Developer frontend skills
+        name: langs
+        title: Programming Languages
+        description: Programming Languages
         tags:
           - tag:
               name: 'javascript'
               title: JavaScript
               description: ECMAScript (JavaScript/JS) and its various dialects/implementations
               aliases: ['js']
+          - tag:
+              name: 'typescript'
+              title: TypeScript
+              description: TypeScript is a strongly typed programming language which builds on JavaScript giving you better tooling at any scale.
+              aliases: ['ts']
+    - group:
+        name: frameworks
+        title: Frameworks & Libraries
+        description: Frameworks & Libraries
+        tags:
+          - tag:
+              name: reactjs
+              title: React
+              description: A JavaScript library for building user interfaces
+              aliases: ['react']
+          - tag:
+              name: nextjs
+              title: Next.js
+              description: >-
+                Next.js gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed.
+          - tag:
+              name: vuejs
+              title: Vue
+              description: The Progressive JavaScript Framework
+              aliases: ['vue.js', 'vuejs']
+          - tag:
+              name: nuxtjs
+              title: Nuxt.js
+              description: >-
+                An open source framework making web development simple and powerful.
+          - tag:
+              name: angular
+              title: Angular
+              description: The modern web developer's platform
+          - tag:
+              name: alpinejs
+              title: Alpine.js
+              description: Your new, lightweight, JavaScript framework.
+          - tag:
+              name: svelte
+              title: Svelte
+              description: Cybernetically enhanced web apps
+    - group:
+        name: databases
+        title: Databases
+        description: Data stores including relational databases and NoSQL databases.
+        tags:
+          - tag:
+              name: postgres
+              title: PostgreSQL
+              description: PostgreSQL
+          - tag:
+              name: mysql
+              title: MySQL
+              description: MySQL Database Service is a fully managed database service to deploy cloud-native applications.
+          - tag:
+              name: sqlite
+              title: SQLite
+              description: SQLite implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.
+          - tag:
+              name: mongodb
+              title: MongoDB
+              description: MongoDB.
+          - tag:
+              name: graphql
+              title: GraphQL
+              description: GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data.
+          - tag:
+              name: redis
+              title: Redis
+              description: Redis is a NoSQL key-value database. Redis stores data in RAM, which is a key feature of this storage.
+          - tag:
+              name: cassandra
+              title: Cassandra
+              description: Apache Cassandra is a non-relational fault-tolerant distributed DBMS.
+    - group:
+        name: infrastructure
+        title: Infrastructure
+        description: Backend Infrastructure
+        tags:
+          - tag:
+              name: aws
+              title: AWS
+              description: Amazon Web Services
+          - tag:
+              name: gcp
+              title: GCP
+              description: Google Cloud Platform
+          - tag:
+              name: azure
+              title: Azure
+              description: Microsoft Azure
+          - tag:
+              name: firebase
+              title: Firebase
+              description: Firebase helps you build and run successful apps.
+          - tag:
+              name: heroku
+              title: Heroku
+              description: 'Heroku: Cloud Application Platform'
+          - tag:
+              name: digitial-ocean
+              title: Digital Ocean
+              description: DigitalOcean – The developer cloud
+    - group:
+        name: buildtools
+        title: Build tools
+        description: Build Tools
+        tags:
+          - tag:
+              name: webpack
+              title: Webpack
+              description: Webpack
+          - tag:
+              name: rollup
+              title: rollup.js
+              description: Rollup is a module bundler for JavaScript which compiles small pieces of code into something larger and more complex, such as a library or application.
+          - tag:
+              name: babel
+              title: Babel
+              description: Babel is a JavaScript compiler.
+          - tag:
+              name: grunt
+              title: Grunt
+              description: Grunt
+          - tag:
+              name: gulp
+              title: Gulp
+              description: Grunt
