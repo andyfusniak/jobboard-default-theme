@@ -20,30 +20,30 @@
     @apply border-red-500;
   }
   .jd h1 {
-    @apply text-4xl font-bold text-gray-700 leading-relaxed;
+    @apply my-2 text-4xl font-bold text-gray-700 leading-relaxed;
   }
   .jd h2 {
-    @apply text-3xl font-bold text-gray-700 leading-relaxed;
+    @apply my-2 text-3xl font-bold text-gray-700 leading-relaxed;
   }
   .jd h3 {
-    @apply text-2xl font-bold text-gray-700 leading-9;
+    @apply my-2 text-2xl font-bold text-gray-700 leading-9;
   }
   .jd h4 {
-    @apply text-xl font-bold text-gray-700 leading-9;
+    @apply my-2 text-xl font-bold text-gray-700 leading-9;
   }
   .jd h5 {
-    @apply text-lg font-bold text-gray-700 leading-9;
+    @apply my-2 text-lg font-bold text-gray-700 leading-9;
   }
   .jd h6 {
-    @apply font-bold text-gray-700 leading-9;
+    @apply my-2 font-bold text-gray-700 leading-9;
   }
   .jd ul, li, p {
     @apply leading-relaxed text-base md:text-lg text-gray-700;
   }
   .jd ul > li {
-    @apply list-disc;
+    @apply list-disc list-inside;
   }
   .jd ol > li {
-    @apply list-decimal;
+    @apply list-decimal list-inside;
   }
 }

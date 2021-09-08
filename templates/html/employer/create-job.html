@@ -71,58 +71,58 @@ APPLICATION ERRROR - Check the server logs
         <div>
           <legend class="font-medium text-base text-blue-900">Is this role remote?</legend>
           <p class="text-sm text-gray-400">
-            Choose Temporarily Remote if you expect the Talents to return to the office later
+            Choose Temporarily Remote if you expect the Talents to return to the office later.
           </p>
         </div>
         <div class="mt-4 space-y-4 sm:space-y-0 sm:flex sm:gap-4">
           <div class="flex items-center">
-            <input name="remote" type="checkbox" value="remote" {{ if .Data.Remote.RemoteWork -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5
+            <input name="remote" type="checkbox" value="remote" {{ if .Data.Remote.RemoteWork -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4
             text-blue-600 border-gray-300 rounded" />
             <label class="ml-1 block text-base font-normal text-gray-500">Remote</label>
           </div>
           <div class="flex items-center">
-            <input name="remote" type="checkbox" value="temp_remote" {{ if .Data.Remote.TempRemote -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
+            <input name="remote" type="checkbox" value="temp_remote" {{ if .Data.Remote.TempRemote -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
             <label class="ml-1 block text-base font-normal text-gray-500">Temporarily Remote</label>
           </div>
         </div>
       </fieldset>
 
       <!-- Type of employment -->
-      <fieldset class="py-6">
+      <fieldset class="py-4">
         <legend class="font-medium text-base text-blue-900">Type of Employment</legend>
-        <div class="space-y-4 sm:space-y-0 sm:flex sm:gap-4 mb-6">
+        <div class="space-y-4 sm:space-y-0 sm:flex sm:flex-wrap  sm:gap-4 mb-6">
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="temporary" {{ if .Data.EmpType.Temporary -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
+            <input name="emp-type" type="checkbox" value="temporary" {{ if .Data.EmpType.Temporary -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
             <div class="ml-1">
               <label class="font-normal text-gray-500">Temporary</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="permanent" {{ if .Data.EmpType.Permanent -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
+            <input name="emp-type" type="checkbox" value="permanent" {{ if .Data.EmpType.Permanent -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
             <div class="ml-1">
               <label class="font-normal text-gray-500">Permanent</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="full_time" {{ if .Data.EmpType.FullTime -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded">
+            <input name="emp-type" type="checkbox" value="full_time" {{ if .Data.EmpType.FullTime -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
             <div class="ml-1">
               <label class="font-normal text-gray-500">Full Time</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="part_time" {{ if .Data.EmpType.PartTime -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" type="checkbox" value="part_time" {{ if .Data.EmpType.PartTime -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
             <div class="ml-1">
               <label class="font-normal text-gray-500">Part Time</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="contract" {{ if .Data.EmpType.Contract -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" type="checkbox" value="contract" {{ if .Data.EmpType.Contract -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
             <div class="ml-1">
               <label class="font-normal text-gray-500">Contract</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="per_diem" {{ if .Data.EmpType.PerDiem -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" type="checkbox" value="per_diem" {{ if .Data.EmpType.PerDiem -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
             <div class="ml-1">
               <label class="font-normal text-gray-500">Per Day</label>
             </div>
@@ -131,7 +131,7 @@ APPLICATION ERRROR - Check the server logs
       </fieldset>
 
       <!-- Min, Max Salary and Salary Unit -->
-      <div class="py-4 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-8">
+      <div class="py-3 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-8">
         <div class="sm:col-span-3">
           <label for="salary-min" class="font-medium text-base text-blue-900 block">
             Minimum Salary in GBP
@@ -184,28 +184,42 @@ APPLICATION ERRROR - Check the server logs
       </div>
 
       <!-- Skill sets -->
-      <div class="my-6 px-4 py-2 border border-blue-200 border-dotted">
+      <div x-data="{ open: false }" class="my-6 px-4 py-2 border border-blue-200 border-dotted">
         <h4 class="text-lg font-semibold text-blue-900">Choose Skills / Tech Stack</h4>
-        <p class="mb-3 text-gray-500">
+        <p class="mb-3 text-sm text-gray-400">
           This will help tech talents to filter your job by skills or tech stack. Choose up to 5 tags.
         </p>
-        {{- with .Data.SkillsContainer.TagSet }}
-        {{- range .Groups }}
-        <fieldset class="py-2">
-          <legend class="font-medium text-base text-blue-900">{{ .Title }}</legend>
-          <div class="space-y-4 sm:space-y-0 sm:flex sm:items-center sm:gap-4">
-            {{ range .Tags }}
-            <div class="flex items-center gap-1">
-              <input type="checkbox" name="skills" value="{{ .Name }}" {{ if .Checked  -}}checked {{ end -}} class="focus:ring-blue-500 h-5 w-5
-            text-blue-600 border-gray-300 rounded">
-              <label class="font-normal text-gray-500">{{ .Title }} </label>
+        <button @click="open = ! open" type="button" class="py-3 px-2 w-full bg-white flex items-center justify-between text-sm text-gray-500 hover:text-gray-500 border-2 border-gray-200 rounded" aria-controls="filter-section-0">
+          <span class="font-medium text-gray-500">
+            Choose Skills / Tech Stack
+          </span>
+          <span class="ml-6 flex items-center">
+            <svg x-show="!open" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+            </svg>
+            <svg x-show="open" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
+            </svg>
+          </span>
+        </button>
+        <div x-show="open" class="pt-6 bg-white py-3 px-2" id="filter-section-0">
+          {{- with .Data.SkillsContainer.TagSet }}
+          {{- range .Groups }}
+          <fieldset class="py-2">
+            <legend class="font-medium text-base text-blue-900">{{ .Title }}</legend>
+            <div class="space-y-4 sm:space-y-0 sm:flex sm:flex-wrap sm:items-center sm:gap-4">
+              {{ range .Tags }}
+              <div class="flex items-center gap-1">
+                <input type="checkbox" name="skills" value="{{ .Name }}" {{ if .Checked  -}}checked {{ end -}} class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+                <label class="font-normal text-gray-500">{{ .Title }} </label>
+              </div>
+              {{ end -}}
             </div>
-            {{ end -}}
-          </div>
-        </fieldset>
-        {{ end -}}
-        {{ end -}}
-        <p class="mt-2 text-gray-500 text-base">Can't find your tech stack? <a href="#" class="text-blue-900 text-base">Contact us</a></p>
+          </fieldset>
+          {{ end -}}
+          {{ end -}}
+          <p class="mt-4 text-gray-500 text-base">Can't find your tech stack? <a href="#" class="text-blue-900 text-base">Contact us</a></p>
+        </div>
       </div>
 
       <!-- Job Description -->
