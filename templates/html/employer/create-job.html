@@ -292,8 +292,9 @@ APPLICATION ERRROR - Check the server logs
           * Company name
         </label>
         <input type="text" name="company-name" value="{{ .Data.CompanyName }}" class="formInput {{- if .Errors.CompanyName }} input-error{{ end }}" />
+        <p class="mb-1 text-sm text-gray-400">Do not include Ltd., Inc, etc.</p>
         {{- if eq .Errors.CompanyName "inputEmpty" }}
-        <span class="text-error">Enter the company name</span>
+        <span class="text-error">Enter your company name</span>
         {{- else if eq .Errors.CompanyName "inputInvalid" }}
         <span class="text-error">Upper and lower case a to z including apostrophe only</span>
         {{- end }}
@@ -304,11 +305,12 @@ APPLICATION ERRROR - Check the server logs
         <label for="apply-url" class="font-medium text-base text-blue-900 block">
           * How to apply
         </label>
-        <input type="text" name="apply-url" value="{{ .Data.ApplyURL }}" placeholder="How to apply (Email or URL)" class="formInput {{- if .Errors.ApplyURL }} input-error{{ end }}" />
+        <input type="text" name="apply-url" value="{{ .Data.ApplyURL }}" placeholder="Apply URL" class="formInput {{- if .Errors.ApplyURL }} input-error{{ end }}" />
+        <p class="mb-1 text-sm text-gray-400">Include https in your apply link. For example 'https://www.acme.com/apply'</p>
         {{- if eq .Errors.ApplyURL "inputEmpty" }}
-        <span class="text-error">Enter the company website</span>
+        <span class="text-error">Enter an apply url</span>
         {{- else if eq .Errors.ApplyURL "inputInvalid" }}
-        <span class="text-error">Invalid url</span>
+        <span class="text-error">Invalid url - 'https' is required</span>
         {{- end }}
       </div>
     </div>
