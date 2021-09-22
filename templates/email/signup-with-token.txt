@@ -1,8 +1,9 @@
-{{ define "content" }}
-<h1>Signup Confirmation</h1>
+{{- define "content"}}
+Signup Confirmation
+===================
 
 Please confirm your signup by clicking the link below.
 
 {{ .SignUpConfirmationLink }}
 
-{{ end }}
+{{- end }}
