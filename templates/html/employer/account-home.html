@@ -1,5 +1,10 @@
 {{ define "title" }}Employer Account Home{{ end }}
 {{ define "content" }}
+
+<form action="/employer/{{ .UID }}/stripe-portal" method="POST">
+  <button type="submit">Manage Billing</button>
+</form>
+
 <div class="max-w-7xl mx-auto">
   <div class="text-center mt-16 px-8">
     <h1 class="text-xl md:text-3xl font-semibold text-blue-700 tracking-tighter">Welcome to Code Pyjamas! &#x1F44B;</h1>
