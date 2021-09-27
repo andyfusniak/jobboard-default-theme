@@ -7,7 +7,7 @@
 {{- end}}
 <div class="shadow overflow-hidden px-2 my-5 sm:rounded-md sm:px-4 lg:px-0">
   <ul>
-    <li {{if isNotHighlighted .HLType}}{{else if isCustomHighlighted .HLType -}} style="background-color: {{.HLCol}};" {{- else if isStandardHighlighted .HLType -}} class="bg-yellow-100"{{end}}>
+    <li {{if isNotHighlighted .HLType}}{{else if isCustomHighlighted .HLType -}} style="background-color: {{hlcol .HLCol}};" {{- else if isStandardHighlighted .HLType -}} class="bg-yellow-100"{{end}}>
       <a href="/jobs/{{.Slug}}">
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-5 items-center px-3 py-4">
           <div class="flex items-center gap-5 md:col-span-2">

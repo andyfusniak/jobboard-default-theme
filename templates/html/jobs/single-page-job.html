@@ -30,7 +30,7 @@
     <div class="space-y-6 lg:col-start-1 lg:col-span-2">
       <p>{{ .CreatedAt.Format "2 Jan 06" }}</p>
       <hr>
-      <div class="jd">{{markdown .Description}}</div>
+      <div class="jd">{{unescapeHTML .HTML}}</div>
       <div class="flex justify-center">
         <a href="#" class="inline-flex items-center justify-center px-4 py-2 md:px-8 md:py-4 border border-transparent
           text-lg font-medium rounded-md shadow-sm text-white uppercase bg-blue-600 hover:bg-blue-700
