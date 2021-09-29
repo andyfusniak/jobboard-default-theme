@@ -134,7 +134,7 @@ APPLICATION ERRROR - Check the server logs
       <div class="py-3 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-8">
         <div class="sm:col-span-3">
           <label for="salary-min" class="font-medium text-base text-blue-900 block">
-            Minimum Salary in GBP
+            * Minimum Salary in GBP
           </label>
           <div class="mt-1">
             <input type="number" name="salary-min" value="{{ .Data.SalaryMin }}" class="formInput {{ if .Errors.SalaryMin }} input-error{{ end }}" placeholder="45000" />
@@ -148,7 +148,7 @@ APPLICATION ERRROR - Check the server logs
 
         <div class="sm:col-span-3">
           <label for="salary-max" class="font-medium text-base text-blue-900 block">
-            Maximum Salary in GBP
+            * Maximum Salary in GBP
           </label>
           <div class="mt-1">
             <input type="number" name="salary-max" value="{{ .Data.SalaryMax }}" class="formInput {{- if .Errors.SalaryMax }} input-error{{ end }}" placeholder="75000" />
@@ -251,7 +251,7 @@ APPLICATION ERRROR - Check the server logs
               <template x-if="$store.imageViewer.uploadSelected">
                 <div class="relative">
                   <img :src="$store.imageViewer.imageUrl" class="inline-block object-cover h-24 w-24 rounded-md" />
-                  <button @click="$store.imageViewer.removeLogo()" type="button" class="absolute top-0 left-0 right-0 bg-gray-200 text-gray-800 py-1 px-2 opacity-90 hover:bg-gray-300">x</button>
+                  <button @click="$store.imageViewer.removeLogo()" type="button" class="absolute top-0 left-0 right-0 bg-red-600 text-white -m-2 h-6 w-6 rounded-full opacity-90 hover:bg-red-400">x</button>
                 </div>
               </template>
               <template x-if="! $store.imageViewer.uploadSelected">
@@ -276,7 +276,7 @@ APPLICATION ERRROR - Check the server logs
               <span class="text-sm">Choose logo</span>
               </template>
 
-              <input @change="$store.imageViewer.fileChosen(event)" id="logo" name="logo" type="file" accept="image/*" class="sr-only" />
+              <input @change="$store.imageViewer.fileChosen(event)" id="logo" x-ref="logoInput" name="logo" type="file" accept="image/*" class="sr-only"/>
             </label>
           </div>
         </div>

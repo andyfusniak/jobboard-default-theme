@@ -22,6 +22,7 @@ document.addEventListener('alpine:init', () => {
     removeLogo() {
       this.uploadSelected = false;
       this.chkLogo = false;
+      this.$refs.logoInput.value = '';
     }
   });
 });
