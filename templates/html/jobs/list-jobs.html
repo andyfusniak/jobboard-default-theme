@@ -3,20 +3,19 @@
 <div class="max-w-7xl mx-auto">
   <!-- Hero Section -->
   <div class="py-20 lg:py-24">
-    <div>
-      <h1 class="mb-4 text-3xl lg:text-6xl font-bold text-center text-gray-700">JavaScript Jobs for</h1>
-      <h2 class="text-4xl lg:text-6xl font-bold text-center tracking-tight">
-        <span class="text-blue-600">Code
-          <span class="text-xl lg:text-3xl inline-block line-through text-gray-600 origin-center transform rotate-12">Cat's</span>
-          Pyjamas
-        </span>
-      </h2>
-      <p class="text-base text-center text-gray-500 mt-3">
-        [BRITISH] - A description of someone who is the best person of one's kind.
-      </p>
-    </div>
+    <h1 class="mb-4 text-3xl lg:text-6xl font-bold text-center text-gray-700">JavaScript Jobs for</h1>
+    <h2 class="text-4xl lg:text-6xl font-bold text-center tracking-tight">
+      <span class="text-blue-600">Code
+        <span class="text-xl lg:text-3xl inline-block line-through text-gray-600 origin-center transform rotate-12">Cat's</span>
+        Pyjamas
+      </span>
+    </h2>
+    <p class="max-w-md lg:max-w-2xl mx-auto px-6 text-sm sm:text-base text-center text-gray-500 mt-3">
+      [BRITISH] - A description of someone who is the best person of one's kind.
+    </p>
+
     {{- if not .IsSignedIn}}
-    <div class="mt-10 max-w-lg mx-auto text-center px-6">
+    <div class="mt-10 max-w-md mx-auto text-center px-6">
       <p class="text-base font-medium text-gray-900">Be the first to know most recent job updates</p>
       <form action="/talent/signup" method="POST" class="mt-3 sm:flex">
         <input type="hidden" name="fail-url" value="/">
