@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.7.0 (Wed, 13 Oct 2021)
++ Email display on profile dropdown navbar
++ Employer account home shows logo using LogoURL
++ Removes mock UI on talent home page
+
 ## 0.6.0 (Wed, 4 Aug 2021)
 + Add Alpine.Js for site functionality
 + Logo upload
