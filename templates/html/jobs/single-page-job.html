@@ -3,26 +3,23 @@
 
 {{ with .Data }}
 <div class="max-w-7xl mx-auto px-6 md:px-4">
-  <!-- Job header -->
-  <div class="text-center py-6 sm:py-10">
-    <div class="flex justify-center">
-      <img src="/{{.LogoURL}}" alt="Company logo">
-    </div>
-    <h1 class="mt-4 text-2xl md:text-4xl text-gray-700 font-semibold">{{.Title}}</h1>
-    <div class="flex flex-col justify-center gap-4 text-lg md:text-xl text-gray-600 mt-6">
-      <div class="flex gap-2 items-center justify-center text-gray-600">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <div class="py-4 md:py-8 mx-auto grid grid-cols-1 gap-10 lg:grid-flow-col-dense lg:grid-cols-3">
+    <!-- Job details -->
+    <div class="lg:col-start-1 lg:col-span-2">
+      <h1 class="mt-4 text-2xl md:text-4xl text-gray-700 font-semibold">{{.Title}}</h1>
+      <div class="flex gap-2 items-baseline space-y-3 text-xl mt-2">
+        <svg class="w-5 h-5 -ml-1 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
-        <p>{{.Location}}</p>
-        <div>
+        <span class="-ml-1 text-gray-600">{{.Location}}</span>
+        <div class="text-gray-600">
           {{with .Remote}}
-          {{- if .RemoteWork}}<p>(Remote)</p>{{end}}
-          {{- if .TempRemote}}<p>(Temporary Remote)</p>{{end}}
+          {{- if .RemoteWork}}<span>(Remote)</span>{{end}}
+          {{- if .TempRemote}}<span>(Temporary Remote)</span>{{end}}
           {{- end}}
         </div>
       </div>
-      <div class="space-x-3">
+      <div class="mt-2 ml-1 flex space-x-3 text-gray-600 text-base">
         {{with .EmpType}}
         {{- if .Permanent}}<span>Permanent</span>{{end}}
         {{- if .Temporary}}<span>Temporary</span>{{end}}
@@ -32,38 +29,30 @@
         {{- if .PerDiem}}<span>PerDiem</span>{{end}}
         {{- end}}
       </div>
-    </div>
-    <div class="flex justify-center gap-1 mt-1">
-      <p>&#163;{{.SalaryMin}}</p>
-      <p>-</p>
-      <p>&#163;{{.SalaryMax}}</p>
-    </div>
-  </div>
-  <!-- Job Detail -->
-  <div class="py-4 md:py-8 mx-auto grid grid-cols-1 gap-10 lg:grid-flow-col-dense lg:grid-cols-3">
-    <div class="space-y-6 lg:col-start-1 lg:col-span-2">
-      <p>{{.CreatedAt.Format "2 Jan 06"}}</p>
-      <hr>
-      <div class="jd">{{unescapeHTML .HTML}}</div>
+      <div class="flex justify-between ml-1 py-1 border-b border-gray-200">
+        <span class="flex items-center gap-1 text-gray-600 font-semibold">
+          <span>&#163;{{.SalaryMin}}</span>
+          <span>-</span>
+          <span>&#163;{{.SalaryMax}}</span>
+        </span>
+        <span class="text-gray-600 text-base">Posted on {{.CreatedAt.Format "2 Jan 06"}}</span>
+      </div>
+      <div class="jd my-10">{{unescapeHTML .HTML}}</div>
       <div class="flex justify-center">
         <a href="{{.ApplyURL}}" target="_blank" class="inline-flex items-center justify-center px-4 py-2 md:px-8 md:py-4 border border-transparent
           text-lg font-medium rounded-md shadow-sm text-white uppercase bg-blue-600 hover:bg-blue-700
           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-          Apply for this job
+          Apply
         </a>
       </div>
     </div>
-
+    <!-- Logo and form -->
     <div class="hidden lg:block lg:col-start-3 lg:col-span-1">
-      <div class="flex justify-center py-8 bg-white shadow-md mb-10">
-        <a href="{{.ApplyURL}}" target="_blank" class="inline-flex items-center justify-center px-10 py-4 border border-transparent
-          text-lg font-medium rounded-md shadow-sm text-white uppercase bg-blue-600 hover:bg-blue-700
-          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-          Apply for this job
-        </a>
+      <div class="mt-4 flex justify-center">
+        <img src="/{{.LogoURL}}" alt="Company logo">
       </div>
       {{- if not $.IsSignedIn}}
-      <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6 border border-gray-500">
+      <div class="mt-12 bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6 border border-gray-500">
         <h2 class="text-xl font-semibold text-gray-600 py-6">Looking for a similar role?</h2>
         <p class="text-lg text-gray-600 mb-6">We'll email you when similar jobs come up.</p>
         <div class="flex items-center">
