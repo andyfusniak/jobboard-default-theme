@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.8.2 (Thu, 14 Oct 2021 4.38pm)
++ Fix for suspected caching issue on tailwind.css
+
 ## 0.8.1 (Thu, 14 Oct 2021 4.00pm)
 + Removed About and Contact links on footer
 

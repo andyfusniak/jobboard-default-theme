@@ -25,10 +25,11 @@
   <link rel="shortcut icon" type="image/jpg" href="/static/favicon.ico"/>
   {{- if .Site.DevMode}}
   <link href="/static/css/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/tailwind.css">
   {{- else}}
   <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/tailwind.css?v={{manifest.Version}}">
   {{- end}}
-  <link rel="stylesheet" href="/static/css/tailwind.css">
   <script defer src="https://unpkg.com/alpinejs@3.2.2/dist/cdn.min.js"></script>
   {{ template "plinks" . -}}
 </head>
