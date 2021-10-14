@@ -16,7 +16,7 @@
       <label for="email" class="block mb-2 text-base sm:text-lg font-semibold text-gray-800">
         * Email address
       </label>
-      <input id="email" name="email" type="input" value="{{ .Data.Email }}"
+      <input id="email" name="email" type="email" value="{{ .Data.Email }}"
         autocomplete="email" required
         class="formInput{{ if .Errors.Email }} input-error{{ end }}" placeholder="JohnDoe@email.com">
       {{ with .Errors.Email }}
