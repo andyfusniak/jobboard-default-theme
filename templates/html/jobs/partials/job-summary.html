@@ -25,7 +25,7 @@
             <div class="flex flex-wrap gap-1">
               {{- range .SkillsContainer.Raw}}
                 {{- with (index $.SkillsContainer.Map .)}}
-                <p class="{{if useWhiteText $.HLCol -}}border-white {{- else -}} border-gray-800 {{- end}} border px-1 py-1 md:border-2 md:px-2 rounded text-xs md:text-base {{$fgcol2}}">{{.Title}}</p>
+                <p class="{{if useWhiteText $.HLCol -}}border-white {{- else -}} border-gray-800 {{- end}} border px-1 py-1 rounded text-xs {{$fgcol2}}">{{.Title}}</p>
                 {{- end -}}
               {{end}}
             </div>
