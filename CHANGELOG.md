@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.8.0 (Thu, 14 Oct 2021)
++ Redesign single job page
++ Smaller skill tags on job listing
++ Correct grammar
++ Input type email for email validation
+
 ## 0.7.0 (Wed, 13 Oct 2021)
 + Email display on profile dropdown navbar
 + Employer account home shows logo using LogoURL
