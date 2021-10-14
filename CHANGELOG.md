@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.8.1 (Thu, 14 Oct 2021 4.00pm)
++ Removed About and Contact links on footer
+
 ## 0.8.0 (Thu, 14 Oct 2021)
 + Redesign single job page
 + Smaller skill tags on job listing
