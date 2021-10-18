@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.9.2 (Tue, 19 Oct 2021 12.00am)
++ Responsive job summary and single job page
++ Prevent button being submitted with an empty value
++ Stop debouncing
++ Extract styling for button
+
 ## 0.9.1 (Mon, 18 Oct 2021)
 + Fix hardcoded basic listing in create job template
 

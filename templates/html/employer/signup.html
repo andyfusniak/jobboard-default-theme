@@ -1,5 +1,5 @@
-{{ define "title" }}Employer Sign up{{ end }}
-{{ define "content" }}
+{{define "title"}}Employer Sign up{{- end}}
+{{define "content"}}
 
 <div class="max-w-xl mx-auto px-6 lg:px-0">
   <div class="py-16 text-center md:text-left">
@@ -7,30 +7,30 @@
     <h3 class="mt-2 font-semibold text-xl sm:text-2xl text-gray-600">Create your account</h3>
   </div>
 
-  {{- with .Errors.Form }}
-    <span class="text-error">{{ . }}</span>
-  {{ end }}
+  {{- with .Errors.Form}}
+    <span class="text-error">{{.}}</span>
+  {{end}}
 
-  <form action="/employer/signup" method="POST" class="space-y-6">
+  <form x-data="{ email: '', buttonDisabled: false }" action="/employer/signup" method="POST" class="space-y-6">
     <div>
       <label for="email" class="block mb-2 text-base sm:text-lg font-semibold text-gray-800">
         * Email address
       </label>
-      <input id="email" name="email" type="email" value="{{ .Data.Email }}"
+      <input x-model="email" id="email" name="email" type="email" value="{{.Data.Email}}"
         autocomplete="email" required
-        class="formInput{{ if .Errors.Email }} input-error{{ end }}" placeholder="JohnDoe@email.com">
-      {{ with .Errors.Email }}
+        class="formInput{{if .Errors.Email}} input-error{{end}}" placeholder="JohnDoe@email.com">
+      {{with .Errors.Email}}
       <div class="text-error">
-        {{ . }}
+        {{.}}
       </div>
-      {{ end -}}
+      {{end -}}
     </div>
 
     <div class="flex justify-center">
-      <button type="submit" class="button">
+      <button :disabled="!email.length || buttonDisabled" @click.debounce="buttonDisabled = true" :class="buttonDisabled ? 'disabled:opacity-50' : ''"  type="submit" class="px-4 py-2 button">
         Create an account
       </button>
     </div>
   </form>
 </div>
-{{ end }}
+{{- end}}
