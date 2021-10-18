@@ -11,13 +11,13 @@
     <span class="text-error">{{ . }}</span>
   {{ end }}
 
-  <form action="/signin" method="POST" class="space-y-6">
+  <form x-data="{ email: '' }" action="/signin" method="POST" class="space-y-6">
     <div class="space-y-2">
       <div>
         <label for="email" class="block mb-2 text-base sm:text-lg font-semibold text-gray-800">
           * Email address
         </label>
-        <input id="email" name="email" type="email" value="{{ .Data.Email }}"
+        <input x-model="email" id="email" name="email" type="email" value="{{ .Data.Email }}"
           class="formInput{{ if .Errors.Email }} input-error{{ end }}"
           autocomplete="email" required placeholder="JohnDoe@email.com">
       </div>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="flex justify-center">
-      <button type="submit" class="button">
+      <button :disabled="!email.length" type="submit" class="button">
         Get magic link
       </button>
     </div>
