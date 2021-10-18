@@ -42,8 +42,8 @@
               </div>
             </div>
             <div class="min-w-0">
-              <div class="flex gap-x-2 relative">
-                <span href="#" class="font-medium text-gray-900 text-lg">{{.Job.Title}}</span>
+              <div class="flex flex-col sm:flex-row gap-x-2 relative">
+                <span href="#" class="font-medium text-gray-900 text-base sm:text-lg">{{.Job.Title}}</span>
                 <div class="flex items-center">
                   {{- if .Job.Visible}}
                   <span class="relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5 text-sm">
@@ -121,13 +121,13 @@
                     Pending
                   </span>
                   {{- end}}
-                  <dl class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-4">
-                    <div class="sm:col-span-1">
+                  <dl class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-4">
+                    <div class="col-span-1 lg:col-span-2">
                       <dt class="text-sm font-medium text-gray-500">
                         Order ID
                       </dt>
                       <dd class="mt-2 text-sm text-gray-900">
-                        <span class="tracking-tighter">{{.ID}}</span>
+                        <span class="tracking-tighter break-words">{{.ID}}</span>
                       </dd>
                     </div>
                     <div class="sm:col-span-1">

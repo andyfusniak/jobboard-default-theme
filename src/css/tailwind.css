@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+[x-cloak] { display: none; }
 @layer components {
   .formInput {
     @apply appearance-none relative block w-full px-4 py-1 border border-gray-300
