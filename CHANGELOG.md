@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.9.1 (Mon, 18 Oct 2021)
++ Fix hardcoded basic listing in create job template
+
+## 0.9.0 (Fri, 15 Oct 2021)
++ Fix the menu flips up quickly before the JavaScript sets the visibility to off
++ Responsive employer account home
++ Change favicon.ico
+
 ## 0.8.2 (Thu, 14 Oct 2021 4.38pm)
 + Fix for suspected caching issue on tailwind.css
 
