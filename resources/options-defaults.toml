@@ -1,4 +1,8 @@
 # global section is used for the default settings (admin overrides are currently not supported).
 [global]
+  web_active_theme_tag = "jobboard-default-theme:latest"
+
+  admin_active_theme_tag = "jobboard-admin-default-theme:latest"
+
   # seo_robots_txt is served for HTTP GET requests to the /robots.txt path
   seo_robots_txt = "Allow: *\n"
