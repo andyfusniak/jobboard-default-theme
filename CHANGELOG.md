@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.9.3 (Tue, 19 Oct 2021 1.35pm)
++ Add binary version string to footer.html
+
 ## 0.9.2 (Tue, 19 Oct 2021 12.00am)
 + Responsive job summary and single job page
 + Prevent button being submitted with an empty value
