@@ -194,15 +194,15 @@ APPLICATION ERRROR - Check the server logs
             Choose Skills / Tech Stack
           </span>
           <span class="ml-6 flex items-center">
-            <svg x-show="!open" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <svg x-show="!open" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
             </svg>
-            <svg x-show="open" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <svg x-show="open" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
             </svg>
           </span>
         </button>
-        <div x-show="open" class="pt-6 bg-white py-3 px-2" id="filter-section-0">
+        <div x-show="open" x-data="{ count: 0 }" class="pt-6 bg-white py-3 px-2" id="filter-section-0">
           {{- with .Data.SkillsContainer.TagSet }}
           {{- range .Groups }}
           <fieldset class="py-2">
@@ -210,7 +210,7 @@ APPLICATION ERRROR - Check the server logs
             <div class="space-y-4 sm:space-y-0 sm:flex sm:flex-wrap sm:items-center sm:gap-4">
               {{ range .Tags }}
               <div class="flex items-center gap-1">
-                <input type="checkbox" name="skills" value="{{ .Name }}" {{ if .Checked  -}}checked {{ end -}} class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+                <input :disabled="count >= 5"  @click="count = count + 1" type="checkbox" name="skills" value="{{ .Name }}" {{ if .Checked  -}}checked {{ end -}} class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
                 <label class="font-normal text-gray-500">{{ .Title }} </label>
               </div>
               {{ end -}}
