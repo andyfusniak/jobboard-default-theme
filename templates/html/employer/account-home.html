@@ -42,7 +42,11 @@
             </div>
             <div class="min-w-0">
               <div class="flex flex-col sm:flex-row gap-x-2 relative">
-                <span href="#" class="font-medium text-gray-900 text-base sm:text-lg">{{.Job.Title}}</span>
+                {{- if .Job.Visible}}
+                <a href="/jobs/{{.Job.Slug}}" class="font-medium text-gray-900 hover:text-gray-700 text-base sm:text-lg">{{.Job.Title}}</a>
+                {{- else}}
+                <span class="font-medium text-gray-900 text-base sm:text-lg">{{.Job.Title}}</span>
+                {{- end}}
                 <div class="flex items-center">
                   {{- if .Job.Visible}}
                   <span class="relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5 text-sm">
