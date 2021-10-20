@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.10.0 (Wed, 20 Oct)
++ Limit job's skills to 5
++ Job title on employer home is a link to a posted job
++ Version string on footer
++ Removed talent signup form on job single page
++ Tidy up job summary page
+
 ## 0.9.3 (Tue, 19 Oct 2021 1.35pm)
 + Add binary version string to footer.html
 
