@@ -1,7 +1,11 @@
 {{ define "plinks" -}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
   <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+  {{- if .Site.ThemeTag}}
+  <script src="/static/{{.Site.ActiveTheme.Name}}/{{.Site.ActiveTheme.Version}}/js/app.js"></script>
+  {{- else}}
   <script src="/static/js/app.js"></script>
+  {{- end}}
   <script>
   document.addEventListener('DOMContentLoaded', function(event) {
     const simplemde = new SimpleMDE({
@@ -22,7 +26,7 @@
 {{ end -}}
 {{ define "title" }}Add a new job post{{ end }}
 {{ define "content" }}
-{{- if and .Site.DevMode .Site.HasAppError }}
+{{- if and (eq .Site.ThemeTag "") .Site.HasAppError }}
 APPLICATION ERRROR - Check the server logs
 {{- end }}
 
