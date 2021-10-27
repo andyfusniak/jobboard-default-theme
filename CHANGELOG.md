@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.12.0 (Wed, 27 Oct)
++ Align design job summary
++ Styling 500.html page
++ Employer account home responsive
++ Footext text responsive
++ Changed wording in email templates
+
+## 0.11.0 (Mon, 25 Oct)
++ Add .Site.ThemeTag
+
 ## 0.10.0 (Wed, 20 Oct)
 + Limit job's skills to 5
 + Job title on employer home is a link to a posted job

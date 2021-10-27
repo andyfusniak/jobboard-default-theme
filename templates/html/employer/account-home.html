@@ -21,13 +21,7 @@
       <li>
         <div class="relative pb-4">
           <span class="absolute top-5 left-10 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
-          <div class="relative flex items-start gap-x-2">
-            <div class="absolute right-0 top-1">
-              <a href="/employer/{{$.UID}}/edit-job/{{.Job.ID}}" class="inline-flex items-center px-3 py-0.5 border border-blue-600 text-blue-600 hover:text-blue-500 hover:bg-blue-50 rounded-full shadow-sm text-sm">
-                <svg class="w-4 h-4 inline-flex" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
-                Edit
-              </a>
-            </div>
+          <div class="flex items-start gap-x-2">
             <div class="relative px-1">
               <div class="h-10 w-10 bg-gray-100 rounded-full ring-8 ring-white flex items-center justify-center">
                 <svg class="h-6 w-6 text-gray-400" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
@@ -41,7 +35,7 @@
               </div>
             </div>
             <div class="min-w-0">
-              <div class="flex flex-col sm:flex-row gap-x-2 relative">
+              <div class="flex flex-col sm:max-w-lg lg:max-w-none sm:flex-row sm:items-baseline gap-x-1">
                 {{- if .Job.Visible}}
                 <a href="/jobs/{{.Job.Slug}}" class="font-medium text-gray-900 hover:text-gray-700 text-base sm:text-lg">{{.Job.Title}}</a>
                 {{- else}}
@@ -88,6 +82,12 @@
                 Posted on {{admintime .Job.CreatedAt}}
               </p>
             </div>
+            <span class="ml-auto">
+              <a href="/employer/{{$.UID}}/edit-job/{{.Job.ID}}" class="inline-flex items-center px-3 py-0.5 border border-blue-600 text-blue-600 hover:text-blue-500 hover:bg-blue-50 rounded-full shadow-sm text-sm">
+                <svg class="w-4 h-4 inline-flex" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                Edit
+              </a>
+            </span>
           </div>
         </div>
       </li>
@@ -112,19 +112,12 @@
             <div class="flex-1">
               <div class="rounded-lg">
                 <div class="relative border border-gray-200 px-4 py-3">
-                  {{if and (eq .Kind "autorenew") (eq .Status "subscribed")}}
-                  <form action="/employer/{{ $.UID }}/stripe-portal" method="POST">
-                    <button type="submit" class="absolute top-6 right-2 px-2 py-1 border border-gray-500 text-sm leading-4 tracking-tight font-medium rounded-md shadow-sm text-gray-600 hover:text-gray-500 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                      Manage Subscription
-                    </button>
-                  </form>
-                  {{- end}}
                   {{- if eq .Status "pending"}}
                   <span class="absolute top-4 right-2 ml-4 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-200 text-gray-600">
                     Pending
                   </span>
                   {{- end}}
-                  <dl class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-4">
+                  <dl class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6 gap-y-4">
                     <div class="col-span-1 lg:col-span-2">
                       <dt class="text-sm font-medium text-gray-500">
                         Order ID
@@ -175,6 +168,17 @@
                             {{- end}}
                           </span>
                         </span>
+                      </dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                      <dd class="mt-2 text-sm text-gray-900">
+                        {{if and (eq .Kind "autorenew") (eq .Status "subscribed")}}
+                        <form action="/employer/{{ $.UID }}/stripe-portal" method="POST">
+                          <button type="submit" class="px-2 py-1 border border-transparent text-sm leading-4 tracking-tight font-medium rounded-md shadow-sm text-gray-600 bg-gray-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                            Manage Subscription
+                          </button>
+                        </form>
+                        {{- end}}
                       </dd>
                     </div>
                   </dl>

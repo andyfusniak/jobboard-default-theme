@@ -1,7 +1,8 @@
 {{ define "content" }}
-<h1>Talent Email Confirmation</h1>
 
-Please confirm your signup by clicking the link below.
+Hi there 👋
+
+Please click the link below to confirm your email.
 
 {{ .SignUpConfirmationLink }}
 

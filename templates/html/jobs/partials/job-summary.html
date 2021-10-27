@@ -5,23 +5,23 @@
 {{- $fgcol1 = "text-white"}}
 {{- $fgcol2 = "text-white"}}
 {{- end}}
-<div class="shadow overflow-hidden px-2 my-2 lg:my-5 sm:rounded-md sm:px-4 lg:px-0">
-  <ul>
+<div >
+  <ul class="shadow overflow-hidden mx-2 my-2 lg:my-5 sm:rounded-md sm:mx-4">
     <li {{if isNotHighlighted .HLType}}{{else if isCustomHighlighted .HLType -}} style="background-color: {{hlcol .HLCol}};" {{- else if isStandardHighlighted .HLType -}} class="bg-yellow-100"{{end}}>
       <a href="/jobs/{{.Slug}}">
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-5 items-center px-3 py-2">
-          <div class="flex items-center gap-4 md:gap-5 sm:col-span-2">
+        <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-5 items-center px-3 py-2">
+          <div class="flex items-center gap-4 md:gap-5 col-span-2">
             <img class="h-10 w-10 md:h-20 md:w-20" src="/{{.LogoURL}}" alt="logo">
             <div>
-              <p class="text-xs sm:text-sm tracking-tight md:text-lg font-semibold {{$fgcol2 -}}">{{.Title}}</p>
+              <p class="text-xs sm:text-sm tracking-tight lg:text-lg font-semibold {{$fgcol2 -}}">{{.Title}}</p>
               <p class="mt-1 text-xs sm:text-base font-medium {{$fgcol1 -}}">{{.CompanyName}}</p>
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center md:items-baseline">
-                <span class="block -ml-1 px-1 text-xs lg:text-base bg-gray-100 rounded-md shadow-sm">{{.Location}}</span>
+              <div class="flex flex-col items-start sm:flex-row sm:items-center sm:justify-start md:items-baseline">
+                <span class=" -ml-1 px-1 text-xs lg:text-base bg-gray-100 rounded-md shadow-sm">{{.Location}}</span>
                 <span class="text-xs tracking-tighter sm:ml-2 md:text-sm {{$fgcol1 -}}">&#163;{{moneyK .SalaryMin}} - &#163;{{moneyK .SalaryMax}}</span>
               </div>
             </div>
           </div>
-          <div class="hidden md:block md:col-start-3 md:col-end-5 md:ml-5 lg:ml-0 lg:col-span-1">
+          <div class="hidden md:block md:col-start-3 md:col-end-5 md:ml-5 lg:col-span-1">
             <div class="flex flex-wrap gap-1">
               {{- range .SkillsContainer.Raw}}
                 {{- with (index $.SkillsContainer.Map .)}}
@@ -30,7 +30,7 @@
               {{end}}
             </div>
           </div>
-          <div class="sm:col-end-4 md:col-span-2 justify-self-end">
+          <div class="col-end-4 md:col-span-2 justify-self-end">
             <p class="flex items-center justify-end sm:ml-6 {{$fgcol1}}">
               {{- if .Pinned}}
               <span class="text-sm md:text-xl mr-3">📌</span>

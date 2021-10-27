@@ -1,6 +1,7 @@
 {{- define "content"}}
 Signup Confirmation
 ===================
+Hi there 👋
 
 Please confirm your signup by clicking the link below.
 
