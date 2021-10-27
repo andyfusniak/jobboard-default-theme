@@ -1,5 +1,6 @@
 {{ define "content" }}
-Welcome {{ .Name }},
+hi {{ .Name }},
 
+Welcome to Code Pyjamas.
 
 {{ end }}
