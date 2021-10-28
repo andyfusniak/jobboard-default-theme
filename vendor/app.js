@@ -3,6 +3,7 @@ document.addEventListener('alpine:init', () => {
     imageUrl: '',
     uploadSelected: false,
     chkLogo: document.getElementById('chk-logo').checked,
+    text: false,
     fileChosen(event) {
       this.fileToDataUrl(event, src => this.imageUrl = src);
     },
