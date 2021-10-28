@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.14.0(Thu, 28 Oct 9.30pm)
++ Talent signup page styling
++ Fixed signin and signup disabled button functionality
++ Force talents to sign up before applying for a job
+
 ## 0.13.1 (Thu, 28 Oct 3.30pm)
 + Sign up for talent page
 + Apply link for v0.14

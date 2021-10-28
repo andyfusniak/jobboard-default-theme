@@ -215,7 +215,7 @@ APPLICATION ERRROR - Check the server logs
               <div class="flex items-center gap-1">
                 <input @click="if (($event.target.checked) && (count > 4)) {$event.target.checked = false} else {count += $event.target.checked ? 1 : -1}"
                 type="checkbox" name="skills" id="{{ .Name }}" value="{{ .Name }}" {{ if .Checked  -}}checked {{ end -}} class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
-                <label for="{{ .Name }}" class="font-normal text-gray-500">{{ .Title }} </label>
+                <label for="{{ .Name }}" class="font-normal text-gray-500">{{ .Title }}</label>
               </div>
               {{ end -}}
             </div>
@@ -392,7 +392,7 @@ APPLICATION ERRROR - Check the server logs
 
     <div class="mt-4 px-4 py-3 text-center">
       {{- if eq .Data.Mode "create" }}
-      <button id="create-btn" type="submit" class="py-4 px-6 button">
+      <button id="create-btn" type="submit" class="py-2 px-4 button">
         Post a job - {{ (index .Page.Prices "basicJobListingRecurring").UnitAmountDisplay }}
       </button>
       {{- else }}

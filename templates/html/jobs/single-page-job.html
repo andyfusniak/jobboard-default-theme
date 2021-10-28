@@ -39,17 +39,16 @@
       </div>
       <div class="jd my-10">{{unescapeHTML .HTML}}</div>
       <div class="flex justify-center">
-        <a href="{{.ApplyURL}}" target="_blank" class="inline-flex items-center justify-center px-4 py-2 md:px-8 md:py-4 border border-transparent
-          text-lg font-medium rounded-md shadow-sm text-white uppercase bg-blue-600 hover:bg-blue-700
-          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-          Apply
-        </a>
-      </div>
-      <div>
-        <form action="/apply-for-job" method="POST" target="_blank">
-        <input type="hidden" name="job-id" value="{{.ID}}" />
-        <button>APPLY</button>
-        </form>
+        {{- if not $.IsSignedIn}}
+        <div>
+          <form action="/apply-for-job" method="POST">
+            <input type="hidden" name="job-id" value="{{.ID}}" />
+            <button class="px-4 py-2 md:px-6 button">Apply</button>
+          </form>
+        </div>
+        {{- else}}
+        <a href="{{.ApplyURL}}" target="_blank" class="px-4 py-2 md:px-6 button">Apply</a>
+        {{- end}}
       </div>
     </div>
     <!-- Logo and form -->
