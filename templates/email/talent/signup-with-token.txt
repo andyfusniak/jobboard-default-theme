@@ -2,7 +2,7 @@
 
 Hi there 👋
 
-Please click the link below to confirm your email.
+Please click the link to confirm your email.
 
 {{ .SignUpConfirmationLink }}
 
