@@ -27,7 +27,7 @@
     </div>
 
     <div class="flex justify-center">
-      <button :disabled="!email.length || buttonDisabled" @click.debounce="buttonDisabled = true" :class="buttonDisabled ? 'disabled:opacity-50' : ''" type="submit" class="px-4 py-2 button">
+      <button :disabled="!email.length && buttonDisabled" @click.debounce="buttonDisabled = true" :class="buttonDisabled ? 'disabled:opacity-50' : ''" type="submit" class="px-4 py-2 button">
         Get magic link
       </button>
     </div>

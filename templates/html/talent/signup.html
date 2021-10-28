@@ -1,35 +1,38 @@
-{{ define "title" }}Talent : Sign up{{ end }}
-{{ define "content" }}
+{{define "title"}}Talent : Sign up{{end}}
+{{define "content"}}
 <div class="max-w-xl mx-auto px-6 lg:px-0">
   <div class="py-16 text-center md:text-left">
-    <h3 class="mt-2 font-semibold text-xl sm:text-2xl text-gray-600">Create your account</h3>
+    <h2 class="font-bold text-2xl sm:text-4xll text-gray-600">Create my
+      <span class="text-blue-600">Talent Account</span>
+    </h2>
   </div>
-  {{ with .Errors.Form }}
-    <span class="text-error">{{ . }}</span>
-  {{ end }}
-  <form action="/talent/signup" method="POST" class="space-y-6">
+
+  {{- with .Errors.Form}}
+    <span class="text-error">{{.}}</span>
+  {{- end}}
+  <form x-data="{ email: '', buttonDisabled: false }" action="/talent/signup" method="POST" class="space-y-6">
     <div>
       <label for="email" class="block mb-2 text-base sm:text-lg font-semibold text-gray-800">
         * Email address
       </label>
-      <input id="email" name="email" type="email" value="{{ .Data.Email }}"
+      <input x-model="email" id="email" name="email" type="email" value="{{ .Data.Email }}"
         autocomplete="email" required
-        class="formInput{{ if .Errors.Email }} input-error{{ end }}" placeholder="JohnDoe@email.com">
-
-      {{ with .Errors.Email }}
+        class="formInput{{if .Errors.Email}} input-error{{end}}" placeholder="JohnDoe@email.com">
+      {{- with .Errors.Email}}
       <div class="text-error">
-        {{ . }}
+        {{.}}
       </div>
-      {{ end }}
+      {{- end}}
     </div>
-
     <div class="flex justify-center">
-      <button type="submit" class="button">
+      <button :disabled="!email.length && buttonDisabled" @click.debounce="buttonDisabled = true" :class="buttonDisabled ? 'disabled:opacity-50' : ''" type="submit" class="py-2 px-4 button">
         Create a talent account
       </button>
     </div>
 
-    <p>Already a member? <a href="/signin">Sign in here.</a></p>
+    <p class="py-8 text-right text-gray-600 tracking-tight">Already a member?
+      <a href="/signin" class="text-blue-600 hover:text-blue-500">Sign in here.</a>
+    </p>
   </form>
 </div>
 
