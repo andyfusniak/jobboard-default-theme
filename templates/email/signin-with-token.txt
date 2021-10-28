@@ -2,7 +2,7 @@
 
 Welcome back!
 
-To complete your signin please click the link below.
+To complete your signin please click the link.
 
 {{ .PasswordlessSignInLink }}
 

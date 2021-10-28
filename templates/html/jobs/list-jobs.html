@@ -14,8 +14,8 @@
     </p>
 
     {{- if not .IsSignedIn}}
-    <div class="mt-5 max-w-md mx-auto text-center px-6">
-      <p class="text-base font-medium text-gray-900">Be the first to know most recent job updates</p>
+    <div class="mt-5 max-w-md mx-auto text-center px-6 lg:px-2">
+      <p class="text-base font-medium text-gray-900">Be the first to know the latest jobs</p>
       <form x-data="{ email: '', buttonDisabled: false }" action="/talent/signup" method="POST" class="mt-3 sm:flex">
         <input type="hidden" name="fail-url" value="/">
         <label for="email" class="sr-only">Email</label>

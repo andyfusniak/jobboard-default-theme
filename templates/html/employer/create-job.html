@@ -30,12 +30,11 @@
 APPLICATION ERRROR - Check the server logs
 {{- end }}
 
-
-<div class="max-w-3xl mx-auto mt-10 lg:mt-20 px-4 md:px-0">
-  <h2 class="text-blue-600 font-semibold text-4xl">
+<div class="max-w-3xl mx-auto mt-8 lg:mt-14 px-4 md:px-0">
+  <h2 class="text-blue-600 font-semibold text-2xl md:text-4xl">
     Hire Code Pyjamas.
   </h2>
-  <h2 class="text-blue-900 font-medium text-2xl mt-3">Create a job post to hire the best.</h2>
+  <h2 class="text-blue-900 font-medium text-lg md:text-2xl mt-3">Create a job post to hire the best.</h2>
 </div>
 
 <div class="max-w-3xl mx-auto w-full bg-gray-50 py-10 my-8 px-8 rounded-sm">
@@ -80,13 +79,13 @@ APPLICATION ERRROR - Check the server logs
         </div>
         <div class="mt-4 space-y-4 sm:space-y-0 sm:flex sm:gap-4">
           <div class="flex items-center">
-            <input name="remote" type="checkbox" value="remote" {{ if .Data.Remote.RemoteWork -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4
-            text-blue-600 border-gray-300 rounded" />
-            <label class="ml-1 block text-base font-normal text-gray-500">Remote</label>
+            <input name="remote" id="remote" type="checkbox" value="remote" {{ if .Data.Remote.RemoteWork -}}checked {{ end -}}
+            class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
+            <label for="remote" class="ml-1 block text-base font-normal text-gray-500">Remote</label>
           </div>
           <div class="flex items-center">
-            <input name="remote" type="checkbox" value="temp_remote" {{ if .Data.Remote.TempRemote -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
-            <label class="ml-1 block text-base font-normal text-gray-500">Temporarily Remote</label>
+            <input name="remote" id="temp_remote" type="checkbox" value="temp_remote" {{ if .Data.Remote.TempRemote -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
+            <label for="temp_remote" class="ml-1 block text-base font-normal text-gray-500">Temporarily Remote</label>
           </div>
         </div>
       </fieldset>
@@ -96,39 +95,39 @@ APPLICATION ERRROR - Check the server logs
         <legend class="font-medium text-base text-blue-900">Type of Employment</legend>
         <div class="space-y-4 sm:space-y-0 sm:flex sm:flex-wrap  sm:gap-4 mb-6">
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="temporary" {{ if .Data.EmpType.Temporary -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+            <input name="emp-type" id="temporary" type="checkbox" value="temporary" {{ if .Data.EmpType.Temporary -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
             <div class="ml-1">
-              <label class="font-normal text-gray-500">Temporary</label>
+              <label for="temporary" class="font-normal text-gray-500">Temporary</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="permanent" {{ if .Data.EmpType.Permanent -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+            <input name="emp-type" id="permanent" type="checkbox" value="permanent" {{ if .Data.EmpType.Permanent -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
             <div class="ml-1">
-              <label class="font-normal text-gray-500">Permanent</label>
+              <label for="permanent" class="font-normal text-gray-500">Permanent</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="full_time" {{ if .Data.EmpType.FullTime -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+            <input name="emp-type" id="full_time" type="checkbox" value="full_time" {{ if .Data.EmpType.FullTime -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
             <div class="ml-1">
-              <label class="font-normal text-gray-500">Full Time</label>
+              <label for="full_time" class="font-normal text-gray-500">Full Time</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="part_time" {{ if .Data.EmpType.PartTime -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" id="part_time" type="checkbox" value="part_time" {{ if .Data.EmpType.PartTime -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
             <div class="ml-1">
-              <label class="font-normal text-gray-500">Part Time</label>
+              <label for="part_time" class="font-normal text-gray-500">Part Time</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="contract" {{ if .Data.EmpType.Contract -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" id="contract" type="checkbox" value="contract" {{ if .Data.EmpType.Contract -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
             <div class="ml-1">
-              <label class="font-normal text-gray-500">Contract</label>
+              <label for="contract" class="font-normal text-gray-500">Contract</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" type="checkbox" value="per_diem" {{ if .Data.EmpType.PerDiem -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" id="per_diem" type="checkbox" value="per_diem" {{ if .Data.EmpType.PerDiem -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
             <div class="ml-1">
-              <label class="font-normal text-gray-500">Per Day</label>
+              <label for="per_diem" class="font-normal text-gray-500">Per Day</label>
             </div>
           </div>
         </div>
@@ -214,8 +213,9 @@ APPLICATION ERRROR - Check the server logs
             <div class="space-y-4 sm:space-y-0 sm:flex sm:flex-wrap sm:items-center sm:gap-4">
               {{ range .Tags }}
               <div class="flex items-center gap-1">
-                <input :disabled="count >= 5"  @click="count = count + 1" type="checkbox" name="skills" value="{{ .Name }}" {{ if .Checked  -}}checked {{ end -}} class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
-                <label class="font-normal text-gray-500">{{ .Title }} </label>
+                <input @click="if (($event.target.checked) && (count > 4)) {$event.target.checked = false} else {count += $event.target.checked ? 1 : -1}"
+                type="checkbox" name="skills" id="{{ .Name }}" value="{{ .Name }}" {{ if .Checked  -}}checked {{ end -}} class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+                <label for="{{ .Name }}" class="font-normal text-gray-500">{{ .Title }} </label>
               </div>
               {{ end -}}
             </div>
@@ -334,13 +334,16 @@ APPLICATION ERRROR - Check the server logs
             </label>
           </div>
         </div>
-        <div x-data="{ abc: $store.imageViewer }" class="flex items-center">
-          <input @change="$store.imageViewer.removeLogo()" id="chk-logo" name="chk-logo" type="checkbox" {{ if .Data.ChkLogo -}}checked {{ end -}} class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" x-model="$store.imageViewer.chkLogo"
+        <div x-data class="flex items-center">
+          <input @change="$store.imageViewer.removeLogo()" @click="$store.imageViewer.text = ! $store.imageViewer.text" id="chk-logo" name="chk-logo" type="checkbox" {{ if .Data.ChkLogo -}}checked {{ end -}} class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" x-model="$store.imageViewer.chkLogo"
           />
           <div class="ml-3">
             <label for="chk-logo" class="font-medium text-blue-600">
               Add company's logo - {{ (index .Page.Prices "logoRecurring").UnitAmountDisplay }}
             </label>
+            <template x-if="$store.imageViewer.text && !$store.imageViewer.chkLogo">
+              <span class="text-sm text-gray-500">This will be automatically selected when you upload a company logo.</span>
+            </template>
           </div>
         </div>
         <div class="flex items-center">
@@ -376,7 +379,7 @@ APPLICATION ERRROR - Check the server logs
           </div>
         </div>
         <div class="flex items-center">
-          <input name="chk-autorenew" type="checkbox" {{ if .Data.ChkAutorenew -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" />
+          <input name="chk-autorenew" id="chk-autorenew" type="checkbox" {{ if .Data.ChkAutorenew -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" />
           <div class="ml-3">
             <label for="chk-autorenew" class="font-medium text-blue-600">
               Renew job ad every 30 days
@@ -393,9 +396,8 @@ APPLICATION ERRROR - Check the server logs
         Post a job - {{ (index .Page.Prices "basicJobListingRecurring").UnitAmountDisplay }}
       </button>
       {{- else }}
-      <button id="create-btn" type="submit" class="py-4 px-6 button">
-        Update
-      </button>
+      <a href="/employer/{{.UID}}" class="inline-block button py-2 px-4 border border-gray-300 text-gray-700 bg-white hover:bg-gray-50">Cancel</a>
+      <button id="create-btn" type="submit" class="button py-2 px-4 ml-2.5">Update</button>
       {{- end }}
     </div>
   </form>
