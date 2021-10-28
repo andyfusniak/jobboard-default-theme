@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.13.0 (Thu, 28 Oct)
++ Fix limit skills of 5 - unselect and select again after hit the limit
++ Made checkbox target bigger - span to label
++ Cancel button on update mode
++ Browse jobs button on Talent home
++ Twitter card with Code Pyjamas banner
++ Removed the word 'below' for email txt
+
 ## 0.12.0 (Wed, 27 Oct)
 + Align design job summary
 + Styling 500.html page
