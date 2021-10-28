@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.13.1 (Thu, 28 Oct 3.30pm)
++ Sign up for talent page
++ Apply link for v0.14
+
 ## 0.13.0 (Thu, 28 Oct)
 + Fix limit skills of 5 - unselect and select again after hit the limit
 + Made checkbox target bigger - span to label

@@ -45,6 +45,12 @@
           Apply
         </a>
       </div>
+      <div>
+        <form action="/apply-for-job" method="POST" target="_blank">
+        <input type="hidden" name="job-id" value="{{.ID}}" />
+        <button>APPLY</button>
+        </form>
+      </div>
     </div>
     <!-- Logo and form -->
     <div class="order-1 lg:block lg:col-start-3 lg:col-span-1">
