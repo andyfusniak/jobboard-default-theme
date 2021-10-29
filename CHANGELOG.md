@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.15.0 (Fri, 29 Oct 2pm)
++ Changed Pricing to allow free basic listing
+
 ## 0.14.0(Thu, 28 Oct 9.30pm)
 + Talent signup page styling
 + Fixed signin and signup disabled button functionality
