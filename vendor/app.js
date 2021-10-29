@@ -19,10 +19,14 @@ document.addEventListener('alpine:init', () => {
       }
       this.uploadSelected = true;
       this.chkLogo = true;
+      document.getElementById('chk-logo').checked = true;
+      updateCreateBtnText();
     },
     removeLogo() {
       this.uploadSelected = false;
       this.chkLogo = false;
+      document.getElementById('chk-logo').checked = false;
+      updateCreateBtnText();
       this.$refs.logoInput.value = '';
     }
   });
@@ -67,4 +71,6 @@ function priceCalcHandler(prices, currencySymbol) {
   window.addEventListener('load', (event) => {
     updateCreateBtnText();
   });
+
+  return updateCreateBtnText;
 }

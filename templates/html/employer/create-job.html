@@ -14,7 +14,7 @@
 
     {{- if eq .Data.Mode "create" }}
     const currencySymbol = '{{ (index .Page.Prices "basicJobListingRecurring").UnitAmountDisplay }}'.substr(0, 1);
-    priceCalcHandler({
+    updateCreateBtnText = priceCalcHandler({
       basicJobListing: {{ (index .Page.Prices "basicJobListingRecurring").UnitAmount -}},
       logo: {{- (index .Page.Prices "logoRecurring").UnitAmount -}},
       pinned30: {{- (index .Page.Prices "pinned30Recurring").UnitAmount -}},
@@ -335,7 +335,7 @@ APPLICATION ERRROR - Check the server logs
           </div>
         </div>
         <div x-data class="flex items-center">
-          <input @change="$store.imageViewer.removeLogo()" @click="$store.imageViewer.text = ! $store.imageViewer.text" id="chk-logo" name="chk-logo" type="checkbox" {{ if .Data.ChkLogo -}}checked {{ end -}} class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" x-model="$store.imageViewer.chkLogo"
+          <input @change="$store.imageViewer.removeLogo()" @click="$store.imageViewer.text = ! $store.imageViewer.text" id="chk-logo" name="chk-logo" type="checkbox" disabled {{ if .Data.ChkLogo -}}checked {{ end -}} class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" x-model="$store.imageViewer.chkLogo"
           />
           <div class="ml-3">
             <label for="chk-logo" class="font-medium text-blue-600">

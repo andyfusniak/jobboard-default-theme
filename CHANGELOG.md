@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.15.1 (Fri, 29 Oct 3.51pm)
++ Fixed JS code that add and calculate the price of logo check box on the button
+
 ## 0.15.0 (Fri, 29 Oct 2pm)
 + Changed Pricing to allow free basic listing
 
