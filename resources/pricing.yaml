@@ -12,13 +12,13 @@ products:
             active: true
             code: basicJobListingOneTime
             nickname: Basic Job Listing One-time
-            unitAmount: 3900
+            unitAmount: 0
             currency: GBP
         - price:
             active: true
             code: basicJobListingRecurring
             nickname: Basic Job Listing Recurring
-            unitAmount: 3900
+            unitAmount: 0
             currency: GBP
             recurring:
               interval: month
@@ -33,13 +33,13 @@ products:
               active: true
               code: pinned30OneTime
               nickname: Pinned 30 Onetime
-              unitAmount: 4900
+              unitAmount: 1500
               currency: GBP
           - price:
               active: true
               code: pinned30Recurring
               nickname: Pinned 30 Recurring
-              unitAmount: 4900
+              unitAmount: 1500
               currency: GBP
               recurring:
                 interval: month
@@ -54,13 +54,13 @@ products:
               active: true
               code: standardHighlightOneTime
               nickname: Standard Highlight One-time
-              unitAmount: 2000
+              unitAmount: 400
               currency: GBP
           - price:
               active: true
               code: standardHighlightRecurring
               nickname: Standard Highlight Recurring
-              unitAmount: 2000
+              unitAmount: 400
               currency: GBP
               recurring:
                 interval: month
@@ -75,13 +75,13 @@ products:
               active: true
               code: customHighlightOneTime
               nickname: Custom Highlight One-time
-              unitAmount: 3500
+              unitAmount: 1100
               currency: GBP
           - price:
               active: true
               code: customHighlightRecurring
               nickname: Custom Highlight Recurring
-              unitAmount: 3500
+              unitAmount: 1100
               currency: GBP
               recurring:
                 interval: month
@@ -96,13 +96,13 @@ products:
               active: true
               code: logoOneTime
               nickname: Logo One-time
-              unitAmount: 900
+              unitAmount: 300
               currency: GBP
           - price:
               active: true
               code: logoRecurring
               nickname: Logo Recurring
-              unitAmount: 900
+              unitAmount: 300
               currency: GBP
               recurring:
                 interval: month
