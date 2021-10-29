@@ -205,7 +205,7 @@ APPLICATION ERRROR - Check the server logs
             </svg>
           </span>
         </button>
-        <div x-show="open" x-data="{ count: 0 }" class="pt-6 bg-white py-3 px-2" id="filter-section-0">
+        <div id="skills-checkboxes" x-show="open" x-data="{ count: initialSkillsCount() }" class="pt-6 bg-white py-3 px-2" id="filter-section-0">
           {{- with .Data.SkillsContainer.TagSet }}
           {{- range .Groups }}
           <fieldset class="py-2">

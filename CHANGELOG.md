@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.15.2 (Fri, 29 Oct 4.23pm)
++ Fixed skill tags on update - countinue counting what the server put on checked state and
+limit to 5 skills.
+
 ## 0.15.1 (Fri, 29 Oct 3.51pm)
 + Fixed JS code that add and calculate the price of logo check box on the button
 

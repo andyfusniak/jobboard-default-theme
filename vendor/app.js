@@ -1,4 +1,13 @@
 document.addEventListener('alpine:init', () => {
+  Alpine.data('initialSkillsCount', () => {
+    let count = 0;
+    document.querySelectorAll('#skills-checkboxes input[type=checkbox]').forEach(function(k) {
+      if (k.checked) {
+        count++;
+      }
+    });
+    return count;
+  });
   Alpine.store('imageViewer', {
     imageUrl: '',
     uploadSelected: false,
