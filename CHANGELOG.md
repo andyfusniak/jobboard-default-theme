@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.16.0 (Sun, 31 Oct 8.23pm)
++ Add Terms of Service
+
 ## 0.15.2 (Fri, 29 Oct 4.23pm)
 + Fixed skill tags on update - countinue counting what the server put on checked state and
 limit to 5 skills.
