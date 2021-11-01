@@ -1,6 +1,6 @@
 {
   "name": "jobboard-default-theme",
-  "version": "0.18.0",
+  "version": "0.18.1",
   "description": "Jobboard Default Theme for customer-facing site.",
   "scripts": {
     "clean": "rimraf public",

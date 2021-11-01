@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.18.1 (Mon, 1 Nov 11.26pm)
++ Responsive fonts for job description
++ Warning text before posting a job on create mode not update mode.
+
 ## 0.18.0 (Mon, 1 Nov 10.00pm)
 + Extract checkbox styling
 + Add base url to image twitter card
