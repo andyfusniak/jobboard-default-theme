@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.17.0 (Mon, 1 Nov)
++ Add Privacy Policy
+
 ## 0.16.0 (Sun, 31 Oct 8.23pm)
 + Add Terms of Service
 
