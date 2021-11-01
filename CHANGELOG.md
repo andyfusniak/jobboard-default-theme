@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.17.1 (Mon, 1 Nov 1.05pm)
++ Correct path to image for twitter card
+
 ## 0.17.0 (Mon, 1 Nov)
 + Add Privacy Policy
 
