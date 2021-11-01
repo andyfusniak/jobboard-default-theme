@@ -80,11 +80,11 @@ APPLICATION ERRROR - Check the server logs
         <div class="mt-4 space-y-4 sm:space-y-0 sm:flex sm:gap-4">
           <div class="flex items-center">
             <input name="remote" id="remote" type="checkbox" value="remote" {{ if .Data.Remote.RemoteWork -}}checked {{ end -}}
-            class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
+            class="chk-box h-4 w-4" />
             <label for="remote" class="ml-1 block text-base font-normal text-gray-500">Remote</label>
           </div>
           <div class="flex items-center">
-            <input name="remote" id="temp_remote" type="checkbox" value="temp_remote" {{ if .Data.Remote.TempRemote -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
+            <input name="remote" id="temp_remote" type="checkbox" value="temp_remote" {{ if .Data.Remote.TempRemote -}}checked {{ end -}}class="chk-box h-4 w-4" />
             <label for="temp_remote" class="ml-1 block text-base font-normal text-gray-500">Temporarily Remote</label>
           </div>
         </div>
@@ -95,37 +95,37 @@ APPLICATION ERRROR - Check the server logs
         <legend class="font-medium text-base text-blue-900">Type of Employment</legend>
         <div class="space-y-4 sm:space-y-0 sm:flex sm:flex-wrap  sm:gap-4 mb-6">
           <div class="flex items-center">
-            <input name="emp-type" id="temporary" type="checkbox" value="temporary" {{ if .Data.EmpType.Temporary -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+            <input name="emp-type" id="temporary" type="checkbox" value="temporary" {{ if .Data.EmpType.Temporary -}}checked {{ end -}}class="chk-box h-4 w-4">
             <div class="ml-1">
               <label for="temporary" class="font-normal text-gray-500">Temporary</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" id="permanent" type="checkbox" value="permanent" {{ if .Data.EmpType.Permanent -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+            <input name="emp-type" id="permanent" type="checkbox" value="permanent" {{ if .Data.EmpType.Permanent -}}checked {{ end -}}class="chk-box h-4 w-4">
             <div class="ml-1">
               <label for="permanent" class="font-normal text-gray-500">Permanent</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" id="full_time" type="checkbox" value="full_time" {{ if .Data.EmpType.FullTime -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+            <input name="emp-type" id="full_time" type="checkbox" value="full_time" {{ if .Data.EmpType.FullTime -}}checked {{ end -}}class="chk-box h-4 w-4">
             <div class="ml-1">
               <label for="full_time" class="font-normal text-gray-500">Full Time</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" id="part_time" type="checkbox" value="part_time" {{ if .Data.EmpType.PartTime -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" id="part_time" type="checkbox" value="part_time" {{ if .Data.EmpType.PartTime -}}checked {{ end -}}class="chk-box h-4 w-4" />
             <div class="ml-1">
               <label for="part_time" class="font-normal text-gray-500">Part Time</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" id="contract" type="checkbox" value="contract" {{ if .Data.EmpType.Contract -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" id="contract" type="checkbox" value="contract" {{ if .Data.EmpType.Contract -}}checked {{ end -}}class="chk-box h-4 w-4" />
             <div class="ml-1">
               <label for="contract" class="font-normal text-gray-500">Contract</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input name="emp-type" id="per_diem" type="checkbox" value="per_diem" {{ if .Data.EmpType.PerDiem -}}checked {{ end -}}class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" />
+            <input name="emp-type" id="per_diem" type="checkbox" value="per_diem" {{ if .Data.EmpType.PerDiem -}}checked {{ end -}}class="chk-box h-4 w-4" />
             <div class="ml-1">
               <label for="per_diem" class="font-normal text-gray-500">Per Day</label>
             </div>
@@ -214,7 +214,7 @@ APPLICATION ERRROR - Check the server logs
               {{ range .Tags }}
               <div class="flex items-center gap-1">
                 <input @click="if (($event.target.checked) && (count > 4)) {$event.target.checked = false} else {count += $event.target.checked ? 1 : -1}"
-                type="checkbox" name="skills" id="{{ .Name }}" value="{{ .Name }}" {{ if .Checked  -}}checked {{ end -}} class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+                type="checkbox" name="skills" id="{{ .Name }}" value="{{ .Name }}" {{ if .Checked  -}}checked {{ end -}} class="chk-box h-4 w-4">
                 <label for="{{ .Name }}" class="font-normal text-gray-500">{{ .Title }}</label>
               </div>
               {{ end -}}
@@ -326,16 +326,15 @@ APPLICATION ERRROR - Check the server logs
     <fieldset class="py-6 pt-8">
       <div class="space-y-4">
         <div class="flex items-center">
-          <input id="chk-basic" name="chk-basic" type="checkbox" checked disabled class="focus:ring-blue-500 h-5 w-5 text-blue-700
-            border-gray-300 rounded" />
+          <input id="chk-basic" name="chk-basic" type="checkbox" checked disabled class="chk-box" />
           <div class="ml-3">
             <label for="chk-basic" class="font-medium text-blue-600">
-              Basic listing - {{ (index .Page.Prices "basicJobListingRecurring").UnitAmountDisplay }}
+              Basic listing - FREE
             </label>
           </div>
         </div>
         <div x-data class="flex items-center">
-          <input @change="$store.imageViewer.removeLogo()" @click="$store.imageViewer.text = ! $store.imageViewer.text" id="chk-logo" name="chk-logo" type="checkbox" disabled {{ if .Data.ChkLogo -}}checked {{ end -}} class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" x-model="$store.imageViewer.chkLogo"
+          <input @change="$store.imageViewer.removeLogo()" @click="$store.imageViewer.text = ! $store.imageViewer.text" id="chk-logo" name="chk-logo" type="checkbox" {{ if .Data.ChkLogo -}}checked {{ end -}} class="chk-box" x-model="$store.imageViewer.chkLogo"
           />
           <div class="ml-3">
             <label for="chk-logo" class="font-medium text-blue-600">
@@ -347,8 +346,7 @@ APPLICATION ERRROR - Check the server logs
           </div>
         </div>
         <div class="flex items-center">
-          <input id="chk-pinned30" name="chk-pinned30" type="checkbox" {{ if .Data.ChkPinned30 -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5
-            text-blue-700 border-gray-300 rounded" />
+          <input id="chk-pinned30" name="chk-pinned30" type="checkbox" {{ if .Data.ChkPinned30 -}}checked {{ end -}}class="chk-box" />
           <div class="ml-3">
             <label for="chk-pinned30" class="font-medium text-blue-600">
               Pinned to top for 30 days - {{ (index .Page.Prices "pinned30Recurring").UnitAmountDisplay }}
@@ -356,7 +354,7 @@ APPLICATION ERRROR - Check the server logs
           </div>
         </div>
         <div class="flex items-center">
-          <input id="chk-hl-standard" name="chk-hl-standard" type="checkbox" {{ if .Data.ChkHLStandard  -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded">
+          <input id="chk-hl-standard" name="chk-hl-standard" type="checkbox" {{ if .Data.ChkHLStandard  -}}checked {{ end -}}class="chk-box" >
           <div class="ml-3">
             <label for="chk-hl-standard" class="font-medium text-blue-600">
               Highlight job post in Yellow -  {{ (index .Page.Prices "standardHighlightRecurring").UnitAmountDisplay }}
@@ -367,7 +365,7 @@ APPLICATION ERRROR - Check the server logs
           </div>
         </div>
         <div class="flex items-center">
-          <input id="chk-hl-custom" name="chk-hl-custom" type="checkbox" {{ if .Data.ChkHLCustom -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" />
+          <input id="chk-hl-custom" name="chk-hl-custom" type="checkbox" {{ if .Data.ChkHLCustom -}}checked {{ end -}}class="chk-box" />
           <div class="ml-3">
             <label for="chk-hl-custom" class="font-medium text-blue-600">
               Highlight job post in your company brand's color - {{ (index .Page.Prices "customHighlightRecurring").UnitAmountDisplay }}
@@ -379,7 +377,7 @@ APPLICATION ERRROR - Check the server logs
           </div>
         </div>
         <div class="flex items-center">
-          <input name="chk-autorenew" id="chk-autorenew" type="checkbox" {{ if .Data.ChkAutorenew -}}checked {{ end -}}class="focus:ring-blue-500 h-5 w-5 text-blue-700 border-gray-300 rounded" />
+          <input name="chk-autorenew" id="chk-autorenew" type="checkbox" {{ if .Data.ChkAutorenew -}}checked {{ end -}}class="chk-box" />
           <div class="ml-3">
             <label for="chk-autorenew" class="font-medium text-blue-600">
               Renew job ad every 30 days
@@ -389,7 +387,9 @@ APPLICATION ERRROR - Check the server logs
       </div>
     </fieldset>
     {{- end }}
-
+    <span class="text-blue-800 font-medium">Choose all the features to make your job ad
+    stand out as these can't be changed later.</span>
+    <span class="text-blue-800 font-medium">All features are applied for 30 days.</span>
     <div class="mt-4 px-4 py-3 text-center">
       {{- if eq .Data.Mode "create" }}
       <button id="create-btn" type="submit" class="py-2 px-4 button">
