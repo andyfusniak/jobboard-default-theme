@@ -1,0 +1,33 @@
+{
+  "products": {
+    "basicJobListing": {
+      "amount": 0,
+      "name": "Basic Job Listing",
+      "description": "Basic job listing to appear in search results"
+    },
+
+    "pinned30": {
+      "amount": 1235,
+      "name": "Basic Job Listing",
+      "description": "Basic job listing to appear in search results"
+    },
+
+    "standardHighlight": {
+      "amount": 400,
+      "name": "Basic Job Listing",
+      "description": "Basic job listing to appear in search results"
+    },
+
+    "customHighlight": {
+      "amount": 1100,
+      "name": "Basic Job Listing",
+      "description": "Basic job listing to appear in search results"
+    },
+
+    "logo": {
+      "amount": 300,
+      "name": "Basic Job Listing",
+      "description": "Basic job listing to appear in search results"
+    }
+  }
+}

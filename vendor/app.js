@@ -50,8 +50,8 @@ function priceCalcHandler(prices, currencySymbol) {
   function calcPrice(prices) {
     const logo = chkLogoInput.checked ? prices.logo : 0.00;
     const pinned30 = chkPinned30Input.checked ? prices.pinned30 : 0.00;
-    const hlStandard = chkHlStandardInput.checked ? prices.standardHighlightRecurring : 0.00;
-    const hlCustom = chkHlCustomInput.checked ? prices.customHighlightRecurring : 0.00;
+    const hlStandard = chkHlStandardInput.checked ? prices.standardHighlight : 0.00;
+    const hlCustom = chkHlCustomInput.checked ? prices.customHighlight : 0.00;
     return (prices.basicJobListing + logo + pinned30 + hlStandard + hlCustom) / 100.0;
   }
 

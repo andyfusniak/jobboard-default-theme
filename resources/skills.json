@@ -1,0 +1,69 @@
+{
+  "groups": [
+    {
+      "name": "platforms",
+      "title": "Platforms",
+      "tags": [
+        { "name": "nodejs", "title": "Node.js" },
+        { "name": "deno", "title": "Deno" }
+      ]
+    },
+    {
+      "name": "langs",
+      "title": "Programming Languages",
+      "tags": [
+        { "name": "javascript", "title": "JavaScript" },
+        { "name": "typescript", "title": "TypeScript" }
+      ]
+    },
+    {
+      "name": "frameworks",
+      "title": "Frameworks & Libraries",
+      "tags": [
+        { "name": "reactjs", "title": "React" },
+        { "name": "nextjs", "title": "Next.js" },
+        { "name": "vuejs", "title": "Vue" },
+        { "name": "nuxtjs", "title": "Nuxt.js" },
+        { "name": "angular", "title": "Angular" },
+        { "name": "alpinejs", "title": "Alpine.js" },
+        { "name": "svelte", "title": "Svelte" }
+      ]
+    },
+    {
+      "name": "databases",
+      "title": "Databases",
+      "tags": [
+        { "name": "postgres", "title": "PostgreSQL" },
+        { "name": "mysql", "title": "MySQL" },
+        { "name": "sqlite", "title": "SQLite" },
+        { "name": "mongodb", "title": "MongoDB" },
+        { "name": "graphql", "title": "GraphQL" },
+        { "name": "redis", "title": "Redis" },
+        { "name": "cassandra", "title": "Cassandra" }
+      ]
+    },
+    {
+      "name": "infrastructure",
+      "title": "Infrastructure",
+      "tags": [
+        { "name": "aws", "title": "AWS"},
+        { "name": "gcp", "title": "GCP" },
+        { "name": "azure", "title": "Azure" },
+        { "name": "firebase", "title": "Firebase" },
+        { "name": "heroku", "title": "Heroku" },
+        { "name": "digitial-ocean", "title": "Digital Ocean" }
+      ]
+    },
+    {
+      "name": "buildtools",
+      "title": "Build tools",
+      "tags": [
+        { "name": "webpack", "title": "Webpack" },
+        { "name": "rollup", "title": "rollup.js" },
+        { "name": "babel", "title": "Babel" },
+        { "name": "grunt", "title": "Grunt" },
+        { "name": "gulp", "title": "Gulp" }
+      ]
+    }
+  ]
+}

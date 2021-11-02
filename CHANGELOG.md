@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.19 (Tue, 2 Nov 9.48pm)
++ Changed for v0.20+ removed skills, pricing and tags to use environment variables.
++ Template changes for pricing and tags.
+
 ## 0.18.1 (Mon, 1 Nov 11.26pm)
 + Responsive fonts for job description
 + Warning text before posting a job on create mode not update mode.

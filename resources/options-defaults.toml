@@ -1,4 +1,0 @@
-# global section is used for the default settings.
-[global]
-  # seo_robots_txt is served for HTTP GET requests to the /robots.txt path
-  seo_robots_txt = "Allow: *\n"
