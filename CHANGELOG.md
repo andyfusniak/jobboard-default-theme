@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.20 (Wed, 3 Nov 10.40pm)
++ Twitter card meta tags
++ Goole data structure
++ use full url {{.Site.BaseURL}}
+
 ## 0.19 (Tue, 2 Nov 9.48pm)
 + Changed for v0.20+ removed skills, pricing and tags to use environment variables.
 + Template changes for pricing and tags.

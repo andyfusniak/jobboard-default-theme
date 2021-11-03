@@ -13,39 +13,47 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="UK javascript jobs, Nodejs jobs, javascript developer, frontend developer, nodejs, Typescript">
+  <meta name="keywords" content="javascript jobs, uk, node.js, javascript developer, frontend developer, typescript, ecmascript">
+  {{- block "meta" .}}
   <meta name="description" content="JavaScript Jobs in the UK for Code Pyjamas">
-
+  {{- end}}
+  {{- block "twitter-card" .}}
+  {{- if .Site.TwitterHandle}}
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="UK JavaScript Jobs for Code Pyjamas">
-  <meta name="twitter:description" content="JavaScript Jobs in the UK">
+  <meta name="twitter:site" content="@{{.Site.TwitterHandle}}">
+  <meta name="twitter:title" content="Code Pyjamas - UK JavaScript Job Board">
+  <meta name="twitter:description" content="Find your perfect UK JavaScript job with Code C̵a̵t̵'̵s̵ Pyjamas. Will your next JavaScript role challenge you to
+  become the Code Pyjamas?">
   {{- if .Site.ThemeTag}}
   <meta name="twitter:image" content="{{.Site.BaseURL}}/static/{{.Site.ActiveTheme.Name}}/{{.Site.ActiveTheme.Version}}/code_pyjamas_banner.png">
   {{- end}}
-  <title>{{ template "title" . }}</title>
-  {{- if .Site.ThemeTag}}
-  <link rel="shortcut icon" type="image/jpg" href="/static/{{.Site.ActiveTheme.Name}}/{{.Site.ActiveTheme.Version}}/favicon.ico"/>
-  <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-  <link rel="stylesheet" href="/static/{{.Site.ActiveTheme.Name}}/{{.Site.ActiveTheme.Version}}/css/tailwind.css">
-  {{- else}}
-  <link rel="shortcut icon" type="image/jpg" href="/static/favicon.ico"/>
-  <link href="/static/css/fonts.css" rel="stylesheet">
-  <link rel="stylesheet" href="/static/css/tailwind.css">
   {{- end}}
+  {{- end}}
+  <title>{{ template "title" . }}</title>
+  {{- block "google-structured-data" .}}{{end}}
+  {{- if .Site.ThemeTag}}
+  <link rel="shortcut icon" type="image/jpg" href="{{.Site.BaseURL}}/static/{{.Site.ActiveTheme.Name}}/{{.Site.ActiveTheme.Version}}/favicon.ico"/>
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+  <link rel="stylesheet" href="{{.Site.BaseURL}}/static/{{.Site.ActiveTheme.Name}}/{{.Site.ActiveTheme.Version}}/css/tailwind.css">
+  {{- else}}
+  <link rel="shortcut icon" type="image/jpg" href="{{.Site.BaseURL}}/static/favicon.ico"/>
+  <link rel="stylesheet" href="{{.Site.BaseURL}}/static/css/fonts.css">
+  <link rel="stylesheet" href="{{.Site.BaseURL}}/static/css/tailwind.css">
+  {{- end}}
+  {{- block "canonical-url" .}}{{end}}
   <script defer src="https://unpkg.com/alpinejs@3.2.2/dist/cdn.min.js"></script>
-  {{ template "plinks" . -}}
+  {{- template "plinks" . -}}
 </head>
 <body class="bg-white flex flex-col h-screen justify-between">
 {{- if .Site.GTMID}}
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{.Site.GTMID}}"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 {{- end}}
-  {{ template "nav" . }}
-
+  {{- template "nav" . }}
   <main class="mb-auto">
+  {{ printf "%#v" .Site}}
     {{- template "content" . }}
   </main>
-
   {{- template "footer" . }}
 </body>
 </html>
