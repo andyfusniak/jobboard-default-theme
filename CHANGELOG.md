@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.21 (Wed, 3 Nov 11.25pm)
++ Replace code-pyjamas-twitter-banner.png to 800x400 size
+
 ## 0.20.5 (Wed, 3 Nov 11.10pm)
 + Twitter card meta tags
 + Goole data structure
