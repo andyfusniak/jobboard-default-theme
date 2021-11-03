@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404</title>
   {{- if .Site.ThemeTag}}
-  <link rel="stylesheet" href="/static/{{.Site.ActiveTheme.Name}}/{{.Site.ActiveTheme.Version}}/css/tailwind.css">
+  <link rel="stylesheet" href="{{.Site.BaseURL}}/static/{{.Site.ActiveTheme.Name}}/{{.Site.ActiveTheme.Version}}/css/tailwind.css">
   {{- else}}
-  <link rel="stylesheet" href="/static/css/tailwind.css">
+  <link rel="stylesheet" href="{{.Site.BaseURL}}/static/css/tailwind.css">
   {{- end}}
 </head>
 <body>

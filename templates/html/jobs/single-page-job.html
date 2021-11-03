@@ -1,7 +1,26 @@
-{{ define "title" }}Code Pyjamas | Job{{ end }}
-{{ define "content" }}
+{{- define "canonical-url"}}
+<link rel="canonical" href="{{.Site.BaseURL}}/jobs/{{.Data.Slug}}"/>
+{{- end}}
+{{- define "title"}}{{.Data.Title}} | Code Pyjamas{{end}}
+{{- define "meta"}}
+  <meta name="description" content="UK JavaScript Jobs | {{.Data.Title}} at {{.Data.CompanyName}} in {{.Data.Location}}">
+{{- end}}
+{{- define "google-structured-data"}}
+{{structuredData $.Data}}
+{{- end}}
 
-{{ with .Data }}
+{{- define "twitter-card"}}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{.Data.Title}}: {{.Data.CompanyName}}">
+  <meta name="twitter:site" content="@{{.Site.TwitterHandle}}">
+  <meta name="twitter:description" content="{{.Data.CompanyName}} is looking for {{.Data.Title}} in {{.Data.Location}}.">
+  {{- if .Site.ThemeTag}}
+  <meta name="twitter:image" content="{{.Site.BaseURL}}/static/{{.Site.ActiveTheme.Name}}/{{.Site.ActiveTheme.Version}}/code_pyjamas_banner.png">
+  {{- end}}
+{{- end}}
+
+{{- define "content"}}
+{{with .Data}}
 <div class="max-w-7xl mx-auto px-6 md:px-4">
   <div class="py-4 md:py-8 mx-auto grid grid-cols-1 gap-10 lg:grid-flow-col-dense lg:grid-cols-3">
     <!-- Job details -->
@@ -81,5 +100,5 @@
     </div>
   </div>
 </div>
-{{ end }}
-{{ end }}
+{{- end}}
+{{- end}}

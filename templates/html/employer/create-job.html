@@ -2,9 +2,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
   <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
   {{- if .Site.ThemeTag}}
-  <script src="/static/{{.Site.ActiveTheme.Name}}/{{.Site.ActiveTheme.Version}}/js/app.js"></script>
+  <script src="{{.Site.BaseURL}}/static/{{.Site.ActiveTheme.Name}}/{{.Site.ActiveTheme.Version}}/js/app.js"></script>
   {{- else}}
-  <script src="/static/js/app.js"></script>
+  <script src="{{.Site.BaseURL}}/static/js/app.js"></script>
   {{- end}}
   <script>
   document.addEventListener('DOMContentLoaded', function(event) {
