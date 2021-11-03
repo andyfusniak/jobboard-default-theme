@@ -1,10 +1,11 @@
 # CHANGELOG
 
-## 0.20.1 (Wed, 3 Nov 10.40pm)
+## 0.20.2 (Wed, 3 Nov 10.40pm)
 + Twitter card meta tags
 + Goole data structure
 + use full url {{.Site.BaseURL}}
-+ Remove printf
++ 0.20.1 Remove printf
++ 0.20.2 Fix build script to include .png and change twitter image path
 
 ## 0.19 (Tue, 2 Nov 9.48pm)
 + Changed for v0.20+ removed skills, pricing and tags to use environment variables.
