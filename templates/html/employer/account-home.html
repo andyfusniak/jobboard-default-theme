@@ -63,15 +63,14 @@
                     {{- else}}
                     <span class="material-icons-outlined text-gray-500 text-xl">push_pin</span>
                     {{- end}}
-                    {{- if eq (derefstr .Job.HLType) "custom"}}
-                    <span class="px-2 py-2 border-2 rounded-md" style="background-color: {{derefstr .Job.HLCol}}; border-color: {{derefstr .Job.HLCol}};"></span>
-                    {{- end}}
-                    {{- if eq (derefstr .Job.HLType) "standard"}}
-                    <span class="bg-yellow-100 border-2 border-yellow-200 px-2 py-2 rounded-md"></span>
-                    {{- end}}
-                    {{- if eq (derefstr .Job.HLType) ""}}
+                    {{- if eq .Job.Highlight "none"}}
                     <span class="border-2 border-gray-500 px-2 py-2 rounded-md"></span>
+                    {{- else if eq .Job.Highlight "standard"}}
+                    <span class="bg-yellow-100 border-2 border-yellow-200 px-2 py-2 rounded-md"></span>
+                    {{- else}}
+                    <span class="px-2 py-2 border-2 rounded-md" style="background-color: {{.Job.Highlight}}; border-color: {{.Job.Highlight}};"></span>
                     {{- end}}
+
                     {{- if .Job.LogoURL}}
                     <img src="/{{.Job.LogoURL}}" alt="logo" class="h-5 w-5 rounded-md ml-1">
                     {{- end}}
@@ -154,15 +153,14 @@
                             {{- else}}
                             <span class="material-icons-outlined text-gray-500 text-lg">push_pin</span>
                             {{- end}}
-                            {{- if eq (derefstr .HLType) "custom"}}
-                            <span class="px-2 py-2 ml-1 rounded-sm" style="background-color: {{derefstr .HLCol}}"></span>
-                            {{- end}}
-                            {{- if eq (derefstr .HLType) "standard"}}
-                            <span class="bg-yellow-100 px-2 py-2 ml-1 rounded-sm"></span>
-                            {{- end}}
-                            {{- if eq (derefstr .HLType) ""}}
+                            {{- if eq .Highlight "none"}}
                             <span class="border border-gray-500 px-2 py-2 ml-1 rounded-sm"></span>
+                            {{- else if eq .Highlight "standard"}}
+                            <span class="bg-yellow-100 px-2 py-2 ml-1 rounded-sm"></span>
+                            {{- else}}
+                            <span class="px-2 py-2 ml-1 rounded-sm" style="background-color: {{.Highlight}}"></span>
                             {{- end}}
+
                             {{- if .LogoURL}}
                             <img src="/{{.LogoURL}}" alt="logo" class="w-4 h-4 ml-1 rounded-sm">
                             {{- end}}

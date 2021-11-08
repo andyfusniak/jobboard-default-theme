@@ -1,13 +1,19 @@
 {{- define "job-summary"}}
 {{- $fgcol1 := "text-gray-600"}}
 {{- $fgcol2 := "text-gray-800"}}
-{{- if useWhiteText .HLCol}}
+{{- if useWhiteText .Highlight}}
 {{- $fgcol1 = "text-white"}}
 {{- $fgcol2 = "text-white"}}
 {{- end}}
 <div >
   <ul class="shadow overflow-hidden mx-2 my-2 lg:my-5 sm:rounded-md sm:mx-4">
-    <li {{if isNotHighlighted .HLType}}{{else if isCustomHighlighted .HLType -}} style="background-color: {{hlcol .HLCol}};" {{- else if isStandardHighlighted .HLType -}} class="bg-yellow-100"{{end}}>
+    {{- if eq .Highlight "none"}}
+    <li>
+    {{- else if eq .Highlight "standard"}}
+    <li class="bg-yellow-100">
+    {{- else}}
+    <li style="background-color: {{.Highlight}};">
+    {{- end}}
       <a href="/jobs/{{.Slug}}">
         <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-5 items-center px-3 py-2">
           <div class="flex items-center gap-4 md:gap-5 col-span-2">
@@ -25,7 +31,7 @@
             <div class="flex flex-wrap gap-1">
               {{- range .SkillsContainer.Raw}}
                 {{- with (index $.SkillsContainer.Map .)}}
-                <p class="{{if useWhiteText $.HLCol -}}border-white {{- else -}} border-gray-800 {{- end}} border px-1 py-1 rounded text-xs {{$fgcol2}}">{{.Title}}</p>
+                <p class="{{if useWhiteText $.Highlight -}}border-white {{- else -}} border-gray-800 {{- end}} border px-1 py-1 rounded text-xs {{$fgcol2}}">{{.Title}}</p>
                 {{- end -}}
               {{end}}
             </div>

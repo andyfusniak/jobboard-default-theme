@@ -6,7 +6,7 @@
   <meta name="description" content="UK JavaScript Jobs | {{.Data.Title}} at {{.Data.CompanyName}} in {{.Data.Location}}">
 {{- end}}
 {{- define "google-structured-data"}}
-{{structuredData $.Data}}
+{{structuredData $.UID $.Data}}
 {{- end}}
 
 {{- define "twitter-card"}}
