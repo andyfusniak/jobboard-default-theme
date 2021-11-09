@@ -19,10 +19,11 @@
           <div class="flex items-center gap-4 md:gap-5 col-span-2">
             <img class="h-10 w-10 md:h-20 md:w-20" src="/{{.LogoURL}}" alt="logo">
             <div>
-              <p class="text-xs sm:text-sm tracking-tight lg:text-lg font-semibold {{$fgcol2 -}}">
-                {{.Title}}{{- if .Remote.RemoteWork}}<span class="ml-1 text-xs sm:text-sm bg-gray-100 px-1 rounded-md shadow-sm">Remote</span>{{- end}}
-              </p>
-              <p class="mt-1 text-xs sm:text-base font-medium {{$fgcol1 -}}">{{.CompanyName}}</p>
+              <span class="text-xs sm:text-sm tracking-tight lg:text-lg font-semibold {{$fgcol2 -}}">{{.Title}}</span>
+              {{- if .Remote.RemoteWork}}
+              <span class="ml-0.5 text-xs sm:text-sm bg-gray-100 px-1 rounded-md shadow-sm">Remote</span>
+              {{- end}}
+              <p class="sm:mt-1 text-xs sm:text-base font-medium {{$fgcol1 -}}">{{.CompanyName}}</p>
               <div class="flex flex-col items-start sm:flex-row sm:items-center sm:justify-start md:items-baseline">
                 <span class=" -ml-1 px-1 text-xs lg:text-base {{$fgcol1 -}}">{{.Location}}</span>
                 <span class="md:ml-2 text-xs tracking-tighter sm:ml-2 md:text-sm {{$fgcol1 -}}">&#163;{{moneyK .SalaryMin}} - &#163;{{moneyK .SalaryMax}}</span>

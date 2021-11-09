@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.23.1 (Tue, 9 Nov 11.55pm)
++ Fix remote text colour
+
 ## 0.23 (Tue, 9 Nov 11.41pm)
 + Add remote tag on job summary
 + Add job-summary class for GTA tracking
