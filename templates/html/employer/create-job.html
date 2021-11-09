@@ -63,6 +63,7 @@ APPLICATION ERRROR - Check the server logs
       <div class="py-2">
         <label for="location" class="font-medium text-base text-blue-900 block">* Location</label>
         <input type="text" name="location" value="{{ .Data.Location }}" class="formInput {{ if .Errors.Location }} input-error{{ end }}" />
+        <p class="mb-1 text-sm text-gray-400">Only include location such as 'London', 'Manchester'. Do not include the word 'Remote'. For remote options, check the appropriate option boxes below.</p>
         {{- if eq .Errors.Location "inputEmpty" }}
         <span class="text-error">Enter the location of the company</span>
         {{- end }}
@@ -73,7 +74,7 @@ APPLICATION ERRROR - Check the server logs
         <div>
           <legend class="font-medium text-base text-blue-900">Is this role remote?</legend>
           <p class="text-sm text-gray-400">
-            Choose Temporarily Remote if you expect the Talents to return to the office later.
+            Choose Temporarily Remote if hires are expected to return to the office later.
           </p>
         </div>
         <div class="mt-4 space-y-4 sm:space-y-0 sm:flex sm:gap-4">
@@ -189,7 +190,7 @@ APPLICATION ERRROR - Check the server logs
       <div x-data="{ open: false }" class="my-6 px-4 py-2 border border-blue-200 border-dotted">
         <h4 class="text-lg font-semibold text-blue-900">Choose Skills / Tech Stack</h4>
         <p class="mb-3 text-sm text-gray-400">
-          This will help tech talents to filter your job by skills or tech stack. Choose up to 5 tags.
+          This will help tech talent to filter your job by skills or tech stack. Choose up to 5 tags.
         </p>
         <button @click="open = ! open" type="button" class="py-3 px-2 w-full bg-white flex items-center justify-between text-sm text-gray-500 hover:text-gray-500 border-2 border-gray-200 rounded" aria-controls="filter-section-0">
           <span class="font-medium text-gray-500">

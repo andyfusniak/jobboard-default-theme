@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.22 (Tue, 9 Nov5.13pm)
++ GTM track login user with userId
++ Change talents to talent
+
 ## 0.21 (Wed, 3 Nov 11.25pm)
 + Replace code-pyjamas-twitter-banner.png to 800x400 size
 
