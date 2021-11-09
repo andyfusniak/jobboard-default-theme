@@ -1,6 +1,11 @@
 # CHANGELOG
 
-## 0.22 (Tue, 9 Nov5.13pm)
+## 0.23 (Tue, 9 Nov 11.41pm)
++ Add remote tag on job summary
++ Add job-summary class for GTA tracking
++ Update npm dependencies
+
+## 0.22 (Tue, 9 Nov 5.13pm)
 + GTM track login user with userId
 + Change talents to talent
 
