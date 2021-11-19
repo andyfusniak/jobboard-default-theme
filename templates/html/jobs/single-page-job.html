@@ -58,16 +58,7 @@
       </div>
       <div class="jd my-10">{{unescapeHTML .HTML}}</div>
       <div class="flex justify-center">
-        {{- if not $.IsSignedIn}}
-        <div>
-          <form action="/apply-for-job" method="POST">
-            <input type="hidden" name="job-id" value="{{.ID}}" />
-            <button class="px-4 py-2 md:px-6 button applyBtn">Apply</button>
-          </form>
-        </div>
-        {{- else}}
         <a href="{{.ApplyURL}}" target="_blank" class="px-4 py-2 md:px-6 button applyBtn">Apply</a>
-        {{- end}}
       </div>
     </div>
     <!-- Logo and form -->
