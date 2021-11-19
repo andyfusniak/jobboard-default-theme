@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.24 (Fri, 19 Nov 10.55pm)
++ Talent signup banner
++ Remove forced signup before applying jobs
+
 ## 0.23.1 (Tue, 9 Nov 11.55pm)
 + Fix remote text colour
 
