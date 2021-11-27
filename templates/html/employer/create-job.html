@@ -36,7 +36,7 @@ APPLICATION ERRROR - Check the server logs
   <h2 class="text-blue-900 font-medium text-lg md:text-2xl mt-3">Create a job post to hire the best.</h2>
 </div>
 
-<div class="max-w-3xl mx-auto w-full bg-gray-50 py-10 my-8 px-8 rounded-sm">
+<div class="max-w-3xl mx-auto w-full py-10 my-8 px-8 rounded-sm">
   <form method="POST" action="{{ .Page.Action }}" enctype="multipart/form-data">
     <!-- Salary Currency -->
     <input type="hidden" name="salary-currency" value="GBP" />
@@ -319,6 +319,35 @@ APPLICATION ERRROR - Check the server logs
       </div>
     </div>
     <hr>
+
+    <!-- Ad preview -->
+    <h3 class="font-medium text-base text-blue-900 my-6">Job Ad Preview</h3>
+    <div x-data class="max-w-3xl mx-auto">
+      <ul class="shadow overflow-hidden mx-2 my-2 lg:my-5 sm:rounded-md sm:mx-4">
+        <li :class="$store.adPreview.chkStd ? 'bg-yellow-100' : ''" :style="$store.adPreview.chkCustom ? `background-color: ${$store.adPreview.hlCol}` : '' ">
+          <span class="job-summary">
+            <div class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-5 items-center px-3 py-2">
+              <div class="flex items-center gap-4 md:gap-5 col-span-2">
+                <template x-if="$store.imageViewer.uploadSelected">
+                  <img class="h-10 w-10 md:h-20 md:w-20" :src="$store.imageViewer.imageUrl" alt="logo">
+                </template>
+                <template x-if="! $store.imageViewer.uploadSelected">
+                  <span class="h-10 w-10 md:h-20 md:w-20 border-2 border-gray-500 flex justify-center items-center">Logo</span>
+                </template>
+              </div>
+              <div class="col-end-4 md:col-span-2 justify-self-end">
+                <p class="flex items-center justify-end sm:ml-6">
+                  <template x-if="$store.adPreview.chkPinned">
+                    <span class="text-sm md:text-xl mr-3">📌</span>
+                  </template>
+                </p>
+              </div>
+            </div>
+          </span>
+        </li>
+      </ul>
+    </div>
+
     <!-- Job Ad features Checkboxes -->
     {{- if eq .Data.Mode "create" }}
     <fieldset class="py-6 pt-8">
@@ -343,32 +372,35 @@ APPLICATION ERRROR - Check the server logs
             </template>
           </div>
         </div>
-        <div class="flex items-center">
-          <input id="chk-pinned30" name="chk-pinned30" type="checkbox" {{ if .Data.ChkPinned30 -}}checked {{ end -}}class="chk-box" />
+        <div x-data class="flex items-center">
+          <input id="chk-pinned30" name="chk-pinned30" type="checkbox" {{ if .Data.ChkPinned30 -}}checked {{ end -}}class="chk-box"
+          x-model="$store.adPreview.chkPinned"/>
           <div class="ml-3">
             <label for="chk-pinned30" class="font-medium text-blue-600">
               Pinned to top for 30 days - {{(index .Page.ProductCfg.Products "pinned30").Amount | displayPrice}}
             </label>
           </div>
         </div>
-        <div class="flex items-center">
-          <input id="chk-hl-standard" name="chk-hl-standard" type="checkbox" {{ if .Data.ChkHLStandard  -}}checked {{ end -}}class="chk-box" >
+        <div x-data class="flex items-center">
+          <input id="chk-hl-standard" name="chk-hl-standard" type="checkbox" {{ if .Data.ChkHLStandard  -}}checked {{ end -}}class="chk-box"
+          x-model="$store.adPreview.chkStd" :disabled="$store.adPreview.chkCustom"/>
           <div class="ml-3">
             <label for="chk-hl-standard" class="font-medium text-blue-600">
-              Highlight job post in Yellow - {{(index .Page.ProductCfg.Products "standardHighlight").Amount | displayPrice}}
+              Highlight job post in <span class="inline-block px-1 py-1 bg-yellow-100">Yellow</span> - {{(index .Page.ProductCfg.Products "standardHighlight").Amount | displayPrice}}
             </label>
             {{- if eq .Errors.ChkHLStandard "inputInvalid" }}
             <p class="text-error">Unselect this option when using custom highlighting</p>
             {{- end }}
           </div>
         </div>
-        <div class="flex items-center">
-          <input id="chk-hl-custom" name="chk-hl-custom" type="checkbox" {{ if .Data.ChkHLCustom -}}checked {{ end -}}class="chk-box" />
+        <div x-data class="flex items-center">
+          <input id="chk-hl-custom" name="chk-hl-custom" type="checkbox" {{ if .Data.ChkHLCustom -}}checked {{ end -}}class="chk-box"
+          x-model="$store.adPreview.chkCustom" :disabled="$store.adPreview.chkStd"/>
           <div class="ml-3">
             <label for="chk-hl-custom" class="font-medium text-blue-600">
               Highlight job post in your company brand's color - {{(index .Page.ProductCfg.Products "customHighlight").Amount | displayPrice}}
             </label>
-            <input type="color" name="hl-col" value="{{ .Data.HLCol }}" />
+            <input id="hl-col" type="color" name="hl-col" value="{{ .Data.HLCol }}" @change="$store.adPreview.hlCol , console.log($store.adPreview.hlCol)" x-model="$store.adPreview.hlCol"/>
             {{ if eq .Errors.HLCol "inputInvalid" }}
             <p class="text-error">Select a highlight hex colour for custom highlighting</p>
             {{ end }}
@@ -384,9 +416,9 @@ APPLICATION ERRROR - Check the server logs
         </div>
       </div>
     </fieldset>
-    <span class="text-blue-800 font-medium">Choose all the features to make your job ad
+    <span class="text-red-600 font-medium">Choose all the features to make your job ad
     stand out as these can't be changed later.</span>
-    <span class="text-blue-800 font-medium">All features are applied for 30 days.</span>
+    <span class="text-red-600 font-medium">All features are applied for 30 days.</span>
     {{- end }}
     <div class="mt-4 px-4 py-3 text-center">
       {{- if eq .Data.Mode "create" }}
@@ -400,4 +432,5 @@ APPLICATION ERRROR - Check the server logs
     </div>
   </form>
 </div>
+
 {{ end }}

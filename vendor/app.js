@@ -39,6 +39,12 @@ document.addEventListener('alpine:init', () => {
       this.$refs.logoInput.value = '';
     }
   });
+  Alpine.store('adPreview', {
+    chkPinned: document.getElementById('chk-pinned30').checked,
+    chkStd: document.getElementById('chk-hl-standard').checked,
+    chkCustom: document.getElementById('chk-hl-custom').checked,
+    hlCol: document.getElementById('hl-col').value
+  })
 });
 
 function priceCalcHandler(prices, currencySymbol) {
