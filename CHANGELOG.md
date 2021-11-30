@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.25 (Tue, 30 Nov 10.25pm)
++ Ad preview excludes skills
++ Changed product pricing
++ Update npm dependencies
+
 ## 0.24 (Fri, 19 Nov 10.55pm)
 + Talent signup banner
 + Remove forced signup before applying jobs
