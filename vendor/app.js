@@ -40,10 +40,26 @@ document.addEventListener('alpine:init', () => {
     }
   });
   Alpine.store('adPreview', {
+    title: '',
+    remote: '',
+    companyName: '',
+    location: '',
+    min: '',
+    max: '',
+    skills: [],
+    temp: '',
+    perm: '',
+    fullT: '',
+    partT: '',
+    contract: '',
+    perDay: '',
     chkPinned: document.getElementById('chk-pinned30').checked,
     chkStd: document.getElementById('chk-hl-standard').checked,
     chkCustom: document.getElementById('chk-hl-custom').checked,
-    hlCol: document.getElementById('hl-col').value
+    hlCol: document.getElementById('hl-col').value,
+    formatSalary(num) {
+      return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num);
+    }
   })
 });
 

@@ -23,6 +23,9 @@
   .input-error {
     @apply border-red-500;
   }
+  .emp-type {
+    @apply px-1 inline-flex text-xs rounded-full bg-blue-100 text-blue-800;
+  }
   .jd h1 {
     @apply my-2 text-2xl md:text-4xl font-bold text-gray-700 leading-relaxed;
   }
@@ -40,6 +43,9 @@
   }
   .jd h6 {
     @apply my-2 font-bold text-gray-700 leading-9;
+  }
+  .jd p {
+    @apply my-6;
   }
   .jd ul, li, p {
     @apply leading-relaxed text-base md:text-lg text-gray-700;
