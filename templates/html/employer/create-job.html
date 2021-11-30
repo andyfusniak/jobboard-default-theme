@@ -37,7 +37,7 @@ APPLICATION ERRROR - Check the server logs
 </div>
 
 <div class="max-w-4xl mx-auto w-full py-10 my-8 px-8">
-  <form x-data method="POST" action="{{ .Page.Action }}" enctype="multipart/form-data">
+  <form x-data method="POST" action="{{.Page.Action}}" enctype="multipart/form-data">
     <!-- Salary Currency -->
     <input type="hidden" name="salary-currency" value="GBP" />
     {{- if eq .Errors.SalaryCurrency "inputEmpty" -}}
@@ -53,7 +53,8 @@ APPLICATION ERRROR - Check the server logs
       <!-- Job title -->
       <div class="py-2">
         <label for="title" class="font-medium text-base text-blue-900 block">* Job Title</label>
-        <input x-model="$store.adPreview.title" type="text" name="title" value="{{ .Data.Title }}" class="formInput {{- if .Errors.Title }} input-error{{ end }}" placeholder="Job Title" />
+        <input x-model="$store.adPreview.title" id="title" type="text" name="title" value="{{.Data.Title}}"
+        class="formInput {{- if .Errors.Title}} input-error{{- end}}" placeholder="Job Title" />
         {{- if eq .Errors.Title "inputEmpty" }}
         <span class="text-error">Enter your job title</span>
         {{- end }}
@@ -62,7 +63,7 @@ APPLICATION ERRROR - Check the server logs
       <!-- Job location -->
       <div class="py-2">
         <label for="location" class="font-medium text-base text-blue-900 block">* Location</label>
-        <input  x-model="$store.adPreview.location" type="text" name="location" value="{{ .Data.Location }}" class="formInput {{ if .Errors.Location }} input-error{{ end }}" />
+        <input  x-model="$store.adPreview.location" id="location" type="text" name="location" value="{{.Data.Location}}" class="formInput {{if .Errors.Location}} input-error{{- end}}" />
         <p class="mb-1 text-sm text-gray-400">Only include location such as 'London', 'Manchester'. Do not include the word 'Remote'. For remote options, check the appropriate option boxes below.</p>
         {{- if eq .Errors.Location "inputEmpty" }}
         <span class="text-error">Enter the location of the company</span>
@@ -79,12 +80,12 @@ APPLICATION ERRROR - Check the server logs
         </div>
         <div class="mt-4 space-y-4 sm:space-y-0 sm:flex sm:gap-4">
           <div class="flex items-center">
-            <input x-model="$store.adPreview.remote" name="remote" id="remote" type="checkbox" value="remote" {{ if .Data.Remote.RemoteWork -}}checked {{ end -}}
+            <input x-model="$store.adPreview.remote" name="remote" id="remote" type="checkbox" value="remote" {{if .Data.Remote.RemoteWork -}}checked {{end -}}
             class="chk-box h-4 w-4" />
             <label for="remote" class="ml-1 block text-base font-normal text-gray-500">Remote</label>
           </div>
           <div class="flex items-center">
-            <input name="remote" id="temp_remote" type="checkbox" value="temp_remote" {{ if .Data.Remote.TempRemote -}}checked {{ end -}}class="chk-box h-4 w-4" />
+            <input name="remote" id="temp_remote" type="checkbox" value="temp_remote" {{if .Data.Remote.TempRemote -}}checked {{end -}}class="chk-box h-4 w-4" />
             <label for="temp_remote" class="ml-1 block text-base font-normal text-gray-500">Temporarily Remote</label>
           </div>
         </div>
@@ -95,37 +96,37 @@ APPLICATION ERRROR - Check the server logs
         <legend class="font-medium text-base text-blue-900">Type of Employment</legend>
         <div class="space-y-4 sm:space-y-0 sm:flex sm:flex-wrap  sm:gap-4 mb-6">
           <div class="flex items-center">
-            <input x-model="$store.adPreview.empType" name="emp-type" id="temporary" type="checkbox" value="temporary" {{ if .Data.EmpType.Temporary -}}checked {{ end -}}class="chk-box h-4 w-4">
+            <input x-model="$store.adPreview.temp" name="emp-type" id="temporary" type="checkbox" value="temporary" {{if .Data.EmpType.Temporary -}}checked {{end -}}class="chk-box h-4 w-4">
             <div class="ml-1">
               <label for="temporary" class="font-normal text-gray-500">Temporary</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input x-model="$store.adPreview.empType" name="emp-type" id="permanent" type="checkbox" value="permanent" {{ if .Data.EmpType.Permanent -}}checked {{ end -}}class="chk-box h-4 w-4">
+            <input x-model="$store.adPreview.perm" name="emp-type" id="permanent" type="checkbox" value="permanent" {{if .Data.EmpType.Permanent -}}checked {{end -}}class="chk-box h-4 w-4">
             <div class="ml-1">
               <label for="permanent" class="font-normal text-gray-500">Permanent</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input x-model="$store.adPreview.empType" name="emp-type" id="full_time" type="checkbox" value="full_time" {{ if .Data.EmpType.FullTime -}}checked {{ end -}}class="chk-box h-4 w-4">
+            <input x-model="$store.adPreview.fullT" name="emp-type" id="full_time" type="checkbox" value="full_time" {{if .Data.EmpType.FullTime -}}checked {{ end -}}class="chk-box h-4 w-4">
             <div class="ml-1">
               <label for="full_time" class="font-normal text-gray-500">Full Time</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input x-model="$store.adPreview.empType" name="emp-type" id="part_time" type="checkbox" value="part_time" {{ if .Data.EmpType.PartTime -}}checked {{ end -}}class="chk-box h-4 w-4" />
+            <input x-model="$store.adPreview.partT" name="emp-type" id="part_time" type="checkbox" value="part_time" {{if .Data.EmpType.PartTime -}}checked {{end -}}class="chk-box h-4 w-4" />
             <div class="ml-1">
               <label for="part_time" class="font-normal text-gray-500">Part Time</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input x-model="$store.adPreview.empType" name="emp-type" id="contract" type="checkbox" value="contract" {{ if .Data.EmpType.Contract -}}checked {{ end -}}class="chk-box h-4 w-4" />
+            <input x-model="$store.adPreview.contract" name="emp-type" id="contract" type="checkbox" value="contract" {{if .Data.EmpType.Contract -}}checked {{end -}}class="chk-box h-4 w-4" />
             <div class="ml-1">
               <label for="contract" class="font-normal text-gray-500">Contract</label>
             </div>
           </div>
           <div class="flex items-center">
-            <input x-model="$store.adPreview.empType" name="emp-type" id="per_diem" type="checkbox" value="per_diem" {{ if .Data.EmpType.PerDiem -}}checked {{ end -}}class="chk-box h-4 w-4" />
+            <input x-model="$store.adPreview.perDiem" name="emp-type" id="per_diem" type="checkbox" value="per_diem" {{if .Data.EmpType.PerDiem -}}checked {{end -}}class="chk-box h-4 w-4" />
             <div class="ml-1">
               <label for="per_diem" class="font-normal text-gray-500">Per Day</label>
             </div>
@@ -140,7 +141,7 @@ APPLICATION ERRROR - Check the server logs
             * Minimum Salary in GBP
           </label>
           <div class="mt-1">
-            <input x-model="$store.adPreview.min" type="number" name="salary-min" value="{{ .Data.SalaryMin }}" class="formInput {{ if .Errors.SalaryMin }} input-error{{ end }}" placeholder="45000" />
+            <input x-model="$store.adPreview.min" id="min" type="number" name="salary-min" value="{{ .Data.SalaryMin }}" class="formInput {{ if .Errors.SalaryMin }} input-error{{ end }}" placeholder="45000" />
             {{- if eq .Errors.SalaryMin "inputEmpty" }}
             <span class="text-error">Enter the minimum salary</span>
             {{- else if eq .Errors.SalaryMin "inputInvalid" }}
@@ -154,7 +155,7 @@ APPLICATION ERRROR - Check the server logs
             * Maximum Salary in GBP
           </label>
           <div class="mt-1">
-            <input x-model="$store.adPreview.max" type="number" name="salary-max" value="{{ .Data.SalaryMax }}" class="formInput {{- if .Errors.SalaryMax }} input-error{{ end }}" placeholder="75000" />
+            <input x-model="$store.adPreview.max" id="max" type="number" name="salary-max" value="{{ .Data.SalaryMax }}" class="formInput {{- if .Errors.SalaryMax }} input-error{{ end }}" placeholder="75000" />
             {{- if eq .Errors.SalaryMax "inputEmpty" }}
             <span class="text-error">Enter the maximum salary</span>
             {{- else if eq .Errors.SalaryMax "inputInvalid" }}
@@ -212,8 +213,7 @@ APPLICATION ERRROR - Check the server logs
             <div class="space-y-4 sm:space-y-0 sm:flex sm:flex-wrap sm:items-center sm:gap-4">
               {{ range .Tags }}
               <div class="flex items-center gap-1">
-                <input @click="if (($event.target.checked) && (count > 4)) {$event.target.checked = false} else {count += $event.target.checked ? 1 : -1}" x-model="$store.adPreview.skills"
-                type="checkbox" name="skills" id="{{ .Name }}" value="{{ .Name }}" {{ if .Checked  -}}checked {{ end -}} class="chk-box h-4 w-4">
+                <input @click="if (($event.target.checked) && (count > 4)) {$event.target.checked = false} else {count += $event.target.checked ? 1 : -1}" type="checkbox" name="skills" id="{{ .Name }}" value="{{ .Name }}" {{ if .Checked  -}}checked {{ end -}} class="chk-box h-4 w-4">
                 <label for="{{ .Name }}" class="font-normal text-gray-500">{{ .Title }}</label>
               </div>
               {{ end -}}
@@ -229,12 +229,12 @@ APPLICATION ERRROR - Check the server logs
         <label for="description" class="font-medium text-base text-blue-900 block">
           * Job Description
         </label>
-        <textarea id="description" name="description" class="formInput {{- if .Errors.JobDescription }} input-error{{ end }}">{{- .Data.Description -}}</textarea>
-        {{- if eq .Errors.Description "inputEmpty" }}
+        <textarea id="description" name="description" class="formInput {{- if .Errors.JobDescription}} input-error{{- end}}">{{- .Data.Description -}}</textarea>
+        {{- if eq .Errors.Description "inputEmpty"}}
         <span class="text-error">Enter the markdown describing the job role</span>
-        {{- else if eq .Errors.Description "inputInvalid" }}
+        {{- else if eq .Errors.Description "inputInvalid"}}
         <span class="text-error">Invalid markdown</span>
-        {{- end }}
+        {{- end}}
       </div>
     </div>
     <hr>
@@ -295,14 +295,14 @@ APPLICATION ERRROR - Check the server logs
         <label for="company-name" class="font-medium text-base text-blue-900 block">
           * Company Name
         </label>
-        <input x-model="$store.adPreview.companyName" type="text" name="company-name" value="{{ .Data.CompanyName }}"
-        class="formInput {{- if .Errors.CompanyName }} input-error{{ end }}" />
+        <input x-model="$store.adPreview.companyName" id="companyName" type="text" name="company-name" value="{{.Data.CompanyName}}"
+        class="formInput {{- if .Errors.CompanyName}} input-error{{- end}}" />
         <p class="mb-1 text-sm text-gray-400">Do not include Ltd., Inc, etc.</p>
-        {{- if eq .Errors.CompanyName "inputEmpty" }}
+        {{- if eq .Errors.CompanyName "inputEmpty"}}
         <span class="text-error">Enter your company name</span>
-        {{- else if eq .Errors.CompanyName "inputInvalid" }}
+        {{- else if eq .Errors.CompanyName "inputInvalid"}}
         <span class="text-error">Upper and lower case a to z including apostrophe only</span>
-        {{- end }}
+        {{- end}}
       </div>
 
       <!-- Apply URL -->
@@ -310,13 +310,13 @@ APPLICATION ERRROR - Check the server logs
         <label for="apply-url" class="font-medium text-base text-blue-900 block">
           * How to apply
         </label>
-        <input type="text" name="apply-url" value="{{ .Data.ApplyURL }}" placeholder="Apply URL" class="formInput {{- if .Errors.ApplyURL }} input-error{{ end }}" />
+        <input type="text" name="apply-url" value="{{.Data.ApplyURL}}" placeholder="Apply URL" class="formInput {{- if .Errors.ApplyURL}} input-error{{- end}}" />
         <p class="mb-1 text-sm text-gray-400">Include https in your apply link. For example 'https://www.acme.com/apply'</p>
-        {{- if eq .Errors.ApplyURL "inputEmpty" }}
+        {{- if eq .Errors.ApplyURL "inputEmpty"}}
         <span class="text-error">Enter an apply url</span>
-        {{- else if eq .Errors.ApplyURL "inputInvalid" }}
+        {{- else if eq .Errors.ApplyURL "inputInvalid"}}
         <span class="text-error">Invalid url - 'https' is required</span>
-        {{- end }}
+        {{- end}}
       </div>
     </div>
     <hr>
@@ -396,9 +396,9 @@ APPLICATION ERRROR - Check the server logs
 
     <!-- Ad preview -->
     {{- if eq .Data.Mode "create" }}
-    <div class="border-t border-gray-200 my-4">
-      <h3 class="font-medium text-lg text-blue-900 text-center mt-5 mb-1">Job Ad Preview</h3>
-      <p class="text-gray-600 text-base text-center">This is how your job ad will look like</p>
+    <div class="border-t border-gray-200 my-8">
+      <h3 class="font-medium text-lg text-blue-900 text-center mt-7 mb-1">Job Ad Preview</h3>
+      <p class="text-gray-600 text-base text-center">This is how your job ad will look like.</p>
       <ul class="shadow overflow-hidden mx-2 my-2 lg:my-5 sm:rounded-md sm:mx-4 md:mx-0">
         <li :class="$store.adPreview.chkStd ? 'bg-yellow-100' : ''" :style="$store.adPreview.chkCustom ? `background-color: ${$store.adPreview.hlCol}` : '' ">
           <span class="job-summary">
@@ -433,14 +433,7 @@ APPLICATION ERRROR - Check the server logs
                   </div>
                 </div>
               </div>
-              <div class="hidden md:block md:col-start-3 md:col-end-5 md:ml-5 lg:col-span-1">
-                <div class="flex flex-wrap gap-1">
-                  <!-- Skills -->
-                  <template x-for="skill in $store.adPreview.skills">
-                    <p x-text="skill" class="border-gray-800 border px-1 py-1 rounded text-xs"></p>
-                  </template>
-                </div>
-              </div>
+              <div class="hidden md:block md:col-start-3 md:col-end-5 md:ml-5 lg:col-span-1"></div>
               <!-- Employment type -->
               <div class="col-end-4 md:col-span-2 justify-self-end">
                 <p class="flex items-center justify-end sm:ml-6">
@@ -449,9 +442,12 @@ APPLICATION ERRROR - Check the server logs
                   </template>
                 </p>
                 <div class="mt-2 flex flex-wrap gap-1 items-center justify-end">
-                  <template x-for="type in $store.adPreview.empType">
-                    <p x-text="type" class="emp-type"></p>
-                  </template>
+                  <p :class="$store.adPreview.temp ? 'block' : 'hidden' " class="emp-type">Temporary</p>
+                  <p :class="$store.adPreview.perm ? 'block' : 'hidden' " class="emp-type">Permanent</p>
+                  <p :class="$store.adPreview.fullT ? 'block' : 'hidden' " class="emp-type">Full time</p>
+                  <p :class="$store.adPreview.partT ? 'block' : 'hidden' " class="emp-type">Part time</p>
+                  <p :class="$store.adPreview.contract ? 'block' : 'hidden' " class="emp-type">Contract</p>
+                  <p :class="$store.adPreview.perDiem ? 'block' : 'hidden' " class="emp-type">Per day</p>
                 </div>
               </div>
             </div>

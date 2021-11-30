@@ -40,22 +40,26 @@ document.addEventListener('alpine:init', () => {
     }
   });
   Alpine.store('adPreview', {
-    title: '',
-    remote: null,
-    companyName: '',
-    location: '',
-    min: '',
-    max: '',
-    skills: [],
-    empType: [],
+    title: document.getElementById('title').value,
+    remote: document.getElementById('remote').checked,
+    companyName: document.getElementById('companyName').value,
+    location: document.getElementById('location').value,
+    min: document.getElementById('min').value,
+    max: document.getElementById('max').value,
+    temp: document.getElementById('temporary').checked,
+    perm: document.getElementById('permanent').checked,
+    fullT: document.getElementById('full_time').checked,
+    partT: document.getElementById('part_time').checked,
+    contract: document.getElementById('contract').checked,
+    perDiem: document.getElementById('per_diem').checked,
     chkPinned: document.getElementById('chk-pinned30').checked,
     chkStd: document.getElementById('chk-hl-standard').checked,
     chkCustom: document.getElementById('chk-hl-custom').checked,
     hlCol: document.getElementById('hl-col').value,
     formatSalary(num) {
       return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num);
-    }
-  })
+    },
+  });
 });
 
 function priceCalcHandler(prices, currencySymbol) {
