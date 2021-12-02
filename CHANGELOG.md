@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.26 (Thu, 2 Dec 10.23pm)
++ Add ids to employer sign_up and post job for GA4 purpose
+
 ## 0.25 (Tue, 30 Nov 10.25pm)
 + Ad preview excludes skills
 + Changed product pricing
