@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.27 (Fri, 3 Dec 10.10pm)
++ Add canonical url on list jobs page
++ Longer title and description (SEO) purpose
+
 ## 0.26 (Thu, 2 Dec 10.23pm)
 + Add ids to employer sign_up and post job for GA4 purpose
 
