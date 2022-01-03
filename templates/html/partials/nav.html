@@ -24,14 +24,17 @@
           <a href="/" class="text-lg font-medium text-gray-700 hover:text-gray-900">JavaScript Jobs UK</a>
         </nav>
         <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+          <a href="/features" class="mx-4 whitespace-nowrap text-lg font-medium text-gray-700 hover:text-gray-900">
+            Features
+          </a>
           {{- if .IsSignedIn}}
           <!-- Profile dropdown -->
           <div x-cloak x-data="{ isProfileOpen: false }" class="ml-3 relative">
             <button x-on:click="isProfileOpen = !isProfileOpen" x-on:click.away="isProfileOpen = false"
-              type="button" class="max-w-xs bg-white text-gray-700 hover:text-gray-900 flex items-center rounded-full focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-blue-500 px-4 py-2 lg:rounded-md lg:hover:bg-gray-50" aria-expanded="false" aria-haspopup="true">
+              type="button" class="max-w-xs bg-white text-gray-700 hover:text-gray-900 font-medium flex items-center rounded-full focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-blue-500 px-4 py-2 lg:rounded-md lg:hover:bg-gray-50" aria-expanded="false" aria-haspopup="true">
               <svg class="w-6 h-6 stroke-current stroke-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               <span class="sr-only">Open user menu</span><span class="ml-1">My Account</span>
-              <svg class="hidden flex-shrink-0 ml-1 h-4 w-4 text-gray-400 lg:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+              <svg class="hidden flex-shrink-0 ml-1 h-4 w-4 text-gray-500 lg:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
             </button>
             <div x-show="isProfileOpen"
               x-transition:enter="transition ease-out duration-100"
@@ -93,6 +96,7 @@
         <div class="py-6 px-5 space-y-6">
           <div class="grid grid-cols-1 gap-y-4 gap-x-8">
             <a href="/" class="text-base font-medium text-gray-700 hover:text-gray-700">JavaScript Jobs UK</a>
+            <a href="/features" class="text-base font-medium text-gray-700 hover:text-gray-700">Features</a>
             {{- if .IsSignedIn}}
             <a href="/employer/{{ .UID }}" class="text-base font-medium text-gray-700 hover:text-gray-700">
               My Account
