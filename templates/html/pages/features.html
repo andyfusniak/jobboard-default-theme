@@ -1,5 +1,102 @@
 {{- define "title"}}features{{end}}
 {{- define "content"}}
-<h1>features</h1>
+<div class="max-w-7xl mx-auto py-16 px-4 sm:py-24">
+  <div class="pb-4 md:pb-8">
+    <h1 class="text-3xl font-extrabold text-gray-800 text-center">
+      Post your job to attract JavaScript Developers in the UK
+    </h1>
+  </div>
+  <div class="max-w-lg mx-auto">
+    <h3 class="my-10 text-base font-semibold tracking-wide text-gray-800 uppercase">
+      Features that make your ad standout
+    </h3>
+    <dl class="space-y-10">
+      <div class="relative">
+        <dt>
+          <div class="absolute h-12 w-12 flex items-center justify-center bg-blue-500 rounded-md">
+            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+          </div>
+          <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Standard listing - <span class="text-blue-600">Free</span></p>
+        </dt>
+        <dd class="mt-2 ml-16 text-base text-gray-500">
+          Standard listing comes with randomly generated company's logo and no highlight.
+          The ad will be moved down to the bottom when there're newer job ads.
+        </dd>
+      </div>
 
+      <div class="relative">
+        <dt>
+          <div class="absolute h-12 w-12 flex items-center justify-center bg-blue-500 rounded-md">
+            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+          </div>
+          <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Company Logo - <span class="text-blue-600">£12</span></p>
+        </dt>
+        <dd class="mt-2 ml-16 text-base text-gray-500">
+          Attract more views and increase your job ad's credibility.
+        </dd>
+      </div>
+
+      <div class="relative">
+        <dt>
+          <div class="absolute h-12 w-12 flex items-center justify-center bg-blue-500 rounded-md">
+            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+          </div>
+          <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Pinned to top for 30 days - <span class="text-blue-600">£69</span></p>
+        </dt>
+        <dd class="mt-2 ml-16 text-base text-gray-500">
+          Your job ad will be pinned to the most top of the page for 30 days. This will increase visibility to job seekers.
+        </dd>
+      </div>
+
+      <div class="relative">
+        <dt>
+          <div class="absolute h-12 w-12 flex items-center justify-center bg-blue-500 rounded-md">
+            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+          </div>
+          <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Highlight job post in
+            <span class="inline-block px-1 py-1 bg-yellow-100">Yellow</span> - <span class="text-blue-600">£19</span></p>
+        </dt>
+        <dd class="mt-2 ml-16 text-base text-gray-500">
+          In contrast to basic listing, yellow highlighting attracts more views.
+        </dd>
+      </div>
+
+      <div class="relative">
+        <dt>
+          <div class="absolute h-12 w-12 flex items-center justify-center bg-blue-500 rounded-md">
+            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+          </div>
+          <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Customised highlight - <span class="text-blue-600">£39</span></p>
+        </dt>
+        <dd class="mt-2 ml-16 text-base text-gray-500">
+          You can highlight job ads that match your company's brand colour.
+        </dd>
+      </div>
+    </dl>
+  </div>
+  <div class="flex justify-center mt-10">
+    {{- if .IsSignedIn}}
+    {{- if eq .Role "employer"}}
+    <!-- <button class="button px-4 py-2 rounded-md bg-blue-600">Post job</button> -->
+    <a href="/employer/{{ .UID }}/create-job" class="px-4 py-2 button">
+      Post your job
+    </a>
+    {{- end}}
+    {{- else}}
+    <a href="/employer/signup" class="px-4 py-2 button">
+      Post your job
+    </a>
+    {{- end}}
+  </div>
+</div>
 {{- end}}
