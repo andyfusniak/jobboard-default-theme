@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.28 (Mon, 3 Jan 6.00pm)
++ Cookiebar
++ Update Alpinejs to version 3.7.1
++ Feature page
++ Link to feature in nav
+
 ## 0.27 (Fri, 3 Dec 10.10pm)
 + Add canonical url on list jobs page
 + Longer title and description (SEO) purpose
