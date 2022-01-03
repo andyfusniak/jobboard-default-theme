@@ -2,6 +2,13 @@
 <link rel="canonical" href="{{.Site.BaseURL}}"/>
 {{- end}}
 {{- define "title"}}A list of UK JavaScript jobs | Code Pyjamas{{- end}}
+{{ define "plinks" -}}
+  {{- if .Site.ThemeTag}}
+  <script src="{{.Site.BaseURL}}/static/{{.Site.ActiveTheme.Name}}/{{.Site.ActiveTheme.Version}}/js/cookiebar.js"></script>
+  {{- else}}
+  <script src="{{.Site.BaseURL}}/static/js/cookiebar.js"></script>
+  {{- end}}
+{{- end}}
 {{- define "content"}}
 <div class="max-w-7xl mx-auto">
   <!-- Hero Section -->
@@ -45,7 +52,7 @@
   </div>
 </div>
 <!-- Footer banner -->
-{{- if not .IsSignedIn}}
+{{/* {{- if not .IsSignedIn}}
 <div x-data="{ open: true }" x-show="open == true" class="w-full fixed bottom-0">
   <div class="px-6 py-2 bg-blue-600">
     <div class="mx-auto">
@@ -76,5 +83,21 @@
     </div>
   </div>
 </div>
-{{- end}}
+{{- end}} */}}
+
+<!-- Cookie banner -->
+<div x-data="cookiebar" x-show="show"
+  class="w-full fixed bottom-0">
+  <div class="px-6 py-2 bg-gray-500 shadow-sm">
+    <div class="mx-auto">
+      <div class="flex flex-col md:flex-row justify-center space-x-4 items-center text-center">
+        <p class="text-xs text-white mb-3 md:mb-0">
+          We use cookies to improve user experience and analyze website traffic.
+          By continuing to use this site, you agree to our website's cookie use as described in our Cookie Policy.
+        </p>
+        <button @click="close()" class="button bg-white hover:bg-gray-100 text-gray-600 px-0.5 rounded text-xs">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 {{- end -}}
