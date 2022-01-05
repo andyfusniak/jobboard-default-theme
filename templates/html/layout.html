@@ -47,7 +47,11 @@
   <link rel="stylesheet" href="{{.Site.BaseURL}}/static/css/tailwind.css">
   {{- end}}
   {{- block "canonical-url" .}}{{- end}}
-  <script defer src="https://unpkg.com/alpinejs@3.7.1/dist/cdn.min.js"></script>
+  {{- if .Site.ThemeTag}}
+  <script defer src="https://unpkg.com/alpinejs@3.2.2/dist/cdn.min.js"></script>
+  {{- else}}
+  <script defer src="{{.Site.BaseURL}}/static/js/alpinejs-3.2.2.js"></script>
+  {{end}}
   {{- template "plinks" . -}}
 </head>
 <body class="bg-white flex flex-col h-screen justify-between">

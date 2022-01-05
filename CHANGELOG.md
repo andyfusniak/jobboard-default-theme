@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.29 (Wed, 5 Jan 10.00pm)
++ Move Alpinejs back to 3.2.2
++ Change copyright footer to 2022
++ Edit mode
+
 ## 0.28 (Mon, 3 Jan 6.00pm)
 + Cookiebar
 + Update Alpinejs to version 3.7.1
